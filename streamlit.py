@@ -144,7 +144,7 @@ data_load_state = st.text("Loading data... complete!")
 
 st.write(data)
 st.write(data.info())
-close = data['Close']
+close = data.iloc[0,4]
 st.write(close)
 
 
