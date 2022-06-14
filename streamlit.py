@@ -134,7 +134,7 @@ TODAY = date.today().strftime("%Y-%m-%d")
 #cache data
 #@st.cache
 def load_data(ticker):
-    data = yf.download(ticker,TODAY)
+    data = yf.download(currency,TODAY)
     data.reset_index(inplace=True)
     return data
 
