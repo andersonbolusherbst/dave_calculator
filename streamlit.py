@@ -6,7 +6,7 @@ start_age = int(st.number_input('Enter your age when your begin contributing to 
 retirement_age = int(st.number_input('Enter your retirement age'))
 years = retirement_age - start_age
 st.write("Your investment time horizon: ", years)
-rate = st.slider('Select annual interest rate. 1% = 0.01',min_val=0.0, max_val=0.2)
+rate = st.slider('Select annual interest rate. 1% = 0.01',min_val=0, max_val=2)
 escalate = float(st.selectbox("Select annual % increase of contribution",[0,0.02,0.05,0.1,0.15]))
 deposit = st.number_input('Starting Deposit')
 monthly = st.number_input('Your Monthly Contribution')
