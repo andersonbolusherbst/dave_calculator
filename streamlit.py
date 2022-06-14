@@ -2,8 +2,9 @@ import streamlit as st
 import pandas as pd
 st.image("bayswaterlogo.png")
 
-
-years = int(st.number_input('years'))
+start_age = st.number_input('Enter your age when your begin contributing to your investment')
+retirement_age = st.number_input('Enter your retirement age')
+years = retirement_age - start_age
 rate = st.number_input('Annual interest rate. Use Decimals e.g 10% = 0.1')
 escalation = st.number_input("Annual % increase of contribution")
 deposit = st.number_input('Starting Deposit')
