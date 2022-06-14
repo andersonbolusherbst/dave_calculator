@@ -24,6 +24,7 @@ if pressed:
             dep_fv = deposit*(1+(rate/m))**(x*m)
             ann_fv = monthly*(((1+rate/m)**(x*m)-1)/(rate/m))
             total_fv = dep_fv + ann_fv
+            total_fv = round(total_fv,2)
             amounts.append(total_fv)
             escalation = escalate+1
                 
@@ -32,7 +33,7 @@ if pressed:
             
     calculate(years,rate,escalation,escalate,deposit,monthly,m)
     st.balloons()
-    amounts = round(amounts,2)
+    
     final_data = pd.DataFrame(amounts,year_string)
     st.write(f" If you invest {monthly}, {m} times a year with an annual escalatin of {escalation}, your investment with generate {amounts[-1]} in {years} years")
     st.dataframe(final_data)
