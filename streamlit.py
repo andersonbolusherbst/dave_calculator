@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 st.image("bayswaterlogo.png")
 
- currency_list = {
+currency_list = {
     'ALL': 'Albania Lek',
     'AFN': 'Afghanistan Afghani',
     'ARS': 'Argentina Peso',
