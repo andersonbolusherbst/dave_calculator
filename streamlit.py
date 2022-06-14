@@ -8,14 +8,16 @@ years = retirement_age - start_age
 st.write("Your investment time horizon: ", years)
 rate = st.slider('Select annual interest rate',min_value=0.00, max_value=0.15)
 escalate = float(st.selectbox("Select annual % increase of contribution",[0,0.02,0.05,0.1,0.15]))
+escalation=0
 deposit = st.number_input('Starting Deposit')
 monthly = st.number_input('Your Monthly Contribution')
 m = st.selectbox("payments per year",[12,4,1])
 pressed = st.button("Calculate")
+
 if pressed:
     amounts = []
     year_string = []
-    def calculate(years,rate,escalation,deposit,monthly,m):
+    def calculate(years,rate,escalation,escalate,deposit,monthly,m):
   
         for x in range(years+1):
             x += 1
