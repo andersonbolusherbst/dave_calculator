@@ -124,7 +124,7 @@ currency_list = {
 
 currency_selector = st.selectbox(
      'Which currency will you be investing with?',
-     ('USD', 'ZAR', 'VND','MFST'))
+     ('USD', 'ZAR', 'VND','GBP'))
     
 st.write('You selected:', currency_selector)
 
@@ -143,6 +143,8 @@ data = load_data(currency_selector)
 data_load_state = st.text("Loading data... complete!")
 
 st.write(data)
+close = data['Close']
+st.write(close)
 
 
 
