@@ -124,7 +124,7 @@ currency_list = {
 
 currency_selector = st.selectbox(
      'Which currency will you be investing with?',
-     ('USD', 'ZAR', 'VND','GBP'))
+     ('USD', 'ZAR', 'VND','GBP','AMZN'))
     
 st.write('You selected:', currency_selector)
 
