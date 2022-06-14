@@ -130,9 +130,9 @@ st.write('You selected:', currency_selector)
 
 ##Daniel currency code below using YFinance
 TODAY = date.today().strftime("%Y-%m-%d")
+ticker = currency_selector
 #cache data
 @st.cache
-ticker = currency_selector
 def load_data(ticker):
     data = yf.download(ticker,TODAY)
     data.reset_index(inplace=True)
