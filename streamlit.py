@@ -142,7 +142,7 @@ data_load_state = st.text("Load data...")
 data = load_data(currency_selector)
 data_load_state = st.text("Loading data... complete!")
 
-st.write(ticker)
+st.write(data)
 
 
 
