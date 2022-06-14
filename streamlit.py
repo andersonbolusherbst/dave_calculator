@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+import yfinance as yf
+from datetime import date
 st.image("bayswaterlogo.png")
 
 ### Dont worry just currency work in progress
@@ -122,9 +124,28 @@ currency_list = {
 
 currency_selector = st.selectbox(
      'Which currency will you be investing with?',
-     ('Dollars', 'Rands', 'VND'))
+     ('USD', 'ZAR', 'VND'))
     
 st.write('You selected:', currency_selector)
+
+##Daniel currency code below using YFinance
+TODAY = date.today().strftime("%Y-%m-%d")
+#cache data
+@st.cache
+ticker = currency_selector
+def load_data(ticker):
+    data = yf.download(ticker,TODAY)
+    data.reset_index(inplace=True)
+    return data
+
+data_load_state = st.text("Load data...")
+data = load_data(selected_stock)
+data_load_state = st.text("Loading data... complete!")
+
+st.write(ticker)
+
+
+
 
 start_age = st.number_input('Enter your age when your begin contributing to your investment',value = 0)
 retirement_age = st.number_input('Enter your retirement age', value = 0)
