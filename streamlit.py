@@ -35,7 +35,7 @@ if pressed:
     st.balloons()
     
     final_data = pd.DataFrame(amounts,year_string)
-    st.write("hello") 
+    st.write("hiya") 
     st.write(f" If you invest {monthly}, {m} times a year with an annual escalation of {escalation}, your investment will generate {amounts[-1]} in {years} years")
     st.dataframe(final_data)
     st.bar_chart(amounts)
