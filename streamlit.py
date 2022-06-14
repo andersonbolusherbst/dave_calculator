@@ -139,7 +139,7 @@ def load_data(ticker):
     return data
 
 data_load_state = st.text("Load data...")
-data = load_data(selected_stock)
+data = load_data(currency_selector)
 data_load_state = st.text("Loading data... complete!")
 
 st.write(ticker)
