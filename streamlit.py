@@ -117,11 +117,11 @@ st.image("bayswaterlogo.png")
     'VND': 'Viet Nam Dong',
     'YER': 'Yemen Rial',
     'ZWD': 'Zimbabwe Dollar'
-})
+}
 
 currency_selector = st.selectbox(
      'Which currency will you be investing with?',
-     ('Email', 'Home phone', 'Mobile phone'))
+     ('Dollars', 'Rands', 'VND'))
     
 st.write('You selected:', currency_selector)
 
