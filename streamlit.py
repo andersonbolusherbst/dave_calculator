@@ -132,15 +132,15 @@ st.write('You selected:', currency_selector)
 TODAY = date.today().strftime("%Y-%m-%d")
 #ticker = currency_selector
 #cache data
-@st.cache
+#@st.cache
 def load_data(ticker):
     data = yf.download(ticker,TODAY)
     data.reset_index(inplace=True)
     return data
 
-data_load_state = st.text("Load data...")
+#data_load_state = st.text("Load data...")
 data = load_data(currency_selector)
-data_load_state = st.text("Loading data... complete!")
+#data_load_state = st.text("Loading data... complete!")
 
 st.write(data)
 st.write(data.info())
