@@ -15,7 +15,7 @@ pressed = st.button("Calculate")
 if pressed:
     amounts = []
     year_string = []
-    def calculate(years,rate,escalate,deposit,monthly,m):
+    def calculate(years,rate,escalation,deposit,monthly,m):
   
         for x in range(years+1):
             x += 1
