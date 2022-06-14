@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 st.image("bayswaterlogo.png")
 
-start_age = int(st.number_input('Enter your age when your begin contributing to your investment'))
-retirement_age = int(st.number_input('Enter your retirement age'))
+start_age = st.number_input('Enter your age when your begin contributing to your investment',value = int)
+retirement_age = st.number_input('Enter your retirement age', value = int)
 years = retirement_age - start_age
 st.write("Your investment time horizon: ", years)
 rate = st.slider('Select annual interest rate',min_value=0.00, max_value=0.15)
@@ -37,6 +37,6 @@ if pressed:
     st.write(amounts)
     final_data = pd.DataFrame(amounts,year_string)
     st.write(f" If you invest {monthly}, {m} times a year with an annual escalatin of {escalation}, your investment with generate {amounts[-1]} in {years} years")
-    st.dataframe(final_data.style.format("{:.2%}"))
+    st.dataframe(final_data)
     st.bar_chart(amounts)
     
