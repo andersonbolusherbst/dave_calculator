@@ -144,7 +144,6 @@ data_load_state = st.text("Loading data... complete!")
 
 st.write(data)
 st.write(data.info())
-st.write(data.type())
 close = data['Close']
 st.write(close)
 
