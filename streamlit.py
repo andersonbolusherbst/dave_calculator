@@ -2,9 +2,7 @@ import streamlit as st
 import pandas as pd
 st.image("bayswaterlogo.png")
 
-currency_selector = st.selectbox(
-     'Which currency will you be investing with?',
-     currency_list = {
+ currency_list = {
     'ALL': 'Albania Lek',
     'AFN': 'Afghanistan Afghani',
     'ARS': 'Argentina Peso',
@@ -121,6 +119,10 @@ currency_selector = st.selectbox(
     'ZWD': 'Zimbabwe Dollar'
 })
 
+currency_selector = st.selectbox(
+     'Which currency will you be investing with?',
+     ('Email', 'Home phone', 'Mobile phone'))
+    
 st.write('You selected:', currency_selector)
 
 start_age = st.number_input('Enter your age when your begin contributing to your investment',value = 0)
