@@ -30,7 +30,7 @@ if pressed:
             monthly = monthly*escalation
             year_string.append(f" Year {x}")
             
-    calculate(years,rate,escalation,deposit,monthly,m)
+    calculate(years,rate,escalation,escalate,deposit,monthly,m)
     st.balloons()
     final_data = pd.DataFrame(amounts,year_string)
     st.write(f" If you invest {monthly}, {m} times a year with an annual escalatin of {escalation}, your investment with generate {amounts[-1]} in {years} years")
