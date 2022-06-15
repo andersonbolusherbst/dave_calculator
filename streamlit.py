@@ -248,6 +248,11 @@ if generate_pdf:
     html = template.render(
         student=monthly,
         course=rate,
+        currency_selector=currency_selector,
+        escalation=escalation,
+        m=m,
+        years=years,
+        amounts=amounts
         date=date.today().strftime("%B %d, %Y"),
     )
     
