@@ -184,7 +184,7 @@ if pressed:
     st.balloons()
     
     final_data = pd.DataFrame(amounts,year_string)
-    st.write(f" If you invest {monthly} {currency_selector}, {m} times a year with an annual escalation of {escalation}, your investment will generate {amounts[-1]} {currency_selector} in {years} years")
+    st.write(f" If you invest \033[1m{monthly}\033[0m {currency_selector}, {m} times a year with an annual escalation of {escalation}, your investment will generate {amounts[-1]} {currency_selector} in {years} years")
     
     col1, col2 = st.columns([1, 4])
 
