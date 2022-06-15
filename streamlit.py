@@ -219,7 +219,7 @@ if pressed:
     im = image.imread("bayswaterlogo.png")
     
     fig, ax = plt.subplots()
-    plotdata = df.DataFrame(list(zip(year_string, amounts)), columns =["Year", "Amount"])
+    plotdata = pd.DataFrame(list(zip(year_string, amounts)), columns =["Year", "Amount"])
 
     fig.figimage(im, xo = 90, yo = 690, zorder=2, alpha=1)
 
