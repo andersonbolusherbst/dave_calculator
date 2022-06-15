@@ -209,7 +209,7 @@ if pressed:
 
     with col1:
       st.header("Anuity Table")
-      st.dataframe(final_data, width=18)
+      st.dataframe(final_data)
 
     with col2:
       st.header("Yearly Projections")
