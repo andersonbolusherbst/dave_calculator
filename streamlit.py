@@ -3,6 +3,7 @@ import pandas as pd
 import yfinance as yf
 from datetime import date
 from currency_symbols import CurrencySymbols
+import matplotlib.pyplot as plt
 st.image("bayswaterlogo.png")
 
 ### Dont worry just currency work in progress
@@ -208,7 +209,7 @@ if pressed:
 
     with col1:
       st.header("Anuity Table")
-      st.dataframe(final_data)
+      st.dataframe(final_data, width=18)
 
     with col2:
       st.header("Yearly Projections")
