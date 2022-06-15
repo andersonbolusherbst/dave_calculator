@@ -4,3 +4,4 @@ numpy
 pdfkit
 yfinance
 datetime
+currency-symbols
