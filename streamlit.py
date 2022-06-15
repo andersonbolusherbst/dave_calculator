@@ -151,9 +151,6 @@ st.write('You selected:', currency_selector)
 #End of daniel playground
 
 
-
-
-
 start_age = st.number_input('Enter your age when your begin contributing to your investment',value = 0)
 retirement_age = st.number_input('Enter your retirement age', value = 0)
 years = retirement_age - start_age
@@ -188,6 +185,14 @@ if pressed:
     
     final_data = pd.DataFrame(amounts,year_string)
     st.write(f" If you invest {monthly} {currency_selector}, {m} times a year with an annual escalation of {escalation}, your investment will generate {amounts[-1]} {currency_selector} in {years} years")
+    
+    col1, col2 = st.columns(2)
+
+    with col1:
+    st.header("Anuity Table")
     st.dataframe(final_data)
+    
+    with col2:
+    st.header("Yearly Projections")
     st.bar_chart(amounts)
     
