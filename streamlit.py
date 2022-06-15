@@ -137,15 +137,6 @@ britishPoundSymbol = CurrencySymbols.get_symbol('GBP')
 #randSymbol = CurrencySymbols.get_symbol('ZAR')
 #randSymbol = CurrencySymbols.get_symbol('ZAR')
 
-if currency_selector == "USD":
-    currency_selector = dollarSymbol
-elif currency_selector == "GBP":
-    currency_selector = britishPoundSymbol
-elif currency_selector == "EUR":
-    currency_selector = euroSymbol
-else: 
-    pass
-
 ##Daniel currency playground using YFinance
 
 #TODAY = date.today().strftime("%Y-%m-%d")
@@ -201,6 +192,15 @@ if pressed:
     calculate(years,rate,escalation,escalate,deposit,monthly,m)
     st.balloons()
     
+    if currency_selector == "USD":
+        currency_selector = dollarSymbol
+    elif currency_selector == "GBP":
+        currency_selector = britishPoundSymbol
+    elif currency_selector == "EUR":
+        currency_selector = euroSymbol
+    else: 
+        pass
+
     final_data = pd.DataFrame(amounts,year_string)
     st.write(f" If you invest **{monthly}** **{currency_selector}**, **{m}** times a year with an annual escalation of **{escalation}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years")
     
