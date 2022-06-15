@@ -217,9 +217,9 @@ if pressed:
     plt.rcParams["figure.autolayout"] = True
 
     im = image.imread("bayswaterlogo.png")
-    plotdata = pd.DataFrame(amounts)
+    
     fig, ax = plt.subplots()
-
+    plotdata = pd.DataFrame(amounts)
 
     fig.figimage(im, xo= 20, yo= 100, zorder=1, alpha=.4)
 
