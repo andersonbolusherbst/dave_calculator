@@ -221,7 +221,7 @@ if pressed:
     fig, ax = plt.subplots()
     plotdata = pd.DataFrame(amounts)
 
-    fig.figimage(im, xo = 30, yo = 700, zorder=1, alpha=.6)
+    fig.figimage(im, xo = 50, yo = 720, zorder=1, alpha=.6)
 
     plotdata.plot(kind='bar', color='lightblue')
     plotdata.plot(kind='line', color='blue', ms=10)
