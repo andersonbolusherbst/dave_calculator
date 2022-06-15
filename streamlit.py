@@ -213,7 +213,7 @@ if pressed:
 
     #with col1:
     st.header("Yearly Projections")
-    plt.rcParams["figure.figsize"] = [15.50, 10.50]
+    plt.rcParams["figure.figsize"] = [10.50, 8.50]
     plt.rcParams["figure.autolayout"] = True
 
     im = image.imread("bayswaterlogo.png")
@@ -221,7 +221,7 @@ if pressed:
     fig, ax = plt.subplots()
     plotdata = pd.DataFrame(amounts)
 
-    fig.figimage(im, xo= 200, yo= 1000, zorder=1, alpha=.4)
+    fig.figimage(im, xo= 100, yo= 1000, zorder=1, alpha=.4)
 
     plotdata.plot(kind='bar', color='lightblue')
     plotdata.plot(kind='line', color='blue', ms=10)
