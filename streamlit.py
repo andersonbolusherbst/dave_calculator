@@ -191,18 +191,18 @@ if pressed:
             
     calculate(years,rate,escalation,escalate,deposit,monthly,m)
     st.balloons()
-    
-    if currency_selector == "USD":
-        currency_selector = dollarSymbol
-    elif currency_selector == "GBP":
-        currency_selector = britishPoundSymbol
-    elif currency_selector == "EUR":
-        currency_selector = euroSymbol
-    else: 
-        pass
+   
+if currency_selector == "USD":
+   currency_selector = dollarSymbol
+elif currency_selector == "GBP":
+   currency_selector = britishPoundSymbol
+elif currency_selector == "EUR":
+   currency_selector = euroSymbol
+#else: 
+   #pass
 
     final_data = pd.DataFrame(amounts,year_string)
-    st.write(f" If you invest **{monthly}** **{currency_selector}**, **{m}** times a year with an annual escalation of **{escalation}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years")
+    st.write(f" If you invest **{monthly}** {currency_selector}, **{m}** times a year with an annual escalation of **{escalation}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years")
     
     col1, col2 = st.columns([1, 4])
 
