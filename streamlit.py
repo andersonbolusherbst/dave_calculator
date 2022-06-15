@@ -6,6 +6,9 @@ from currency_symbols import CurrencySymbols
 import matplotlib.pyplot as plt
 import matplotlib.image as image
 from pandas.core.frame import DataFrame
+import pdfkit
+from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
+from streamlit.components.v1 import iframe
 
 st.image("bayswaterlogo.png")
 
@@ -233,4 +236,26 @@ if pressed:
     #with col2:
     st.header("Anuity Table")
     st.dataframe(final_data)
+    
+    #pdf attempt
+    env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
+template = env.get_template("template.html")
 
+generate_pdf = st.button('Generate PDF')
+
+if generate_pdf:
+    html = template.render(
+        student=monthly,
+        course=amounts[-1],
+        date=date.today().strftime("%B %d, %Y"),
+    )
+    
+   pdf = pdfkit.from_string(html, False)
+   st.balloons()
+    
+   st.download_button(
+        "⬇️ Download PDF",
+        data=pdf,
+        file_name="diploma.pdf",
+        mime="application/octet-stream",
+    )
