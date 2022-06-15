@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import yfinance as yf
 from datetime import date
+from currency_symbols import CurrencySymbols
 st.image("bayswaterlogo.png")
 
 ### Dont worry just currency work in progress
@@ -127,6 +128,23 @@ currency_selector = st.selectbox(
      ('ZAR','USD','GBP','EUR','VND'))
     
 st.write('You selected:', currency_selector)
+
+### Brad Playground
+
+dollarSymbol = CurrencySymbols.get_symbol('USD')
+euroSymbol = CurrencySymbols.get_symbol('EUR')
+britishPoundSymbol = CurrencySymbols.get_symbol('GBP')
+#randSymbol = CurrencySymbols.get_symbol('ZAR')
+#randSymbol = CurrencySymbols.get_symbol('ZAR')
+
+if currency_selector == "USD":
+    currency_selector = dollarSymbol
+elif currency_selector == "GBP":
+    currency_selector = britishPoundSymbol
+elif currency_selector == "EUR":
+    currency_selector = euroSymbol
+else: 
+    pass
 
 ##Daniel currency playground using YFinance
 
