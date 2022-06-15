@@ -224,7 +224,7 @@ if pressed:
     fig.figimage(im, xo = 90, yo = 690, zorder=2, alpha=1)
 
     ax.bar(plotdata["Year"], plotdata["Amount"], color='lightblue')
-    ax.line(plotdata["Year"], plotdata["Amount"], color='blue', ms=10)
+    ax.plot(plotdata["Year"], plotdata["Amount"], color='blue', ms=10)
 
     st.pyplot(fig,ax)
     
