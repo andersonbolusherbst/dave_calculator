@@ -238,9 +238,9 @@ if pressed:
     st.header("Anuity Table")
     st.dataframe(final_data)
     
-    #pdf attempt
-    env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
-    template = env.get_template("template.html")
+#pdf attempt
+env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
+template = env.get_template("template.html")
 
 generate_pdf = st.button('Generate PDF')
 
