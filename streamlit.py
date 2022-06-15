@@ -189,10 +189,10 @@ if pressed:
     col1, col2 = st.columns(2)
 
     with col1:
-    st.header("Anuity Table")
-    st.dataframe(final_data)
+        st.header("Anuity Table")
+        st.dataframe(final_data)
     
     with col2:
-    st.header("Yearly Projections")
-    st.bar_chart(amounts)
+        st.header("Yearly Projections")
+        st.bar_chart(amounts)
     
