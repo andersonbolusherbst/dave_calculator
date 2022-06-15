@@ -223,7 +223,7 @@ if pressed:
 
     fig.figimage(im, xo = 90, yo = 690, zorder=2, alpha=1)
 
-    ax.bar(plotdata.index, color='lightblue')
+    ax.bar(plotdata[0], color='lightblue')
     ax.line(plotdata["amounts"], color='blue', ms=10)
 
     st.pyplot(fig,ax)
