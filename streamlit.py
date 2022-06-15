@@ -252,7 +252,6 @@ if generate_pdf:
         escalation=escalation,
         m=m,
         years=years,
-        final_data=final_data,
         date=date.today().strftime("%B %d, %Y"),
     )
 
