@@ -252,7 +252,7 @@ if generate_pdf:
         escalation=escalation,
         m=m,
         years=years,
-        amounts=amounts,
+        fix="**Amounts not pulling through**",
         date=date.today().strftime("%B %d, %Y"),
     )
     
