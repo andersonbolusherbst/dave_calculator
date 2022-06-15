@@ -226,7 +226,7 @@ if pressed:
     plotdata.plot(kind='bar', color='lightblue')
     plotdata.plot(kind='line', color='blue', ms=10)
 
-    st.pyplot(fig)
+    st.pyplot(fig,ax)
     
     #st.line_chart(amounts)
 
