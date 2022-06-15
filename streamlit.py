@@ -4,6 +4,9 @@ import yfinance as yf
 from datetime import date
 from currency_symbols import CurrencySymbols
 import matplotlib.pyplot as plt
+import matplotlib.image as image
+from pandas.core.frame import DataFrame
+
 st.image("bayswaterlogo.png")
 
 ### Dont worry just currency work in progress
@@ -210,7 +213,22 @@ if pressed:
 
     #with col1:
     st.header("Yearly Projections")
-    st.line_chart(amounts)
+    plt.rcParams["figure.figsize"] = [15.50, 10.50]
+    plt.rcParams["figure.autolayout"] = True
+
+    im = image.imread("")
+    plotdata = pd.DataFrame(amounts)
+    fig, ax = plt.subplots()
+
+
+    fig.figimage(im, xo= 20, yo= 100, zorder=1, alpha=.4)
+
+    plotdata.plot(kind='bar', color='lightblue')
+    plotdata.plot(kind='line', color='blue', ms=10)
+
+    st.pyplot(fig)
+    
+    #st.line_chart(amounts)
 
     #with col2:
     st.header("Anuity Table")
