@@ -216,7 +216,7 @@ if pressed:
     plt.rcParams["figure.figsize"] = [15.50, 10.50]
     plt.rcParams["figure.autolayout"] = True
 
-    im = image.imread("")
+    im = image.imread("bayswaterlogo.png")
     plotdata = pd.DataFrame(amounts)
     fig, ax = plt.subplots()
 
