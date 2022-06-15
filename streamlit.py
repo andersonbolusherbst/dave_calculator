@@ -178,6 +178,7 @@ deposit = st.number_input('Starting Deposit')
 monthly = st.number_input('Your Monthly Contribution')
 m = st.selectbox("payments per year",[12,4,1])
 pressed = st.button("Calculate")
+amounts=[]
 
 if pressed:
     amounts = []
