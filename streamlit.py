@@ -219,12 +219,12 @@ if pressed:
     im = image.imread("bayswaterlogo.png")
     
     fig, ax = plt.subplots()
-    plotdata = pd.DataFrame(amounts)
+    #plotdata = pd.DataFrame(amounts)
 
     fig.figimage(im, xo = 90, yo = 690, zorder=2, alpha=1)
 
-    plotdata.plot(kind='bar', color='lightblue')
-    plotdata.plot(kind='line', color='blue', ms=10)
+    plt.plot(amounts, kind='bar', color='lightblue')
+    plt.plot(amounts, kind='line', color='blue', ms=10)
 
     st.pyplot(fig)
     
