@@ -213,5 +213,5 @@ if pressed:
 
     #with col2:
     st.header("Anuity Table")
-    st.dataframe(final_data, width = 50)
+    st.dataframe(final_data, width = 5000)
 
