@@ -5,3 +5,4 @@ pdfkit
 yfinance
 datetime
 currency-symbols
+matplotlib.pyplot 
