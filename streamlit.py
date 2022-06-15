@@ -212,5 +212,5 @@ if pressed:
 
     with col2:
       st.header("Yearly Projections")
-      st.bar_chart(amounts)
+      st.line_chart(amounts)
 
