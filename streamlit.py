@@ -124,28 +124,31 @@ currency_list = {
 
 currency_selector = st.selectbox(
      'Which currency will you be investing with?',
-     ('USD', 'ZAR', 'VND','GBP','AMZN'))
+     ('USD', 'ZAR', 'VND','GBP'))
     
 st.write('You selected:', currency_selector)
 
-##Daniel currency code below using YFinance
-TODAY = date.today().strftime("%Y-%m-%d")
+##Daniel currency playground using YFinance
+
+#TODAY = date.today().strftime("%Y-%m-%d")
 #ticker = currency_selector
 #cache data
 #@st.cache
-def load_data(currency):
-    data = yf.download(currency,TODAY)
-    data.reset_index(inplace=True)
-    return data
+#def load_data(currency):
+   # data = yf.download(currency,TODAY)
+    #data.reset_index(inplace=True)
+   # return data
 
 #data_load_state = st.text("Load data...")
-data = load_data(currency_selector)
+#data = load_data(currency_selector)
 #data_load_state = st.text("Loading data... complete!")
 
-st.write(data)
-st.write(data.info())
-close = data.iloc[0,4]
-st.write(close)
+#st.write(data)
+#st.write(data.info())
+#close = data.iloc[0,4]
+#st.write(close)
+
+#End of daniel playground
 
 
 
