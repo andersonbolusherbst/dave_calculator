@@ -242,7 +242,7 @@ if pressed:
     env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
     template = env.get_template("template.html")
 
-    generate_pdf = st.button('Generate PDF')
+generate_pdf = st.button('Generate PDF')
 
 if generate_pdf:
     html = template.render(
