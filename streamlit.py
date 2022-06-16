@@ -11,8 +11,8 @@ import pdfkit
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
 from streamlit.components.v1 import iframe
 
-st.set_page_config(layout="centered", page_icon="🎓", page_title="Diploma Generator")
-st.title("🎓 Diploma PDF Generator")
+env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
+template = env.get_template("template.html")
 
 st.image("bayswaterlogo.png")
 
