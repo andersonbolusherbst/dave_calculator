@@ -255,14 +255,14 @@ if pressed:
     #labelbottom=False)
     
     ax.set_xlabel('Years in Plan', fontdict = font)
-    ax.set_ylabel('Anuity Amount', fontdict = font)
+    ax.set_ylabel('Annuity Amount', fontdict = font)
 
     st.pyplot(fig,ax)
     
     #st.line_chart(amounts)
 
     #with col2:
-    st.header("Anuity Table")
+    st.header("Annuity Table")
     
     amounts_rounded = [round(num, 2) for num in amounts]
     final_data = pd.DataFrame(amounts_rounded,year_string)
