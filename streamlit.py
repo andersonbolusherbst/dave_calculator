@@ -255,6 +255,7 @@ if generate_pdf:
         escalate=escalate,
         rate=rate,
         deposit=deposit,
+        amounts=amounts,
         date=date.today().strftime("%B %d, %Y"),
     )
 
