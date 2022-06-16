@@ -6,6 +6,7 @@ from currency_symbols import CurrencySymbols
 import matplotlib.pyplot as plt
 import matplotlib.image as image
 from pandas.core.frame import DataFrame
+import numpy as np
 
 st.image("bayswaterlogo.png")
 
@@ -235,6 +236,11 @@ if pressed:
 
     #with col2:
     st.header("Anuity Table")
-    final_data[0].values.round(2)
+    decimal_data = final_data.iloc[:, 0]
+    decimal_data = np.round(decimal_data, decimals = 2)
+    
+    final_data = pd.DataFrame(decimal_data,year_string)
+    final_data = final_data.T
+    
     st.dataframe(final_data)
 
