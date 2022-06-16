@@ -14,9 +14,8 @@
    <th>Cumulative Total</th>
   </tr>
    {% for x in amounts %}:
-  p+=1
   <tr>
-    <td>{{p}}</td>
+    <td>{{x.index()}}</td>
     <td>{{x}}</td>
     
   </tr>
