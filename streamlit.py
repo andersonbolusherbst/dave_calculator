@@ -258,8 +258,7 @@ if pressed:
     st.dataframe(final_data)
     
     html = template.render(
-        student=monthly,
-        course=rate,
+        monthly=monthly,
         currency_selector=currency_selector,
         escalation=escalation,
         m=m,
