@@ -237,7 +237,7 @@ if pressed:
     #with col2:
     st.header("Anuity Table")
     
-    amounts_rounded = [round(num, 2) for num in amounts]
+    amounts_rounded = [round(num, 0) for num in amounts]
     final_data = pd.DataFrame(amounts_rounded,year_string)
     final_data = final_data.T
     st.dataframe(final_data)
