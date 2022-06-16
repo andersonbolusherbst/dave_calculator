@@ -181,11 +181,12 @@ pressed = st.button("Calculate")
 
 
 if pressed:
-    amounts = []
+    
     year_string = []
     def calculate(years,rate,escalation,escalate,deposit,monthly,m):
   
         for x in range(years+1):
+            amounts=[]
             x += 1
             dep_fv = deposit*(1+(rate/m))**(x*m)
             ann_fv = monthly*(((1+rate/m)**(x*m)-1)/(rate/m))
@@ -193,9 +194,9 @@ if pressed:
             total_fv = round(total_fv,2)
             amounts.append(total_fv)
             escalation = escalate+1
-                
             monthly = monthly*escalation
             year_string.append(f" Year {x}")
+            return amounts
             
     calculate(years,rate,escalation,escalate,deposit,monthly,m)
     st.balloons()
