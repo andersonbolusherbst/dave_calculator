@@ -242,8 +242,8 @@ if pressed:
     top=False,         
     labelbottom=False)
     
-    ax.set_xlabel('Years in Plan', fontsize = font)
-    ax.set_ylabel('Anuity Amount', fontsize = font)
+    ax.set_xlabel('Years in Plan', fontdict = font)
+    ax.set_ylabel('Anuity Amount', fontdict = font)
 
     st.pyplot(fig,ax)
     
