@@ -236,7 +236,7 @@ if pressed:
     ax.plot(plotdata["Year"], plotdata["Amount"], color='blue', ms=10)
     
     plt.tick_params(
-    axis='x',          
+    axis=('x', "y"),          
     which='both',      
     bottom=False,      
     top=False,         
