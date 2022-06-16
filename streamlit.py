@@ -7,6 +7,12 @@ import matplotlib.pyplot as plt
 import matplotlib.image as image
 from pandas.core.frame import DataFrame
 import numpy as np
+import pdfkit
+from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
+from streamlit.components.v1 import iframe
+
+st.set_page_config(layout="centered", page_icon="🎓", page_title="Diploma Generator")
+st.title("🎓 Diploma PDF Generator")
 
 st.image("bayswaterlogo.png")
 
@@ -142,27 +148,8 @@ britishPoundSymbol = CurrencySymbols.get_symbol('GBP')
 #randSymbol = CurrencySymbols.get_symbol('ZAR')
 #randSymbol = CurrencySymbols.get_symbol('ZAR')
 
-##Daniel currency playground using YFinance
 
-#TODAY = date.today().strftime("%Y-%m-%d")
-#ticker = currency_selector
-#cache data
-#@st.cache
-#def load_data(currency):
-   # data = yf.download(currency,TODAY)
-    #data.reset_index(inplace=True)
-   # return data
 
-#data_load_state = st.text("Load data...")
-#data = load_data(currency_selector)
-#data_load_state = st.text("Loading data... complete!")
-
-#st.write(data)
-#st.write(data.info())
-#close = data.iloc[0,4]
-#st.write(close)
-
-#End of daniel playground
 
 
 start_age = st.number_input('Enter your age when your begin contributing to your investment',value = 0)
@@ -174,15 +161,12 @@ escalate = float(st.selectbox("Select annual % increase of contribution",[0,0.02
 escalation=0
 deposit = st.number_input('Starting Deposit')
 monthly = st.number_input('Your Monthly Contribution')
-m = st.selectbox("Payments per year",[12,4,1])
+m = st.selectbox("payments per year",[12,4,1])
 pressed = st.button("Calculate")
+amounts=[]
 
-if pressed:
-    amounts = []
-    year_string = []
-    def calculate(years,rate,escalation,escalate,deposit,monthly,m):
-  
-        for x in range(years+1):
+def calculate(years,rate,escalation,escalate,deposit,monthly,m):
+    for x in range(years+1):
             x += 1
             dep_fv = deposit*(1+(rate/m))**(x*m)
             ann_fv = monthly*(((1+rate/m)**(x*m)-1)/(rate/m))
@@ -190,10 +174,14 @@ if pressed:
             total_fv = round(total_fv,2)
             amounts.append(total_fv)
             escalation = escalate+1
-                
             monthly = monthly*escalation
             year_string.append(f" Year {x}")
             
+    return amounts
+
+if pressed:
+    
+    year_string = []        
     calculate(years,rate,escalation,escalate,deposit,monthly,m)
     st.balloons()
    
@@ -268,6 +256,32 @@ if pressed:
     final_data = pd.DataFrame(amounts_rounded,year_string)
     final_data = final_data.T
     st.dataframe(final_data)
+    
+    html = template.render(
+        student=monthly,
+        course=rate,
+        currency_selector=currency_selector,
+        escalation=escalation,
+        m=m,
+        years=years,
+        escalate=escalate,
+        rate=rate,
+        deposit=deposit,
+        amounts=amounts,
+        table=final_data,
+        year_string=year_string,
+        date=date.today().strftime("%B %d, %Y"),
+        )
+
+    pdf = pdfkit.from_string(html, False)
+    st.balloons()
+
+    st.download_button(
+        "⬇️ Download PDF",
+        data=pdf,
+        file_name="calculation.pdf",
+        mime="application/octet-stream",
+     )
     
     
     
