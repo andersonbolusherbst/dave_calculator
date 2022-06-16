@@ -243,9 +243,9 @@ if pressed:
     st.dataframe(final_data)
     
     #pdf attempt
-    generate_pdf = st.button('Generate PDF')
-    if generate_pdf:
-       html = template.render(
+    #generate_pdf = st.button('Generate PDF')
+    #if generate_pdf:
+    html = template.render(
         student=monthly,
         course=rate,
         currency_selector=currency_selector,
@@ -259,20 +259,20 @@ if pressed:
         date=date.today().strftime("%B %d, %Y"),
         )
 
-       pdf = pdfkit.from_string(html, False)
-       st.balloons()
+    pdf = pdfkit.from_string(html, False)
+    st.balloons()
 
-       st.download_button(
-            "⬇️ Download PDF",
-            data=pdf,
-            file_name="diploma.pdf",
-            mime="application/octet-stream",
-         )
-
-    
+    st.download_button(
+        "⬇️ Download PDF",
+        data=pdf,
+        file_name="diploma.pdf",
+        mime="application/octet-stream",
+     )
 
 
-    
+
+
+
 
 
 
