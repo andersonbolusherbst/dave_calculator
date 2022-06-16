@@ -225,9 +225,9 @@ if pressed:
     plotdata = pd.DataFrame(list(zip(year_string, amounts)), columns =["Year", "Amount"])
     
     font = {'family': 'serif',
-        'color':  'darkred',
-        'weight': 'normal',
-        'size': 16,
+        'color':  'blue',
+        'weight': 'bold',
+        'size': 40,
         }
 
     #fig.figimage(im, xo = 90, yo = 690, zorder=2, alpha=1)
