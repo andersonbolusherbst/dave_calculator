@@ -225,6 +225,9 @@ if pressed:
 
     ax.bar(plotdata["Year"], plotdata["Amount"], color='lightblue')
     ax.plot(plotdata["Year"], plotdata["Amount"], color='blue', ms=10)
+    
+    ax.set_xlabel('common xlabel')
+    ax.set_ylabel('common ylabel')
 
     st.pyplot(fig,ax)
     
