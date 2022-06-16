@@ -266,7 +266,7 @@ if pressed:
     st.download_button(
         "⬇️ Download PDF",
         data=pdf,
-        file_name="diploma.pdf",
+        file_name="calculation.pdf",
         mime="application/octet-stream",
      )
 
