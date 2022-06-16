@@ -214,7 +214,7 @@ if pressed:
 
     #with col1:
     st.header("Yearly Projections")
-    plt.rcParams["figure.figsize"] = (len(year_string), len(amounts))
+    plt.rcParams["figure.figsize"] = (len(year_string)/2, len(amounts)/2)
     #plt.rcParams["figure.figsize"] = (20,3)
     #plt.rcParams["figure.autolayout"] = True
 
