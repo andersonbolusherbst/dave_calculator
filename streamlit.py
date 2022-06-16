@@ -214,8 +214,9 @@ if pressed:
 
     #with col1:
     st.header("Yearly Projections")
-    plt.rcParams["figure.figsize"] = [len(year_string), len(amounts)]
-    plt.rcParams["figure.autolayout"] = True
+    plt.rcParams["figure.figsize"] = (len(year_string), len(amounts))
+    #plt.rcParams["figure.figsize"] = (20,3)
+    #plt.rcParams["figure.autolayout"] = True
 
     #im = image.imread("bayswaterlogo.png")
     #imS = cv2.resize(im, (960, 540))
