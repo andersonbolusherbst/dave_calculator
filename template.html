@@ -13,9 +13,10 @@
    <th>Period</th>
    <th>Cumulative Total</th>
   </tr>
-   {% for x in amounts & for y in year_string %}:
+   {% for x in amounts %}:
+  p+=1
   <tr>
-    <td>{{y}}</td>
+    <td>{{p}}</td>
     <td>{{x}}</td>
     
   </tr>
