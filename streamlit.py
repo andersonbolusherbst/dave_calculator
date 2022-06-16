@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as image
 from pandas.core.frame import DataFrame
 import numpy as np
+import cv2
 
 st.image("bayswaterlogo.png")
 
@@ -218,6 +219,7 @@ if pressed:
     plt.rcParams["figure.autolayout"] = True
 
     im = image.imread("bayswaterlogo.png")
+    imS = cv2.resize(im, (960, 540))
     
     fig, ax = plt.subplots()
     plotdata = pd.DataFrame(list(zip(year_string, amounts)), columns =["Year", "Amount"])
