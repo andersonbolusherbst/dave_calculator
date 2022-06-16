@@ -214,7 +214,7 @@ if pressed:
 
     #with col1:
     st.header("Yearly Projections")
-    plt.rcParams["figure.figsize"] = (len(year_string)/2, len(amounts)/2)
+    plt.rcParams["figure.figsize"] = (len(year_string), len(amounts))
     #plt.rcParams["figure.figsize"] = (20,3)
     #plt.rcParams["figure.autolayout"] = True
 
@@ -229,8 +229,15 @@ if pressed:
     ax.bar(plotdata["Year"], plotdata["Amount"], color='lightblue')
     ax.plot(plotdata["Year"], plotdata["Amount"], color='blue', ms=10)
     
-    ax.set_xlabel('Years in Plan')
-    ax.set_ylabel('Anuity Amount')
+    plt.tick_params(
+    axis='x',          
+    which='both',      
+    bottom=False,      
+    top=False,         
+    labelbottom=False)
+    
+    ax.set_xlabel('Years in Plan', size = "large")
+    ax.set_ylabel('Anuity Amount', size = "large")
 
     st.pyplot(fig,ax)
     
