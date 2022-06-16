@@ -192,7 +192,7 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m):
             monthly = monthly*escalation
             year_string.append(f" Year {x}")
             
-     return amounts
+    return amounts
 
 
 if pressed:
