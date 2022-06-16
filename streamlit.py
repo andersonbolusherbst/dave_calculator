@@ -235,6 +235,6 @@ if pressed:
 
     #with col2:
     st.header("Anuity Table")
-    final_data[0].round(decimals = 2)
+    final_data[0].values.round(2)
     st.dataframe(final_data)
 
