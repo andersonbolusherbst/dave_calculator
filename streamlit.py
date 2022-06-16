@@ -227,8 +227,8 @@ if pressed:
     ax.bar(plotdata["Year"], plotdata["Amount"], color='lightblue')
     ax.plot(plotdata["Year"], plotdata["Amount"], color='blue', ms=10)
     
-    ax.set_xlabel('Anuity Amount')
-    ax.set_ylabel('Years in Plan')
+    ax.set_xlabel('Years in Plan')
+    ax.set_ylabel('Anuity Amount')
 
     st.pyplot(fig,ax)
     
@@ -236,11 +236,16 @@ if pressed:
 
     #with col2:
     st.header("Anuity Table")
-    decimal_data = final_data.iloc[:, 0]
-    decimal_data = np.round(decimal_data, decimals = 2)
     
-    final_data = pd.DataFrame(decimal_data,year_string)
+    amounts_rounded = [round(num, 2) for num in amounts]
+    final_data = pd.DataFrame(amounts_rounded,year_string)
     final_data = final_data.T
-    
     st.dataframe(final_data)
+    
+    
+    
+    #decimal_data = final_data.iloc[:, 0]
+    #decimal_data = np.round(decimal_data, decimals = 2)
+    
+   
 
