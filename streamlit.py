@@ -245,7 +245,7 @@ if pressed:
     #pdf attempt
     generate_pdf = st.button('Generate PDF')
     if generate_pdf:
-        html = template.render(
+       html = template.render(
         student=monthly,
         course=rate,
         currency_selector=currency_selector,
