@@ -259,10 +259,10 @@ if pressed:
         date=date.today().strftime("%B %d, %Y"),
         )
 
-        pdf = pdfkit.from_string(html, False)
-        st.balloons()
+       pdf = pdfkit.from_string(html, False)
+       st.balloons()
 
-        st.download_button(
+       st.download_button(
             "⬇️ Download PDF",
             data=pdf,
             file_name="diploma.pdf",
