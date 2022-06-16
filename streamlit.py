@@ -214,7 +214,7 @@ if pressed:
 
     #with col1:
     st.header("Yearly Projections")
-    #plt.rcParams["figure.figsize"] = [6.50, 4.50]
+    plt.rcParams["figure.figsize"] = [20, 10]
     plt.rcParams["figure.autolayout"] = True
 
     im = image.imread("bayswaterlogo.png")
