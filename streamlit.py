@@ -223,6 +223,12 @@ if pressed:
     
     fig, ax = plt.subplots()
     plotdata = pd.DataFrame(list(zip(year_string, amounts)), columns =["Year", "Amount"])
+    
+    font = {'family': 'serif',
+        'color':  'darkred',
+        'weight': 'normal',
+        'size': 16,
+        }
 
     #fig.figimage(im, xo = 90, yo = 690, zorder=2, alpha=1)
 
@@ -236,8 +242,8 @@ if pressed:
     top=False,         
     labelbottom=False)
     
-    ax.set_xlabel('Years in Plan', fontsize = "large")
-    ax.set_ylabel('Anuity Amount', fontsize = "large")
+    ax.set_xlabel('Years in Plan', fontsize = font)
+    ax.set_ylabel('Anuity Amount', fontsize = font)
 
     st.pyplot(fig,ax)
     
