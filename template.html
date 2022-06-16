@@ -8,14 +8,14 @@
        <br><br>
        <span style="font-size:30px"><b>{{ final_data }}</b></span><br/><br/>
        
- <table>
+ <table style="margin left 40%">
   <tr>
    <th>Period</th>
    <th>Cumulative Total</th>
   </tr>
    {% for x in amounts %}:
   <tr>
-    <td>{{amounts.index(x)}}</td>
+    <td>{{amounts.index(x)+1}}</td>
     <td>{{x}}</td>
     
   </tr>
