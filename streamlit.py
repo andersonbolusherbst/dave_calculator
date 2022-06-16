@@ -173,7 +173,7 @@ escalate = float(st.selectbox("Select annual % increase of contribution",[0,0.02
 escalation=0
 deposit = st.number_input('Starting Deposit')
 monthly = st.number_input('Your Monthly Contribution')
-m = st.selectbox("payments per year",[12,4,1])
+m = st.selectbox("Payments per year",[12,4,1])
 pressed = st.button("Calculate")
 
 if pressed:
@@ -226,8 +226,8 @@ if pressed:
     ax.bar(plotdata["Year"], plotdata["Amount"], color='lightblue')
     ax.plot(plotdata["Year"], plotdata["Amount"], color='blue', ms=10)
     
-    ax.set_xlabel('common xlabel')
-    ax.set_ylabel('common ylabel')
+    ax.set_xlabel('Anuity Amount')
+    ax.set_ylabel('Years in Plan')
 
     st.pyplot(fig,ax)
     
@@ -235,5 +235,6 @@ if pressed:
 
     #with col2:
     st.header("Anuity Table")
+    final_data["Amounts"].round(decimals = 2)
     st.dataframe(final_data)
 
