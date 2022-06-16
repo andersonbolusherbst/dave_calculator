@@ -6,4 +6,4 @@ yfinance
 datetime
 currency-symbols
 matplotlib
-opencv-python
+
