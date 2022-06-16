@@ -181,8 +181,7 @@ pressed = st.button("Calculate")
 amounts=[]
 
 def calculate(years,rate,escalation,escalate,deposit,monthly,m):
-  
-        for x in range(years+1):
+    for x in range(years+1):
             x += 1
             dep_fv = deposit*(1+(rate/m))**(x*m)
             ann_fv = monthly*(((1+rate/m)**(x*m)-1)/(rate/m))
@@ -193,7 +192,7 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m):
             monthly = monthly*escalation
             year_string.append(f" Year {x}")
             
-         return amounts
+     return amounts
 
 
 if pressed:
