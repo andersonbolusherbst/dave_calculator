@@ -10,6 +10,9 @@ import pdfkit
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
 from streamlit.components.v1 import iframe
 
+env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
+template = env.get_template("template.html")
+
 st.image("bayswaterlogo.png")
 
 ### Dont worry just currency work in progress
@@ -240,34 +243,34 @@ if pressed:
     st.dataframe(final_data)
     
     #pdf attempt
-    env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
-    template = env.get_template("template.html")
+    
 
     generate_pdf = st.button('Generate PDF')
-    if generate_pdf:
-        html = template.render(
-        student=monthly,
-        course=rate,
-        currency_selector=currency_selector,
-        escalation=escalation,
-        m=m,
-        years=years,
-        escalate=escalate,
-        rate=rate,
-        deposit=deposit,
-        amounts=amounts,
-        date=date.today().strftime("%B %d, %Y"),
-        )
-
-        pdf = pdfkit.from_string(html, False)
-        st.balloons()
-
-        st.download_button(
-            "⬇️ Download PDF",
-            data=pdf,
-            file_name="diploma.pdf",
-            mime="application/octet-stream",
-         )
     
+if generate_pdf:
+    html = template.render(
+    student=monthly,
+    course=rate,
+    currency_selector=currency_selector,
+    escalation=escalation,
+    m=m,
+    years=years,
+    escalate=escalate,
+    rate=rate,
+    deposit=deposit,
+    amounts=amounts,
+    date=date.today().strftime("%B %d, %Y"),
+    )
+
+    pdf = pdfkit.from_string(html, False)
+    st.balloons()
+
+    st.download_button(
+        "⬇️ Download PDF",
+        data=pdf,
+        file_name="diploma.pdf",
+        mime="application/octet-stream",
+     )
+
 
 
