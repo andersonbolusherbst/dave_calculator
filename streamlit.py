@@ -225,29 +225,34 @@ if pressed:
     plotdata = pd.DataFrame(list(zip(year_string, amounts)), columns =["Year", "Amount"])
     
     font = {'family': 'serif',
-        'color':  'blue',
-        'weight': 'bold',
+        'color':  'darkblue',
+        'weight': 'normal',
         'size': 40,
         }
 
     #fig.figimage(im, xo = 90, yo = 690, zorder=2, alpha=1)
 
     ax.bar(plotdata["Year"], plotdata["Amount"], color='lightblue')
-    ax.plot(plotdata["Year"], plotdata["Amount"], color='blue', ms=10)
+    ax.plot(plotdata["Year"], plotdata["Amount"], color='darkblue', ms=10)
     
-    plt.tick_params(
-    axis='x',          
-    which='both',      
-    bottom=False,      
-    top=False,         
-    labelbottom=False)
+    plt.setp(ax.get_xticklabels(), visible=False)
+    plt.setp(ax.get_yticklabels(), visible=False)
+    ax.tick_params(axis='both', which='both', length=0)
+
     
-    plt.tick_params(
-    axis='y',          
-    which='both',      
-    bottom=False,      
-    top=False,         
-    labelbottom=False)
+    #plt.tick_params(
+    #axis='x',          
+    #which='both',      
+    #bottom=False,      
+    #top=False,         
+    #labelbottom=False)
+    
+    #plt.tick_params(
+    #axis='y',          
+    #which='both',      
+    #bottom=False,      
+    #top=False,         
+    #labelbottom=False)
     
     ax.set_xlabel('Years in Plan', fontdict = font)
     ax.set_ylabel('Anuity Amount', fontdict = font)
