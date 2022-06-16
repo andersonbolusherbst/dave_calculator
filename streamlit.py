@@ -224,7 +224,7 @@ if pressed:
     fig, ax = plt.subplots()
     plotdata = pd.DataFrame(list(zip(year_string, amounts)), columns =["Year", "Amount"])
 
-    fig.figimage(im, xo = 90, yo = 690, zorder=2, alpha=1)
+    #fig.figimage(im, xo = 90, yo = 690, zorder=2, alpha=1)
 
     ax.bar(plotdata["Year"], plotdata["Amount"], color='lightblue')
     ax.plot(plotdata["Year"], plotdata["Amount"], color='blue', ms=10)
