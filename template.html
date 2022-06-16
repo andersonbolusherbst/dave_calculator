@@ -10,14 +10,14 @@
        
  <div style="margin left 40%">
   <table style="width:60%;border:1px solid black;" >
-  <tr>
-   <th>Period</th>
+  <tr style="width:50%;border:1px solid black;">
+   <th style="border:1px solid black;">Period</th>
    <th>Cumulative Total</th>
   </tr>
    {% for x in amounts %}:
-  <tr>
-    <td>{{amounts.index(x)+1}}</td>
-    <td>{{x}}</td>
+  <tr style="width:50%;border:1px solid black;">
+    <td style="border:1px solid black;">{{amounts.index(x)+1}}</td>
+    <td style="border:1px solid black;">{{x}}</td>
     
   </tr>
   {% endfor %}
