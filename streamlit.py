@@ -180,11 +180,7 @@ m = st.selectbox("payments per year",[12,4,1])
 pressed = st.button("Calculate")
 amounts=[]
 
-
-if pressed:
-    
-    year_string = []
-    def calculate(years,rate,escalation,escalate,deposit,monthly,m):
+def calculate(years,rate,escalation,escalate,deposit,monthly,m):
   
         for x in range(years+1):
             
@@ -198,7 +194,11 @@ if pressed:
             monthly = monthly*escalation
             year_string.append(f" Year {x}")
             return amounts
-            
+
+
+if pressed:
+    
+    year_string = []        
     calculate(years,rate,escalation,escalate,deposit,monthly,m)
     st.balloons()
    
