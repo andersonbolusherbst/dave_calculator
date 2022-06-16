@@ -1,5 +1,20 @@
 <div style="width:95%; height:95%; padding:20px; text-align:center; border: 10px solid #787878">
 <div style="width:93%; height:93%; padding:20px; text-align:center; border: 5px solid #787878">
+    {% def calculate(years,rate,escalation,escalate,deposit,monthly,m):
+  
+    for x in range(years+1):
+            x += 1
+            dep_fv = deposit*(1+(rate/m))**(x*m)
+            ann_fv = monthly*(((1+rate/m)**(x*m)-1)/(rate/m))
+            total_fv = dep_fv + ann_fv
+            total_fv = round(total_fv,2)
+            amounts.append(total_fv)
+            escalation = escalate+1
+                
+            monthly = monthly*escalation
+            year_string.append(f" Year {x}")
+            
+    calculate(years,rate,escalation,escalate,deposit,monthly,m) %}
     
        <span style="font-size:50px; font-weight:bold">Calculation of Your Investment</span>
        <br><br>
@@ -7,10 +22,10 @@
        <br><br>
        <span style="font-size:30px"><b>{{ final_data }}</b></span><br/><br/>
        <span style="font-size:25px"><i>has completed the course</i></span> <br/><br/>
-       <span style="font-size:30px">{{ course }}</span> <br/><br/>
+       <span style="font-size:30px">{{ amounts[-1] }}</span> <br/><br/>
        <span style="font-size:20px">with score of <b> {{ grade }}</b></span> <br/><br/><br/><br/>
        <span style="font-size:25px"><i>dated</i></span><br>
       {{ date }}
-     {% print(1+1) %}
+     
 </div>
 </div>
