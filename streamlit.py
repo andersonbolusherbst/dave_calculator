@@ -250,7 +250,7 @@ if pressed:
     #st.line_chart(amounts)
 
     #with col2:
-    st.bar_chart(final_data)
+    st.bar_chart(amounts)
     st.header("Annuity Table")
     
     amounts_rounded = [round(num, 2) for num in amounts]
