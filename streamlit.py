@@ -209,10 +209,10 @@ if pressed:
     #im = image.imread("bayswaterlogo.png")
     #imS = cv2.resize(im, (960, 540))
     
-    fig, ax = plt.subplots()
-    plotdata = pd.DataFrame(list(zip(year_string, amounts)), columns =["Year", "Amount"])
+    #fig, ax = plt.subplots()
+    #plotdata = pd.DataFrame(list(zip(year_string, amounts)), columns =["Year", "Amount"])
     
-    font = {'family': 'serif',
+    #font = {'family': 'serif',
         'color':  'darkblue',
         'weight': 'normal',
         'size': 40,
@@ -220,12 +220,12 @@ if pressed:
 
     #fig.figimage(im, xo = 90, yo = 690, zorder=2, alpha=1)
 
-    ax.bar(plotdata["Year"], plotdata["Amount"], color='lightblue')
-    ax.plot(plotdata["Year"], plotdata["Amount"], color='darkblue', ms=10)
+   # ax.bar(plotdata["Year"], plotdata["Amount"], color='lightblue')
+   # ax.plot(plotdata["Year"], plotdata["Amount"], color='darkblue', ms=10)
     
-    plt.setp(ax.get_xticklabels(), visible=False)
-    plt.setp(ax.get_yticklabels(), visible=False)
-    ax.tick_params(axis='both', which='both', length=0)
+   # plt.setp(ax.get_xticklabels(), visible=False)
+   # plt.setp(ax.get_yticklabels(), visible=False)
+    #ax.tick_params(axis='both', which='both', length=0)
 
     
     #plt.tick_params(
@@ -242,14 +242,15 @@ if pressed:
     #top=False,         
     #labelbottom=False)
     
-    ax.set_xlabel('Years in Plan', fontdict = font)
-    ax.set_ylabel('Annuity Amount', fontdict = font)
+   # ax.set_xlabel('Years in Plan', fontdict = font)
+   # ax.set_ylabel('Annuity Amount', fontdict = font)
 
-    st.pyplot(fig,ax)
+    #st.pyplot(fig,ax)
     
     #st.line_chart(amounts)
 
     #with col2:
+    st.bar_chart(final_data)
     st.header("Annuity Table")
     
     amounts_rounded = [round(num, 2) for num in amounts]
