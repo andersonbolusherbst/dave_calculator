@@ -213,10 +213,10 @@ if pressed:
     #plotdata = pd.DataFrame(list(zip(year_string, amounts)), columns =["Year", "Amount"])
     
     #font = {'family': 'serif',
-        'color':  'darkblue',
-        'weight': 'normal',
-        'size': 40,
-        }
+        #'color':  'darkblue',
+        #'weight': 'normal',
+        #'size': 40,
+       # }
 
     #fig.figimage(im, xo = 90, yo = 690, zorder=2, alpha=1)
 
