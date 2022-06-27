@@ -170,10 +170,10 @@ britishPoundSymbol = CurrencySymbols.get_symbol('GBP')
 #End of daniel playground
 
 col1, col2 = st.columns(2)
->>> with col1:
+with col1:
     start_age = st.number_input('Enter your age when your begin contributing to your investment',value = 0)
     
->>> with col2:
+with col2:
     retirement_age = st.number_input('Enter your retirement age', value = 0)
 years = retirement_age - start_age
 st.write("Your investment time horizon: ", years)
