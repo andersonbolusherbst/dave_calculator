@@ -169,19 +169,31 @@ britishPoundSymbol = CurrencySymbols.get_symbol('GBP')
 
 #End of daniel playground
 
-
-start_age = st.number_input('Enter your age when your begin contributing to your investment',value = 0)
-retirement_age = st.number_input('Enter your retirement age', value = 0)
+col1, col2 = st.columns(2)
+>>> with col1:
+    start_age = st.number_input('Enter your age when your begin contributing to your investment',value = 0)
+    
+>>> with col2:
+    retirement_age = st.number_input('Enter your retirement age', value = 0)
 years = retirement_age - start_age
 st.write("Your investment time horizon: ", years)
 rate = st.slider('Select annual interest rate',min_value=0.00, max_value=0.15)
-escalate = float(st.selectbox("Select annual % increase of contribution",[0,0.02,0.05,0.1,0.15]))
+col3, col4 = st.columns(2)
+>>> with col3:
+    deposit = st.number_input('Starting Deposit')
+    m = st.selectbox("payments per year",[12,4,1])
+>>> with col4:
+    monthly = st.number_input('Your Monthly Contribution')
+    escalate = float(st.selectbox("Select annual % increase of contribution",[0,0.02,0.05,0.1,0.15]))
 escalation=0
-deposit = st.number_input('Starting Deposit')
-monthly = st.number_input('Your Monthly Contribution')
-m = st.selectbox("payments per year",[12,4,1])
 pressed = st.button("Calculate")
-amounts=[]
+amounts=[]    
+
+
+
+
+
+
 
 def calculate(years,rate,escalation,escalate,deposit,monthly,m):
     for x in range(years+1):
@@ -215,32 +227,32 @@ if pressed:
 
     final_data = pd.DataFrame(amounts,year_string)
     final_data = final_data.T
-    st.write(f" If you invest **{monthly}** {currency_selector}, **{m}** times a year with an annual escalation of **{escalation}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years")
+    st.write(f" If you invest **{monthly}** {currency_selector}, **{m}** times a year with an annual escalation of **{escalate}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years")
 
     #col1, col2 = st.columns([1, 3])
 
     #with col1:
-    st.header("Yearly Projections")
-    plt.rcParams["figure.figsize"] = [6.50, 4.50]
-    plt.rcParams["figure.autolayout"] = True
+   # st.header("Yearly Projections")
+   # plt.rcParams["figure.figsize"] = [6.50, 4.50]
+   # plt.rcParams["figure.autolayout"] = True
 
-    im = image.imread("bayswaterlogo.png")
+   # im = image.imread("bayswaterlogo.png")
     
-    fig, ax = plt.subplots()
-    plotdata = pd.DataFrame(list(zip(year_string, amounts)), columns =["Year", "Amount"])
+   # fig, ax = plt.subplots()
+   # plotdata = pd.DataFrame(list(zip(year_string, amounts)), columns =["Year", "Amount"])
 
-    fig.figimage(im, xo = 90, yo = 690, zorder=2, alpha=1)
+   # fig.figimage(im, xo = 90, yo = 690, zorder=2, alpha=1)
 
-    ax.bar(plotdata["Year"], plotdata["Amount"], color='lightblue')
-    ax.plot(plotdata["Year"], plotdata["Amount"], color='blue', ms=10)
+   # ax.bar(plotdata["Year"], plotdata["Amount"], color='lightblue')
+   # ax.plot(plotdata["Year"], plotdata["Amount"], color='blue', ms=10)
 
-    st.pyplot(fig,ax)
+    #st.pyplot(fig,ax)
     
     #st.line_chart(amounts)
 
     #with col2:
-    st.header("Anuity Table")
-    st.dataframe(final_data)
+    #st.header("Anuity Table")
+    #st.dataframe(final_data)
     
     #pdf attempt
     #generate_pdf = st.button('Generate PDF')
