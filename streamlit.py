@@ -196,7 +196,7 @@ if pressed:
 
     final_data = pd.DataFrame(amounts,year_string)
     final_data = final_data.T
-    st.write(f" If you invest **{monthly}** {currency_selector}, **{m}** times a year with an annual escalation of **{escalation}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years")
+    st.write(f" If you invest **{monthly}** {currency_selector}, **{m}** times a year with an annual escalation of **{escalate}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years")
 
     #col1, col2 = st.columns([1, 3])
 
