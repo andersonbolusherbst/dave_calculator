@@ -151,19 +151,25 @@ britishPoundSymbol = CurrencySymbols.get_symbol('GBP')
 
 
 
-
-start_age = st.number_input('Enter your age when your begin contributing to your investment',value = 0)
-retirement_age = st.number_input('Enter your retirement age', value = 0)
+col1, col2 = st.columns(2)
+with col1:
+    start_age = st.number_input('Enter your starting age:',value = 0)
+    
+with col2:
+    retirement_age = st.number_input('Enter your retirement age:', value = 0)
 years = retirement_age - start_age
 st.write("Your investment time horizon: ", years)
 rate = st.slider('Select annual interest rate',min_value=0.00, max_value=0.15)
-escalate = float(st.selectbox("Select annual % increase of contribution",[0,0.02,0.05,0.1,0.15]))
+col3, col4 = st.columns(2)
+with col3:
+    deposit = st.number_input('Starting Deposit')
+    m = st.selectbox("payments per year",[12,4,1])
+with col4:
+    monthly = st.number_input('Your Monthly Contribution')
+    escalate = float(st.selectbox("Select annual % increase of contribution",[0,0.02,0.05,0.1,0.15]))
 escalation=0
-deposit = st.number_input('Starting Deposit')
-monthly = st.number_input('Your Monthly Contribution')
-m = st.selectbox("payments per year",[12,4,1])
 pressed = st.button("Calculate")
-amounts=[]
+amounts=[]  
 
 def calculate(years,rate,escalation,escalate,deposit,monthly,m):
     for x in range(years+1):
