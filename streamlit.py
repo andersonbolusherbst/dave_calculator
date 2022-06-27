@@ -291,7 +291,7 @@ if pressed:
         file_name="calculation.pdf",
         mime="application/octet-stream",
      )
-    st.download_button('Download file', st.bar(amounts))
+    st.download_button('Download file', st.bar_chart(amounts))
     
     
     #decimal_data = final_data.iloc[:, 0]
