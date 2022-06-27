@@ -150,7 +150,6 @@ britishPoundSymbol = CurrencySymbols.get_symbol('GBP')
 
 
 
-
 col1, col2 = st.columns(2)
 with col1:
     start_age = st.number_input('Enter your starting age:',value = 0)
@@ -261,7 +260,7 @@ if pressed:
 
     #with col2:
     st.bar_chart(amounts)
-    st.header("Annuity Table")
+   # st.header("Annuity Table")
     
     amounts_rounded = [round(num, 2) for num in amounts]
     final_data = pd.DataFrame(amounts_rounded,year_string)
@@ -292,7 +291,7 @@ if pressed:
         file_name="calculation.pdf",
         mime="application/octet-stream",
      )
-    
+    st.download_button('Download file', st.bar(amounts))
     
     
     #decimal_data = final_data.iloc[:, 0]
