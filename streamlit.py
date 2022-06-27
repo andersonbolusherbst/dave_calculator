@@ -163,7 +163,7 @@ rate = st.slider('Select annual interest rate',min_value=0.00, max_value=0.15)
 col3, col4 = st.columns(2)
 with col3:
     deposit = st.number_input('Starting Deposit')
-    m = st.selectbox("payments per year",[12,4,1])
+    m = st.selectbox("Payments per year",[12,4,1])
 with col4:
     monthly = st.number_input('Your Monthly Contribution')
     escalate = float(st.selectbox("Select annual % increase of contribution",[0,0.02,0.05,0.1,0.15]))
