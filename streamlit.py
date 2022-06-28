@@ -49,6 +49,8 @@ with col4:
     escalate = float(st.selectbox("Select annual % increase of contribution",[0,0.02,0.05,0.1,0.15]))
 escalation=0
 max_contribution = st.number_input('Maximum Monthly Contribution:')
+if max_contribution == 0:
+    max_contribution = monthly
 pressed = st.button("Calculate")
 amounts=[]  
 
@@ -63,8 +65,6 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m):
             escalation = escalate+1
             if monthly >= max_contribution:
                 monthly = max_contribution
-                if max_contribution == 0:
-                    max_contribution = monthly
             else:
                 monthly = monthly*escalation
             year_string.append(f" Year {x}")
