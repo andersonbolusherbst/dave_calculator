@@ -128,8 +128,9 @@ if pressed:
         headers= {
             "apikey": "WcqtBq92HnXahaiGoCV22XcgA8oY15pj"
           }
-        status_code = response.status_code
+        
         response = requests.request("GET", url, headers=headers, data = payload)
+        status_code = response.status_code
         data = response.json()
         return data
 
