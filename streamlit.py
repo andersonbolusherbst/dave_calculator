@@ -123,8 +123,8 @@ if pressed:
     # https://api.ratesapi.io/api/latest?base=AUD&symbols=AUD
     @st.cache
     def load_data():
-        #url = 'https://api.apilayer.com/exchangerates_data/convert?to={symbols_price_unit}&from={base_price_unit}&amount={amounts[-1]}'
-        url = 'https://api.apilayer.com/exchangerates_data/symbols'
+        url = f'https://api.apilayer.com/exchangerates_data/convert?to={symbols_price_unit}&from={base_price_unit}&amount={amounts[-1]}'
+        #url = 'https://api.apilayer.com/exchangerates_data/symbols'
         payload = {}
         headers= {
             "apikey": "WcqtBq92HnXahaiGoCV22XcgA8oY15pj"
