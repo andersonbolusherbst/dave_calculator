@@ -79,15 +79,16 @@ if pressed:
     final_data = pd.DataFrame(amounts,year_string)
     final_data = final_data.T
     st.write(f" If you invest **{monthly}** {currency_selector}, **{m}** times a year with an annual escalation of **{escalate}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years")
+    st.write(f"The converted value of your investment is: **{df['result']}** at a rate of **{df['info']['rate']}** ")
 
   
     st.bar_chart(amounts)
    # st.header("Annuity Table")
     
     amounts_rounded = [round(num, 2) for num in amounts]
-    final_data = pd.DataFrame(amounts_rounded,year_string)
-    final_data = final_data.T
-    st.dataframe(final_data)
+   # final_data = pd.DataFrame(amounts_rounded,year_string)
+    #final_data = final_data.T
+   # st.dataframe(final_data)
     
    # html = template.render(
     #   monthly=monthly,
@@ -143,7 +144,7 @@ if pressed:
 
     st.header('Currency conversion')
 
-    st.write("The converted value of your investment is:", df['result'])
+   
 
 
 
