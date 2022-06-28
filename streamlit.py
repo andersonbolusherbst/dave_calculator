@@ -20,7 +20,7 @@ st.image("bayswaterlogo.png")
 currency_list=currency_list = ['ZAR','USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD']
 
 conv_currency_list = ['USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD','ZAR']
-base_price_unit = currency_selector   
+
 
 
 
@@ -124,6 +124,7 @@ if pressed:
 
     # Retrieving currency data from ratesapi.io
     # https://api.ratesapi.io/api/latest?base=AUD&symbols=AUD
+    base_price_unit = currency_selector   
     @st.cache
     def load_data():
         url = f'https://api.apilayer.com/exchangerates_data/convert?to={symbols_price_unit}&from={base_price_unit}&amount={amounts[-1]}'
