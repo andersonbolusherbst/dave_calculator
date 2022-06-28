@@ -17,6 +17,12 @@ template = env.get_template("template.html")
 
 st.image("bayswaterlogo.png")
 
+currency_list=currency_list = ['ZAR','USD','GBP', 'HKD', 'JPY','CAD','CHF','NZD']
+currency_selector = st.selectbox(
+     'Which currency will you be investing with?',
+     ('ZAR','USD','GBP','EUR','VND'))
+    
+st.write('You selected:', currency_selector)
 
 
 
