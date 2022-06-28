@@ -6,8 +6,6 @@ yfinance
 datetime
 currency-symbols
 matplotlib
-lxml==4.5.1
-requests==2.22.0
-json5==0.9.4
-
-
+lxml
+requests
+json5
