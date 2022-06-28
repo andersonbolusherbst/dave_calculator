@@ -63,10 +63,10 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m):
             escalation = escalate+1
             if monthly >= max_contribution:
                 monthly = max_contribution
+                if max_contribution == 0:
+                    max_contribution = monthly
             else:
                 monthly = monthly*escalation
-                if escalation == 0:
-                    escalation = 1
             year_string.append(f" Year {x}")
             
     return amounts
@@ -142,7 +142,7 @@ if pressed:
 
     st.header('Your Investment Value')
     st.write(f" If you invest **{monthly}** **{currency_selector}**, **{m}** times a year with an annual escalation of **{escalate}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years")
-    st.write(f"The converted value of your investment is: **{round(df['result'], 2)}** **{conv_currency_selector}** at a rate of **{df['info']['rate']}** ")
+    st.write(f"The converted value of your investment is: **{df['result']}** **{conv_currency_selector}** at a rate of **{df['info']['rate']}** ")
 
   
     st.bar_chart(amounts)
