@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import yfinance as yf
 from datetime import date
 from currency_symbols import CurrencySymbols
 import matplotlib.pyplot as plt
@@ -10,6 +9,8 @@ import numpy as np
 import pdfkit
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
 from streamlit.components.v1 import iframe
+import requests
+import json
 
 env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
 template = env.get_template("template.html")
@@ -194,71 +195,12 @@ if pressed:
     calculate(years,rate,escalation,escalate,deposit,monthly,m)
     st.balloons()
    
-#if currency_selector == "USD":
-   #currency_selector = dollarSymbol
-#elif currency_selector == "GBP":
-   #currency_selector = britishPoundSymbol
-#elif currency_selector == "EUR":
-   #currency_selector = euroSymbol
-#else: 
-   #pass
 
     final_data = pd.DataFrame(amounts,year_string)
     final_data = final_data.T
     st.write(f" If you invest **{monthly}** {currency_selector}, **{m}** times a year with an annual escalation of **{escalate}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years")
 
-    #col1, col2 = st.columns([1, 3])
-
-    #with col1:
-    st.header("Yearly Projections")
-    plt.rcParams["figure.figsize"] = (len(year_string), len(amounts))
-    #plt.rcParams["figure.figsize"] = (20,3)
-    #plt.rcParams["figure.autolayout"] = True
-
-    #im = image.imread("bayswaterlogo.png")
-    #imS = cv2.resize(im, (960, 540))
-    
-    #fig, ax = plt.subplots()
-    #plotdata = pd.DataFrame(list(zip(year_string, amounts)), columns =["Year", "Amount"])
-    
-    #font = {'family': 'serif',
-        #'color':  'darkblue',
-        #'weight': 'normal',
-        #'size': 40,
-       # }
-
-    #fig.figimage(im, xo = 90, yo = 690, zorder=2, alpha=1)
-
-   # ax.bar(plotdata["Year"], plotdata["Amount"], color='lightblue')
-   # ax.plot(plotdata["Year"], plotdata["Amount"], color='darkblue', ms=10)
-    
-   # plt.setp(ax.get_xticklabels(), visible=False)
-   # plt.setp(ax.get_yticklabels(), visible=False)
-    #ax.tick_params(axis='both', which='both', length=0)
-
-    
-    #plt.tick_params(
-    #axis='x',          
-    #which='both',      
-    #bottom=False,      
-    #top=False,         
-    #labelbottom=False)
-    
-    #plt.tick_params(
-    #axis='y',          
-    #which='both',      
-    #bottom=False,      
-    #top=False,         
-    #labelbottom=False)
-    
-   # ax.set_xlabel('Years in Plan', fontdict = font)
-   # ax.set_ylabel('Annuity Amount', fontdict = font)
-
-    #st.pyplot(fig,ax)
-    
-    #st.line_chart(amounts)
-
-    #with col2:
+  
     st.bar_chart(amounts)
    # st.header("Annuity Table")
     
@@ -267,31 +209,31 @@ if pressed:
     final_data = final_data.T
     st.dataframe(final_data)
     
-    html = template.render(
-        monthly=monthly,
-        currency_selector=currency_selector,
-        escalation=escalation,
-        m=m,
-        years=years,
-        escalate=escalate,
-        rate=rate,
-        deposit=deposit,
-        amounts=amounts,
-        table=final_data,
-        year_string=year_string,
-        date=date.today().strftime("%B %d, %Y"),
-        )
+   # html = template.render(
+    #   monthly=monthly,
+       # currency_selector=currency_selector,
+      #  escalation=escalation,
+      #  m=m,
+      #  years=years,
+      #  escalate=escalate,
+      #  rate=rate,
+      #  deposit=deposit,
+       # amounts=amounts,
+      #  table=final_data,
+      #  year_string=year_string,
+      #  date=date.today().strftime("%B %d, %Y"),
+      #  )
 
-    pdf = pdfkit.from_string(html, False)
-    st.balloons()
+   # pdf = pdfkit.from_string(html, False)
+   # st.balloons()
 
-    st.download_button(
-        "⬇️ Download PDF",
-        data=pdf,
-        file_name="calculation.pdf",
-        mime="application/octet-stream",
-     )
-    st.download_button('Download file', st.bar_chart(amounts))
+    #st.download_button(
+   #     "⬇️ Download PDF",
+   #     data=pdf,
+   #     file_name="calculation.pdf",
+   #     mime="application/octet-stream",
+   #  )
+   # st.download_button('Download file', st.bar_chart(amounts))
     
     
     #decimal_data = final_data.iloc[:, 0]
