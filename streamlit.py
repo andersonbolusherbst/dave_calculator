@@ -34,7 +34,7 @@ with col1:
     start_age = st.number_input('Enter your starting age:',value = 0)
     
 with col2:
-    symbols_price_unit = st.selectbox('Select target currency to convert to', conv_currency_list)
+    conv_currency_selector = st.selectbox('Select target currency to convert to', conv_currency_list)
     retirement_age = st.number_input('Enter your retirement age:', value = 0)
 st.write('You selected:', currency_selector)    
 years = retirement_age - start_age
@@ -126,7 +126,7 @@ if pressed:
     base_price_unit = currency_selector   
     @st.cache
     def load_data():
-        url = f'https://api.apilayer.com/exchangerates_data/convert?to={symbols_price_unit}&from={base_price_unit}&amount={amounts[-1]}'
+        url = f'https://api.apilayer.com/exchangerates_data/convert?to={conv_currency_selector}&from={base_price_unit}&amount={amounts[-1]}'
         #url = 'https://api.apilayer.com/exchangerates_data/symbols'
         payload = {}
         headers= {
