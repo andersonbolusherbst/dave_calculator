@@ -18,9 +18,10 @@ template = env.get_template("template.html")
 st.image("bayswaterlogo.png")
 
 currency_list=currency_list = ['ZAR','USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD']
-currency_selector = st.selectbox(
-     'Which currency will you be investing with?',
-     ('ZAR','USD','GBP','EUR','VND'))
+
+conv_currency_list = ['USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD','ZAR']
+base_price_unit = currency_selector
+
     
 st.write('You selected:', currency_selector)
 
@@ -29,9 +30,13 @@ st.write('You selected:', currency_selector)
 
 col1, col2 = st.columns(2)
 with col1:
+    currency_selector = st.selectbox(
+     'Which currency will you be investing with?',
+     ('ZAR','USD','GBP','EUR','VND'))
     start_age = st.number_input('Enter your starting age:',value = 0)
     
 with col2:
+    symbols_price_unit = st.selectbox('Select target currency to convert to', conv_currency_list)
     retirement_age = st.number_input('Enter your retirement age:', value = 0)
 years = retirement_age - start_age
 st.write("Your investment time horizon: ", years)
@@ -115,9 +120,8 @@ if pressed:
     #decimal_data = final_data.iloc[:, 0]
     #decimal_data = np.round(decimal_data, decimals = 2)
     
-    conv_currency_list = ['USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD','ZAR']
-    base_price_unit = currency_selector
-    symbols_price_unit = st.selectbox('Select target currency to convert to', conv_currency_list)
+    
+   
 
     # Retrieving currency data from ratesapi.io
     # https://api.ratesapi.io/api/latest?base=AUD&symbols=AUD
