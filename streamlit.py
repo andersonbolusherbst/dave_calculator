@@ -134,10 +134,10 @@ currency_list = {
     'YER': 'Yemen Rial',
     'ZWD': 'Zimbabwe Dollar'
 }
-
+currency_list = ['ZAR','AUD' 'CAD', 'GBP', 'HKD', 'JPY', 'USD']
 currency_selector = st.selectbox(
      'Which currency will you be investing with?',
-     ('ZAR','USD','GBP','EUR','VND'))
+      currency_list)
     
 st.write('You selected:', currency_selector)
 
@@ -239,5 +239,28 @@ if pressed:
     #decimal_data = final_data.iloc[:, 0]
     #decimal_data = np.round(decimal_data, decimals = 2)
     
+   
+    base_price_unit = currency_selector
+    symbols_price_unit = st.sidebar.selectbox('Select target currency to convert to', currency_list)
+
+    # Retrieving currency data from ratesapi.io
+    # https://api.ratesapi.io/api/latest?base=AUD&symbols=AUD
+    @st.cache
+    def load_data():
+        url = ''.join(['https://api.ratesapi.io/api/latest?base=', base_price_unit, '&symbols=', symbols_price_unit])
+        response = requests.get(url)
+        data = response.json()
+        base_currency = pd.Series( data['base'], name='base_currency')
+        rates_df = pd.DataFrame.from_dict( data['rates'].items() )
+        rates_df.columns = ['converted_currency', 'price']
+        conversion_date = pd.Series( data['date'], name='date' )
+        df = pd.concat( [base_currency, rates_df, conversion_date], axis=1 )
+        return df
+
+    df = load_data()
+
+    st.header('Currency conversion')
+
+    st.write(df)
    
 
