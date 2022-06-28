@@ -31,12 +31,19 @@ with col1:
     currency_selector = st.selectbox(
      'Which currency will you be investing with?',
      ('ZAR','USD','GBP','EUR','VND'))
-    start_age = st.number_input('Enter your starting age:',value = 0)
+
+    
     
 with col2:
     conv_currency_selector = st.selectbox('Select target currency to convert to', conv_currency_list)
-    retirement_age = st.number_input('Enter your retirement age:', value = 0)
 st.write("You're investing with:", currency_selector)    
+    
+with col1:
+    start_age = st.number_input('Enter your starting age:',value = 0)
+    
+with col2:
+    retirement_age = st.number_input('Enter your retirement age:', value = 0)
+   
 years = retirement_age - start_age
 st.write("Your investment time horizon: ", years)
 
