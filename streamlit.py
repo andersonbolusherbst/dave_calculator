@@ -123,20 +123,25 @@ if pressed:
     # https://api.ratesapi.io/api/latest?base=AUD&symbols=AUD
     @st.cache
     def load_data():
-        url = ''.join(['https://api.ratesapi.io/api/latest?base=', base_price_unit, '&symbols=', symbols_price_unit])
-        response = requests.get(url)
+        url = 'https://api.apilayer.com/exchangerates_data/convert?to={symbols_price_unit}&from={base_price_unit}&amount={amounts[-1]}
+        payload = {}
+        headers= {
+            "apikey": "WcqtBq92HnXahaiGoCV22XcgA8oY15pj"
+          }
+        status_code = response.status_code
+        response = requests.request("GET", url, headers=headers, data = payload)
         data = response.json()
-        base_currency = pd.Series( data['base'], name='base_currency')
-        rates_df = pd.DataFrame.from_dict( data['rates'].items() )
-        rates_df.columns = ['converted_currency', 'price']
-        conversion_date = pd.Series( data['date'], name='date' )
-        df = pd.concat( [base_currency, rates_df, conversion_date], axis=1 )
-        return df
+        return data
 
     df = load_data()
 
     st.header('Currency conversion')
 
     st.write(df)
-   
+
+
+
+#url = "https://api.apilayer.com/exchangerates_data/convert?to={to}&from={from}&amount={amount}"
+
+
 
