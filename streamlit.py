@@ -36,7 +36,7 @@ with col1:
 with col2:
     conv_currency_selector = st.selectbox('Select target currency to convert to', conv_currency_list)
     retirement_age = st.number_input('Enter your retirement age:', value = 0)
-st.write('You selected:', currency_selector)    
+st.write("You're investing with:", currency_selector)    
 years = retirement_age - start_age
 st.write("Your investment time horizon: ", years)
 rate = st.slider('Select annual interest rate',min_value=0.01, max_value=0.15)
@@ -142,7 +142,7 @@ if pressed:
 
     st.header('Your Investment Value')
     st.write(f" If you invest **{monthly}** **{currency_selector}**, **{m}** times a year with an annual escalation of **{escalate}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years")
-    st.write(f"The converted value of your investment is: **{df['result']}** **{conv_currency_selector}** at a rate of **{df['info']['rate']}** ")
+    st.write(f"The converted value of your investment is: **{round(df['result'], 2)}** **{conv_currency_selector}** at a rate of **{df['info']['rate']}** ")
 
   
     st.bar_chart(amounts)
