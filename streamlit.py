@@ -27,7 +27,7 @@ conv_currency_list = ['USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD','ZAR']
 
 
 col1, col2 = st.columns(2)
-col4,col5 = st.columns(2)
+
 with col1:
     currency_selector = st.selectbox(
      'Which currency will you be investing with?',
@@ -38,7 +38,8 @@ with col1:
 with col2:
     conv_currency_selector = st.selectbox('Select target currency to convert to', conv_currency_list)
 st.write("You're investing with:", currency_selector)    
-    
+
+col4,col5 = st.columns(2)   
 with col4:
     start_age = st.number_input('Enter your starting age:',value = 0)
     
