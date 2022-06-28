@@ -47,7 +47,7 @@ with col5:
     retirement_age = st.number_input('**Enter your retirement age: **', value = 0)
    
 years = retirement_age - start_age
-st.write("Your investment time horizon: ", **years**)
+st.write("Your investment time horizon: ", years)
 
 
 rate = st.slider('Select annual interest rate',min_value=0.01, max_value=0.15)
