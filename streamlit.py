@@ -131,7 +131,7 @@ if pressed:
           }
         
         response = requests.request("GET", url, headers=headers, data = payload)
-        status_code = response.status_code
+       # status_code = response.status_code
         data = response.json()
         return data
 
@@ -139,7 +139,7 @@ if pressed:
 
     st.header('Currency conversion')
 
-    st.write("The converted value of your investment is:", df)
+    st.write("The converted value of your investment is:", df['result'])
 
 
 
