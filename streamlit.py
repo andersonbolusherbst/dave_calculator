@@ -139,7 +139,7 @@ if pressed:
 
     st.header('Currency conversion')
 
-    st.write(df)
+    st.write("The converted value of your investment is:", df[result])
 
 
 
