@@ -158,7 +158,7 @@ with col2:
     retirement_age = st.number_input('Enter your retirement age:', value = 0)
 years = retirement_age - start_age
 st.write("Your investment time horizon: ", years)
-rate = st.slider('Select annual interest rate',min_value=0.00, max_value=0.15, format_func=lambda x: str(x*100)+"%")
+rate = st.slider('Select annual interest rate',min_value=0%, max_value=15%)
 col3, col4 = st.columns(2)
 with col3:
     deposit = st.number_input('Starting Deposit')
