@@ -39,7 +39,11 @@ with col2:
 st.write("You're investing with:", currency_selector)    
 years = retirement_age - start_age
 st.write("Your investment time horizon: ", years)
+
+
 rate = st.slider('Select annual interest rate',min_value=0.01, max_value=0.15)
+percentage = f"{percentage:.0%}"
+st.write("Your interest rate: ", percentage)
 col3, col4 = st.columns(2)
 with col3:
     deposit = st.number_input('Starting Deposit')
