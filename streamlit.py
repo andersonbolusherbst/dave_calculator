@@ -20,10 +20,8 @@ st.image("bayswaterlogo.png")
 currency_list=currency_list = ['ZAR','USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD']
 
 conv_currency_list = ['USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD','ZAR']
-base_price_unit = currency_selector
+base_price_unit = currency_selector   
 
-    
-st.write('You selected:', currency_selector)
 
 
 
@@ -38,6 +36,7 @@ with col1:
 with col2:
     symbols_price_unit = st.selectbox('Select target currency to convert to', conv_currency_list)
     retirement_age = st.number_input('Enter your retirement age:', value = 0)
+st.write('You selected:', currency_selector)    
 years = retirement_age - start_age
 st.write("Your investment time horizon: ", years)
 rate = st.slider('Select annual interest rate',min_value=0.01, max_value=0.15)
