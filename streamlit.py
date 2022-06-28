@@ -17,7 +17,7 @@ template = env.get_template("template.html")
 
 st.image("bayswaterlogo.png")
 
-currency_list=currency_list = ['ZAR','USD','GBP', 'HKD', 'JPY','CAD','CHF','NZD']
+currency_list=currency_list = ['ZAR','USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD']
 currency_selector = st.selectbox(
      'Which currency will you be investing with?',
      ('ZAR','USD','GBP','EUR','VND'))
@@ -115,9 +115,9 @@ if pressed:
     #decimal_data = final_data.iloc[:, 0]
     #decimal_data = np.round(decimal_data, decimals = 2)
     
-   
+    conv_currency_list = ['USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD','ZAR']
     base_price_unit = currency_selector
-    symbols_price_unit = st.selectbox('Select target currency to convert to', currency_list)
+    symbols_price_unit = st.selectbox('Select target currency to convert to', conv_currency_list)
 
     # Retrieving currency data from ratesapi.io
     # https://api.ratesapi.io/api/latest?base=AUD&symbols=AUD
