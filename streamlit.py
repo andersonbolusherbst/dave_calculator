@@ -37,18 +37,17 @@ with col1:
     
 with col2:
     conv_currency_selector = st.selectbox('Select target currency to convert to', conv_currency_list)
-st.write("You're investing with:", currency_selector)    
+st.write("You're investing with:", currency_selector)  
+rate = st.selectbox('Select annual growth rate', ['1%','2%','3%','4%','5%','6%','7%','8%','9%','10%'])
 
 col4,col5 = st.columns(2)   
 with col4:
     start_age = st.number_input('Enter your starting age: ',value = 0)
-    rate = st.selectbox('Select annual growth rate', ['1%','2%','3%','4%','5%','6%','7%','8%','9%','10%'])
+    
     
 with col5:
     retirement_age = st.number_input('Enter your retirement age: ', value = 0)
-    st.markdown('###')
-    st.markdown('###')
-    st.write("Your investment growth rate: ", rate)
+    
    
 years = retirement_age - start_age
 st.write("Your investment time horizon: ", years)
