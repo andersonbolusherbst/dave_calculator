@@ -21,7 +21,7 @@ currency_list=currency_list = ['ZAR','USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF'
 
 conv_currency_list = ['USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD','ZAR']
 
-
+rates = {'1%':0.01,'2%':0.02,'3%':0.03,'4%':0.04,'5%':0.05,'6%':0.06,'7%':0.07,'8%':0.08,'9%':0.09,'10%':0.1}
 
 
 
@@ -42,9 +42,11 @@ st.write("You're investing with:", currency_selector)
 col4,col5 = st.columns(2)   
 with col4:
     start_age = st.number_input('Enter your starting age: ',value = 0)
+    rate = st.selectbox('Select annual growth rate', ['1%','2%','3%','4%','5%','6%','7%','8%','9%','10%'])
     
 with col5:
     retirement_age = st.number_input('Enter your retirement age: ', value = 0)
+    st.write("Your investment growth rate: ", percentage)
    
 years = retirement_age - start_age
 st.write("Your investment time horizon: ", years)
@@ -55,9 +57,9 @@ minp = f"{mnp:.0%}"
 maxp = f"{mxp:.0%}"
 
 #rate = st.slider('Select annual growth rate',min_value=0.01, max_value=0.15)
-rate = st.selectbox('Select annual growth rate', ['1%','2%','3%','4%','5%'])
-percentage = f"{rate:.0%}"
-st.write("Your investment growth rate: ", percentage)
+
+#percentage = f"{rate:.0%}"
+
 col3, col4 = st.columns(2)
 with col3:
     deposit = st.number_input('Starting Deposit')
@@ -70,7 +72,8 @@ max_contribution = st.number_input('Maximum Monthly Contribution:')
 if max_contribution == 0:
     max_contribution = monthly
 pressed = st.button("Calculate")
-amounts=[]  
+amounts=[]
+rate =rates[rate]
 
 def calculate(years,rate,escalation,escalate,deposit,monthly,m):
     for x in range(years+1):
