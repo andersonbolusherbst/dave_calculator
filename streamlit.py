@@ -51,8 +51,8 @@ st.write("Your investment time horizon: ", years)
 
 mnp= 0.01
 mxp = 0.15
-minp = f"{mnp:.0%}
-maxp = f"{mxp:.0%}
+minp = f"{mnp:.0%}"
+maxp = f"{mxp:.0%}"
 
 rate = st.slider('Select annual interest rate',min_value=minp, max_value=maxp)
 percentage = f"{rate:.0%}"
