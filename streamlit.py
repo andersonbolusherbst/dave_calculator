@@ -55,7 +55,7 @@ minp = f"{mnp:.0%}"
 maxp = f"{mxp:.0%}"
 
 #rate = st.slider('Select annual growth rate',min_value=0.01, max_value=0.15)
-rate = st.selectbox('Select annual growth rate', [1%,...,15%])
+rate = st.selectbox('Select annual growth rate', [1%,2%,3%,4%,5%,6%,7%,8%,9%,10%,11%,12%,13%,14%,15%])
 percentage = f"{rate:.0%}"
 st.write("Your investment growth rate: ", percentage)
 col3, col4 = st.columns(2)
