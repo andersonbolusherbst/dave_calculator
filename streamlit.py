@@ -46,6 +46,7 @@ with col4:
     
 with col5:
     retirement_age = st.number_input('Enter your retirement age: ', value = 0)
+    st.write('      ')
     st.write("Your investment growth rate: ", rate)
    
 years = retirement_age - start_age
