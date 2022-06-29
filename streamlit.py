@@ -145,7 +145,7 @@ if pressed:
     # Retrieving currency data from ratesapi.io
     # https://api.ratesapi.io/api/latest?base=AUD&symbols=AUD
     base_price_unit = currency_selector   
-    @st.cache
+    #@st.cache
     def load_data():
         url = f'https://api.apilayer.com/exchangerates_data/convert?to={conv_currency_selector}&from={base_price_unit}&amount={amounts[-1]}'
         #url = 'https://api.apilayer.com/exchangerates_data/symbols'
