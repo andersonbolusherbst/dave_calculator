@@ -46,16 +46,12 @@ with col4:
     
 with col5:
     retirement_age = st.number_input('Enter your retirement age: ', value = 0)
-    st.write('      ')
+    st.write(' hello     ')
     st.write("Your investment growth rate: ", rate)
    
 years = retirement_age - start_age
 st.write("Your investment time horizon: ", years)
 
-mnp= 0.01
-mxp = 0.15
-minp = f"{mnp:.0%}"
-maxp = f"{mxp:.0%}"
 
 #rate = st.slider('Select annual growth rate',min_value=0.01, max_value=0.15)
 
