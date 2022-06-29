@@ -54,9 +54,9 @@ mxp = 0.15
 minp = f"{mnp:.0%}"
 maxp = f"{mxp:.0%}"
 
-rate = st.slider('Select annual interest rate',min_value=minp, max_value=maxp)
+rate = st.slider('Select annual interest rate',min_value=0.01, max_value=0.15)
 percentage = f"{rate:.0%}"
-st.write("Your interest rate: ", percentage)
+st.write("Your investment growth rate: ", percentage)
 col3, col4 = st.columns(2)
 with col3:
     deposit = st.number_input('Starting Deposit')
