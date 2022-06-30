@@ -9,7 +9,6 @@ matplotlib
 lxml
 requests
 json5
-email.mime.text
-email.mime.multipart
+email
 ssl 
 smtplib
