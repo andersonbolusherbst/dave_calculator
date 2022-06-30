@@ -178,8 +178,18 @@ if pressed:
 
   
     st.bar_chart(amounts)
-    if st.button("SEND THE EMAIL"):
+    st.write("Would you like to share this via email?")
+    yes = st.checkbox('Yes')
+    if yes:
+        st.text_input("Email address: ")
+        if st.button("SEND THE EMAIL"):
         send_email(monthly,m,escalation,amounts,years,max_contribution,currency_selector)
+        st.success("Your information has been sent")
+        
+    
+    
+        
+
     
    
 
