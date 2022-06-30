@@ -181,10 +181,10 @@ if pressed:
     with st.expander("Would you like to share this via email?"):
         st.text_input("Email address: ")
         if st.button("SEND THE EMAIL"):
+            st.balloons()
             send_email(monthly,m,escalation,amounts,years,max_contribution,currency_selector)
             
-else:
-    st.success("Your information has been sent")
+    
     
         
 
