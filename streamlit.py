@@ -101,6 +101,7 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m):
             
     return amounts
 
+@st.cache
 if pressed:
     
     year_string = []        
@@ -181,8 +182,11 @@ if pressed:
     with st.expander("Would you like to share this via email?"):
         st.text_input("Email address: ")
         if st.button("SEND THE EMAIL"):
-            st.balloons()
-            send_email(monthly,m,escalation,amounts,years,max_contribution,currency_selector)
+            with st.spinner(text='In progress'):
+                time.sleep(5)
+                st.success('Email Sent')
+                st.balloons()
+                send_email(monthly,m,escalation,amounts,years,max_contribution,currency_selector)
             
     
     
