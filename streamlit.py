@@ -11,6 +11,10 @@ from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoad
 from streamlit.components.v1 import iframe
 import requests
 import json
+from email_tester import send_email
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+import smtplib, ssl 
 
 env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
 template = env.get_template("template.html")
@@ -174,7 +178,9 @@ if pressed:
 
   
     st.bar_chart(amounts)
-
+    if st.button("SEND THE EMAIL"):
+        send_email(monthly,m,escalation,amounts,years,max_contribution,currency_selector)
+    
    
 
 
