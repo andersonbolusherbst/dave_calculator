@@ -159,7 +159,6 @@ if pressed:
             rate=rate,
             deposit=deposit,
             amounts=amounts,
-            table=final_data,
             year_string=year_string,
             date=date.today().strftime("%B %d, %Y"),
             )
