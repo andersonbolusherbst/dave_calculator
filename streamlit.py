@@ -116,18 +116,13 @@ if pressed:
     else:
         calculate(years,rate,escalation,escalate,deposit,monthly,m)
         st.balloons()
-
-
-        final_data = pd.DataFrame(amounts,year_string, accumulated_capital, accumulated_interest)
-        final_data = final_data.T
         
-
         st.header("Annuity Table")
 
         amounts_rounded = [round(num, 2) for num in amounts]
-        
-        final_data = pd.DataFrame(amounts_rounded,year_string)
-        final_data = final_data.T
+        acc_cap = [round(num, 2) for num in accumulated_capital]
+        acc_int = [round(num, 2) for num in ccumulated_interest]
+        final_data = pd.DataFrame(index=year_string, columns=[acc_cap, acc_int,amounts_rounded])
         st.dataframe(final_data)
         # Retrieving currency data from ratesapi.io
         # https://api.ratesapi.io/api/latest?base=AUD&symbols=AUD
