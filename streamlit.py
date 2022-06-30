@@ -121,7 +121,7 @@ if pressed:
 
         amounts_rounded = [round(num, 2) for num in amounts]
         acc_cap = [round(num, 2) for num in accumulated_capital]
-        acc_int = [round(num, 2) for num in ccumulated_interest]
+        acc_int = [round(num, 2) for num in accumulated_interest]
         final_data = pd.DataFrame(index=year_string, columns=[acc_cap, acc_int,amounts_rounded])
         st.dataframe(final_data)
         # Retrieving currency data from ratesapi.io
