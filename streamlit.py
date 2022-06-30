@@ -122,6 +122,9 @@ if pressed:
         amounts_rounded = [round(num, 2) for num in amounts]
         acc_cap = [round(num, 2) for num in accumulated_capital]
         acc_int = [round(num, 2) for num in accumulated_interest]
+        st.write(acc_cap)
+        st.write(acc_int)
+        st.write(amounts_rounded)
         final_data = pd.DataFrame(data=[acc_cap, acc_int,amounts_rounded],columns=['Capital','Interest','Total'])
         #final_data = final_data.T
         st.dataframe(final_data)
