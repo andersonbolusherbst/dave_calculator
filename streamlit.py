@@ -22,6 +22,7 @@ currency_list=currency_list = ['ZAR','USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF'
 conv_currency_list = ['USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD','ZAR']
 
 rates = {'1%':0.01,'2%':0.02,'3%':0.03,'4%':0.04,'5%':0.05,'6%':0.06,'7%':0.07,'8%':0.08,'9%':0.09,'10%':0.1}
+escalates ={'2.5%':0.025, '5%':0.05, '7.5%':0.075, '10%':0.1, '15%':0.15, '20%':0.2}
 
 
 
@@ -60,12 +61,16 @@ st.write("Your investment time horizon: ", years)
 col3, col4 = st.columns(2)
 with col3:
     deposit = st.number_input('Starting Deposit')
-    m = st.selectbox("Payments per year",[12,4,1])
+    max_contribution = st.number_input('Maximum Monthly Contribution:')
+    
+    
 with col4:
-    monthly = st.number_input('Your Monthly Contribution')
+    monthly = st.number_input('Your Contribution')
     escalate = float(st.selectbox("Select annual % increase of contribution",[0,0.02,0.05,0.1,0.15]))
+    
+m = st.selectbox("How many times would you like to contribute per year?",[12,4,1])
 escalation=0
-max_contribution = st.number_input('Maximum Monthly Contribution:')
+
 if max_contribution == 0:
     max_contribution = monthly
 pressed = st.button("Calculate")
