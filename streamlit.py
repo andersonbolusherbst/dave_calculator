@@ -103,7 +103,7 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m):
 
 
 if pressed:
-    @st.cache
+    #@st.cache
     year_string = []        
     calculate(years,rate,escalation,escalate,deposit,monthly,m)
     st.balloons()
