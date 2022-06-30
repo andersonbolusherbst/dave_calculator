@@ -85,7 +85,7 @@ amounts=[]
 rate =rates[rate]
 accumulated_capital=[]
 accumulated_interest=[]
-capital=0
+capital=deposit
 
 
 def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital):
@@ -93,7 +93,7 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital):
             x += 1
             dep_fv = deposit*(1+(rate/m))**(x*m)
             ann_fv = monthly*(((1+rate/m)**(x*m)-1)/(rate/m))
-            capital=deposit+(monthly*m)+capital
+            capital=(monthly*m)+capital
             total_fv = dep_fv + ann_fv
             interest = total_fv - capital
             total_fv = round(total_fv,2)
