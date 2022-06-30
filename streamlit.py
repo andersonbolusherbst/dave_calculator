@@ -87,7 +87,8 @@ accumulated_capital=[]
 accumulated_interest=[]
 capital=0
 
-def calculate(years,rate,escalation,escalate,deposit,monthly,m):
+
+def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital):
     for x in range(years+1):
             x += 1
             dep_fv = deposit*(1+(rate/m))**(x*m)
@@ -115,7 +116,7 @@ if pressed:
     if monthly == 0:
         st.error("please input in your contribution amount")
     else:
-        calculate(years,rate,escalation,escalate,deposit,monthly,m)
+        calculate(years,rate,escalation,escalate,deposit,monthly,m,capital)
         st.balloons()
         
         st.header("Annuity Table")
