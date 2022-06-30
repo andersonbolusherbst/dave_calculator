@@ -5,7 +5,7 @@ def send_email(monthly,m,escalation,amounts,years,max_contribution=None,currency
     
     
     
-    import smtplib, ssl
+    
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
     sender_email = "bayswatercalculator@gmail.com"  # Enter your address
