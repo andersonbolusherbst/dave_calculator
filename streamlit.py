@@ -93,7 +93,7 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m):
             ann_fv = monthly*(((1+rate/m)**(x*m)-1)/(rate/m))
             capital=deposit+monthly
             total_fv = dep_fv + ann_fv
-            interest = total_fv - total_capital
+            interest = total_fv - capital
             total_fv = round(total_fv,2)
             accumaluted_capital.append(capital)
             accumulated_interest.append(interest)
