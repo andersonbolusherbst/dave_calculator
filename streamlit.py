@@ -107,88 +107,90 @@ if pressed:
     year_string = []
     if monthly == 0:
         st.error("please input in your contribution amount")
-    calculate(years,rate,escalation,escalate,deposit,monthly,m)
-    st.balloons()
-   
+    else:
+        calculate(years,rate,escalation,escalate,deposit,monthly,m)
+        st.balloons()
 
-    final_data = pd.DataFrame(amounts,year_string)
-    final_data = final_data.T
-    
-   # st.header("Annuity Table")
-    
-    amounts_rounded = [round(num, 2) for num in amounts]
-   # final_data = pd.DataFrame(amounts_rounded,year_string)
-    #final_data = final_data.T
-   # st.dataframe(final_data)
-    
-   # html = template.render(
-    #   monthly=monthly,
-       # currency_selector=currency_selector,
-      #  escalation=escalation,
-      #  m=m,
-      #  years=years,
-      #  escalate=escalate,
-      #  rate=rate,
-      #  deposit=deposit,
-       # amounts=amounts,
-      #  table=final_data,
-      #  year_string=year_string,
-      #  date=date.today().strftime("%B %d, %Y"),
-      #  )
 
-   # pdf = pdfkit.from_string(html, False)
-   # st.balloons()
+        final_data = pd.DataFrame(amounts,year_string)
+        final_data = final_data.T
 
-    #st.download_button(
-   #     "⬇️ Download PDF",
-   #     data=pdf,
-   #     file_name="calculation.pdf",
-   #     mime="application/octet-stream",
-   #  )
-   # st.download_button('Download file', st.bar_chart(amounts))
-    
-    
-    #decimal_data = final_data.iloc[:, 0]
-    #decimal_data = np.round(decimal_data, decimals = 2)
-    
-    
-   
+       # st.header("Annuity Table")
 
-    # Retrieving currency data from ratesapi.io
-    # https://api.ratesapi.io/api/latest?base=AUD&symbols=AUD
-    base_price_unit = currency_selector   
-    #@st.cache
-    def load_data():
-        url = f'https://api.apilayer.com/exchangerates_data/convert?to={conv_currency_selector}&from={base_price_unit}&amount={amounts[-1]}'
-        #url = 'https://api.apilayer.com/exchangerates_data/symbols'
-        payload = {}
-        headers= {
-            "apikey": "WcqtBq92HnXahaiGoCV22XcgA8oY15pj"
-          }
-        
-        response = requests.request("GET", url, headers=headers, data = payload)
-       # status_code = response.status_code
-        data = response.json()
-        return data
+        amounts_rounded = [round(num, 2) for num in amounts]
+       # final_data = pd.DataFrame(amounts_rounded,year_string)
+        #final_data = final_data.T
+       # st.dataframe(final_data)
 
-    df = load_data()
-    converted = df['result']
-    converted= round(converted,2)
+       # html = template.render(
+        #   monthly=monthly,
+           # currency_selector=currency_selector,
+          #  escalation=escalation,
+          #  m=m,
+          #  years=years,
+          #  escalate=escalate,
+          #  rate=rate,
+          #  deposit=deposit,
+           # amounts=amounts,
+          #  table=final_data,
+          #  year_string=year_string,
+          #  date=date.today().strftime("%B %d, %Y"),
+          #  )
 
-    st.header('Your Investment Value')
-    st.write(f" If you invest **{monthly}** **{currency_selector}**, **{m}** times a year with an annual escalation of **{escalate}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years.")
-    st.write(f"The converted value of your investment is: **{converted}** **{conv_currency_selector}** at a rate of **{df['info']['rate']}** in **{years}** years.")
+       # pdf = pdfkit.from_string(html, False)
+       # st.balloons()
 
-  
-    st.bar_chart(amounts)
-    with st.expander("Would you like to share this via email?"):
-        st.text_input("Email address: ")
-        if st.button("SEND THE EMAIL"):
-            with st.spinner(text='In progress'):
-                time.sleep(5)
-                st.success('Email Sent')
-                st.balloons()
-                send_email(monthly,m,escalation,amounts,years,max_contribution,currency_selector)
+        #st.download_button(
+       #     "⬇️ Download PDF",
+       #     data=pdf,
+       #     file_name="calculation.pdf",
+       #     mime="application/octet-stream",
+       #  )
+       # st.download_button('Download file', st.bar_chart(amounts))
+
+
+        #decimal_data = final_data.iloc[:, 0]
+        #decimal_data = np.round(decimal_data, decimals = 2)
+
+
+
+
+        # Retrieving currency data from ratesapi.io
+        # https://api.ratesapi.io/api/latest?base=AUD&symbols=AUD
+        base_price_unit = currency_selector   
+        #@st.cache
+        def load_data():
+            url = f'https://api.apilayer.com/exchangerates_data/convert?to={conv_currency_selector}&from={base_price_unit}&amount={amounts[-1]}'
+            #url = 'https://api.apilayer.com/exchangerates_data/symbols'
+            payload = {}
+            headers= {
+                "apikey": "WcqtBq92HnXahaiGoCV22XcgA8oY15pj"
+              }
+
+            response = requests.request("GET", url, headers=headers, data = payload)
+           # status_code = response.status_code
+            data = response.json()
+            return data
+
+        df = load_data()
+        converted = df['result']
+        converted= round(converted,2)
+
+        st.header('Your Investment Value')
+        st.write(f" If you invest **{monthly}** **{currency_selector}**, **{m}** times a year with an annual escalation of **{escalate}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years.")
+        st.write(f"The converted value of your investment is: **{converted}** **{conv_currency_selector}** at a rate of **{df['info']['rate']}** in **{years}** years.")
+
+
+        st.bar_chart(amounts)
+        with st.expander("Would you like to share this via email?"):
+            st.text_input("Email address: ")
+            if st.button("SEND THE EMAIL"):
+                with st.spinner(text='In progress'):
+                    time.sleep(5)
+                    st.success('Email Sent')
+                    st.balloons()
+                    send_email(monthly,m,escalation,amounts,years,max_contribution,currency_selector)
+
             
     
     
