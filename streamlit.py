@@ -161,8 +161,7 @@ if pressed:
 
         stacked_bar = final_data[['Interest','Capital']]
         st.bar_chart(stacked_bar)
-        if st.button("SEND THE EMAIL"):
-            send_email(monthly,m,escalation,amounts,years,max_contribution,currency_selector)
+        
 #         html = template.render(
 #             monthly=monthly,
 #             currency_selector=currency_selector,
