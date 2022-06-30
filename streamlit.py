@@ -83,7 +83,7 @@ if max_contribution == 0:
 pressed = st.button("Calculate")
 amounts=[]
 rate =rates[rate]
-accumaluted_capital=[]
+accumuluted_capital=[]
 accumulated_interest=[]
 
 def calculate(years,rate,escalation,escalate,deposit,monthly,m):
