@@ -66,9 +66,11 @@ with col3:
     
 with col4:
     monthly = st.number_input('Your Contribution')
-    escalate = float(st.selectbox("Select annual % increase of contribution",[0,0.02,0.05,0.1,0.15]))
-    
-m = st.selectbox("How many times would you like to contribute per year?",[12,4,1])
+    escalate = float(st.selectbox("Select annual % increase of contribution",['0.25%','5%','7.5%',10%','15%','20%']))
+escalate = escalates[escalate]
+m = st.selectbox("How many times would you like to contribute per year?",[12, 4, 1])
+                                                                          
+                                                                          
 escalation=0
 
 if max_contribution == 0:
