@@ -156,7 +156,7 @@ if pressed:
         st.write(f"The converted value of your investment is: **{converted}** **{conv_currency_selector}** at a rate of **{df['info']['rate']}** in **{years}** years.")
 
 
-        st.bar_chart(amounts)
+        st.bar_chart(final_data)
         
 #         html = template.render(
 #             monthly=monthly,
