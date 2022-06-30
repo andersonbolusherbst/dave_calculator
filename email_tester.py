@@ -6,7 +6,7 @@ def send_email(monthly,m,escalation,amounts,years,max_contribution=None,currency
     
     
     
-    port = 465  # For SSL
+    port = 587  # For SSL
     smtp_server = "smtp.gmail.com"
     sender_email = "bayswatercalculator@gmail.com"  # Enter your address
     receiver_email = "lukeherbst2@gmail.com"  # Enter receiver address
