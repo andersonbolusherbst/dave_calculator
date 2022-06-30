@@ -105,7 +105,7 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital):
             if monthly >= max_contribution:
                 monthly = max_contribution
             else:
-                monthly = monthly
+                monthly = monthly*escalation
             year_string.append(f" Year {x}")
             
     return amounts,accumulated_capital,accumulated_interest
