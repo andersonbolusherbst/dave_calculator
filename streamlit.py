@@ -83,14 +83,20 @@ if max_contribution == 0:
 pressed = st.button("Calculate")
 amounts=[]
 rate =rates[rate]
+accumaluted_capital=[]
+accumulated_interest=[]
 
 def calculate(years,rate,escalation,escalate,deposit,monthly,m):
     for x in range(years+1):
             x += 1
             dep_fv = deposit*(1+(rate/m))**(x*m)
             ann_fv = monthly*(((1+rate/m)**(x*m)-1)/(rate/m))
+            capital=deposit+monthly
             total_fv = dep_fv + ann_fv
+            interest = total_fv - total_capital
             total_fv = round(total_fv,2)
+            accumaluted_capital.append(capital)
+            accumulated_interest.append(interest)
             amounts.append(total_fv)
             escalation = escalate+1
             if monthly >= max_contribution:
@@ -99,7 +105,7 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m):
                 monthly = monthly*escalation
             year_string.append(f" Year {x}")
             
-    return amounts
+    return amounts,accumulated_capital,accumulated_interest
 
 
 if pressed:
@@ -112,16 +118,17 @@ if pressed:
         st.balloons()
 
 
-        final_data = pd.DataFrame(amounts,year_string)
+        final_data = pd.DataFrame(amounts,year_string, accumulated_capital, accumlated_interest)
         final_data = final_data.T
+        
 
-       # st.header("Annuity Table")
+        st.header("Annuity Table")
 
         amounts_rounded = [round(num, 2) for num in amounts]
         
-       # final_data = pd.DataFrame(amounts_rounded,year_string)
-        #final_data = final_data.T
-       # st.dataframe(final_data)
+        final_data = pd.DataFrame(amounts_rounded,year_string)
+        final_data = final_data.T
+        st.dataframe(final_data)
         # Retrieving currency data from ratesapi.io
         # https://api.ratesapi.io/api/latest?base=AUD&symbols=AUD
         base_price_unit = currency_selector   
