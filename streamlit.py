@@ -118,7 +118,7 @@ if pressed:
         st.balloons()
 
 
-        final_data = pd.DataFrame(amounts,year_string, accumulated_capital, accumlated_interest)
+        final_data = pd.DataFrame(amounts,year_string, accumulated_capital, accumulated_interest)
         final_data = final_data.T
         
 
