@@ -91,6 +91,10 @@ capital=deposit
 def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital):
     for x in range(years+1):
             x += 1
+            if monthly >= max_contribution:
+                monthly = max_contribution
+            else:
+                monthly = monthly*escalation
             dep_fv = deposit*(1+(rate/m))**(x*m)
             ann_fv = monthly*(((1+rate/m)**(x*m)-1)/(rate/m))
             capital=(monthly*m)+capital
@@ -101,10 +105,6 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital):
             accumulated_interest.append(interest)
             amounts.append(total_fv)
             escalation = escalate+1
-            if monthly >= max_contribution:
-                monthly = max_contribution
-            else:
-                monthly = monthly*escalation
             year_string.append(f" Year {x}")
             
     return amounts,accumulated_capital,accumulated_interest
@@ -154,7 +154,7 @@ if pressed:
         st.write(f"The converted value of your investment is: **{converted}** **{conv_currency_selector}** at a rate of **{df['info']['rate']}** in **{years}** years.")
 
 
-        stacked_bar = final_data[['Capital','Interest']]
+        stacked_bar = final_data[['Interest','Capital']]
         st.bar_chart(stacked_bar)
         
 #         html = template.render(
