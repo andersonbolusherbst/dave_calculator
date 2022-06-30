@@ -118,43 +118,10 @@ if pressed:
        # st.header("Annuity Table")
 
         amounts_rounded = [round(num, 2) for num in amounts]
+        
        # final_data = pd.DataFrame(amounts_rounded,year_string)
         #final_data = final_data.T
        # st.dataframe(final_data)
-
-       # html = template.render(
-        #   monthly=monthly,
-           # currency_selector=currency_selector,
-          #  escalation=escalation,
-          #  m=m,
-          #  years=years,
-          #  escalate=escalate,
-          #  rate=rate,
-          #  deposit=deposit,
-           # amounts=amounts,
-          #  table=final_data,
-          #  year_string=year_string,
-          #  date=date.today().strftime("%B %d, %Y"),
-          #  )
-
-       # pdf = pdfkit.from_string(html, False)
-       # st.balloons()
-
-        #st.download_button(
-       #     "⬇️ Download PDF",
-       #     data=pdf,
-       #     file_name="calculation.pdf",
-       #     mime="application/octet-stream",
-       #  )
-       # st.download_button('Download file', st.bar_chart(amounts))
-
-
-        #decimal_data = final_data.iloc[:, 0]
-        #decimal_data = np.round(decimal_data, decimals = 2)
-
-
-
-
         # Retrieving currency data from ratesapi.io
         # https://api.ratesapi.io/api/latest?base=AUD&symbols=AUD
         base_price_unit = currency_selector   
@@ -182,14 +149,36 @@ if pressed:
 
 
         st.bar_chart(amounts)
-        with st.expander("Would you like to share this via email?"):
-            st.text_input("Email address: ")
-            if st.button("SEND THE EMAIL"):
-                with st.spinner(text='In progress'):
-                    time.sleep(5)
-                    st.success('Email Sent')
-                    st.balloons()
-                    send_email(monthly,m,escalation,amounts,years,max_contribution,currency_selector)
+        html = template.render(
+            monthly=monthly,
+            currency_selector=currency_selector,
+            escalation=escalation,
+            m=m,
+            years=years,
+            escalate=escalate,
+            rate=rate,
+            deposit=deposit,
+            amounts=amounts,
+            table=final_data,
+            year_string=year_string,
+            date=date.today().strftime("%B %d, %Y"),
+            )
+
+        pdf = pdfkit.from_string(html, False)
+        st.balloons()
+
+        st.download_button(
+            "⬇️ Download PDF",
+            data=pdf,
+            file_name="calculation.pdf",
+            mime="application/octet-stream",
+         )
+        st.download_button('Download file', st.bar_chart(amounts))
+
+
+        #decimal_data = final_data.iloc[:, 0]
+        #decimal_data = np.round(decimal_data, decimals = 2)
+                   
 
             
     
