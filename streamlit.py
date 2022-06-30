@@ -83,7 +83,7 @@ if max_contribution == 0:
 pressed = st.button("Calculate")
 amounts=[]
 rate =rates[rate]
-accumuluted_capital=[]
+accumulated_capital=[]
 accumulated_interest=[]
 
 def calculate(years,rate,escalation,escalate,deposit,monthly,m):
@@ -95,7 +95,7 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m):
             total_fv = dep_fv + ann_fv
             interest = total_fv - capital
             total_fv = round(total_fv,2)
-            accumaluted_capital.append(capital)
+            accumulated_capital.append(capital)
             accumulated_interest.append(interest)
             amounts.append(total_fv)
             escalation = escalate+1
