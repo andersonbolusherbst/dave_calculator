@@ -9,5 +9,5 @@ matplotlib
 lxml
 requests
 json5
-ssl 
+ 
 
