@@ -104,7 +104,9 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m):
 
 if pressed:
     #@st.cache
-    year_string = []        
+    year_string = []
+    if monthly == 0:
+        st.error("please input in your contribution amount")
     calculate(years,rate,escalation,escalate,deposit,monthly,m)
     st.balloons()
    
