@@ -150,8 +150,9 @@ if pressed:
         converted= round(converted,2)
 
         st.header('Your Investment Value')
-        st.write(f" If you invest **{monthly}** **{currency_selector}**, **{m}** times a year with an annual escalation of **{escalatep}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years.")
+        st.write(f" If you invest **{monthly}** **{currency_selector}** at an annual return of **{rate}**, **{m}** times a year with an annual escalation of **{escalatep}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years.")
         st.write(f"The converted value of your investment is: **{converted}** **{conv_currency_selector}** at a rate of **{df['info']['rate']}** in **{years}** years.")
+        st.write(f" You will earn earn **{acc_int[-1]}** on your capital contribution of **{acc_cap[-1]}**")
 
 
         stacked_bar = final_data[['Interest','Capital']]
