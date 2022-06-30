@@ -9,6 +9,5 @@ matplotlib
 lxml
 requests
 json5
-email
 ssl 
-smtplib
+
