@@ -70,8 +70,8 @@ with col3:
     
 with col4:
     monthly = st.number_input('Your Contribution')
-    escalate = st.selectbox("Select annual % increase of contribution",['2.5%','5%','7.5%','10%','15%','20%'])
-escalate = float(escalates[escalate])
+    escalatep = st.selectbox("Select annual % increase of contribution",['2.5%','5%','7.5%','10%','15%','20%'])
+escalate = float(escalates[escalatep])
 
 m = st.selectbox("How many times would you like to contribute per year?",[12, 4, 1])
                                                                           
@@ -124,9 +124,7 @@ if pressed:
         amounts_rounded = [round(num, 2) for num in amounts]
         acc_cap = [round(num, 2) for num in accumulated_capital]
         acc_int = [round(num, 2) for num in accumulated_interest]
-        st.write(acc_cap)
-        st.write(acc_int)
-        st.write(amounts_rounded)
+
         final_data = pd.DataFrame(list(zip(acc_cap, acc_int,amounts_rounded)),columns=['Capital','Interest','Total'])
         #final_data = final_data.T
         st.dataframe(final_data)
@@ -152,11 +150,12 @@ if pressed:
         converted= round(converted,2)
 
         st.header('Your Investment Value')
-        st.write(f" If you invest **{monthly}** **{currency_selector}**, **{m}** times a year with an annual escalation of **{escalate}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years.")
+        st.write(f" If you invest **{monthly}** **{currency_selector}**, **{m}** times a year with an annual escalation of **{escalatep}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years.")
         st.write(f"The converted value of your investment is: **{converted}** **{conv_currency_selector}** at a rate of **{df['info']['rate']}** in **{years}** years.")
 
 
-        st.bar_chart(final_data)
+        stacked_bar = final_data[['Capital','Interest']]
+        st.bar_chart(stacked_bar)
         
 #         html = template.render(
 #             monthly=monthly,
