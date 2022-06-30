@@ -157,29 +157,30 @@ if pressed:
 
 
         st.bar_chart(amounts)
-        html = template.render(
-            monthly=monthly,
-            currency_selector=currency_selector,
-            escalation=escalation,
-            m=m,
-            years=years,
-            escalate=escalate,
-            rate=rate,
-            deposit=deposit,
-            amounts=amounts,
-            year_string=year_string,
-            date=date.today().strftime("%B %d, %Y"),
-            )
+        
+#         html = template.render(
+#             monthly=monthly,
+#             currency_selector=currency_selector,
+#             escalation=escalation,
+#             m=m,
+#             years=years,
+#             escalate=escalate,
+#             rate=rate,
+#             deposit=deposit,
+#             amounts=amounts,
+#             year_string=year_string,
+#             date=date.today().strftime("%B %d, %Y"),
+#             )
 
-        pdf = pdfkit.from_string(html, False)
-        st.balloons()
+#         pdf = pdfkit.from_string(html, False)
+#         st.balloons()
 
-        st.download_button(
-            "⬇️ Download PDF",
-            data=pdf,
-            file_name="calculation.pdf",
-            mime="application/octet-stream",
-         )
+#         st.download_button(
+#             "⬇️ Download PDF",
+#             data=pdf,
+#             file_name="calculation.pdf",
+#             mime="application/octet-stream",
+#          )
         
 
 
