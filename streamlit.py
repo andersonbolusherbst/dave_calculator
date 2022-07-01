@@ -85,8 +85,7 @@ amounts=[]
 rate =rates[rate]
 accumulated_capital=[]
 accumulated_interest=[]
-
-
+capital = 0
 
 def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital):
     for x in range(years+1):
