@@ -158,7 +158,7 @@ if pressed:
         st.write(f" You will earn earn **{acc_int[-1]}** on your capital contribution of **{acc_cap[-1]}**")
 
 
-        stacked_bar = final_data[['Interest','Capital']]
+        stacked_bar = final_data[['Capital','Interest',]]
         st.bar_chart(stacked_bar)
         
 #         html = template.render(
