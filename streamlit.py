@@ -105,7 +105,7 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital,monthlye
             
         total_fv = dep_fv + ann_fv
         escalation = escalate+1
-        monthlyesc = monthlyesc * escalation
+        
         
         if monthlyesc > max_contribution:
             monthlyesc = max_contribution
@@ -114,8 +114,10 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital,monthlye
             
         if x == 1:
             capital = deposit + (monthly*m)
+            monthlyesc = monthlyesc * escalation
         else:
             capital = capital + (monthlyesc*m)
+            monthlyesc = monthlyesc * escalation
             
         interest = total_fv - capital
         total_fv = round(total_fv,2)
