@@ -20,7 +20,7 @@ import smtplib, ssl
 env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
 template = env.get_template("template.html")
 
-st.image("bayswaterlogo.png")
+st.image("thin.png")
 
 currency_list=currency_list = ['ZAR','USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD']
 
