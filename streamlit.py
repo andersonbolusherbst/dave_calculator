@@ -80,6 +80,8 @@ escalation=0
 
 if max_contribution == 0:
     max_contribution = monthly
+else:
+    max_contribution = max_contribution
 pressed = st.button("Calculate")
 amounts=[]
 growth_rate = rate
