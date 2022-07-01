@@ -106,11 +106,10 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital):
             accumulated_capital.append(capital)
             accumulated_interest.append(interest)
             escalation = escalate+1
-            monthly = monthly*escalation
             if monthly >= max_contribution:
                 monthly = max_contribution
             else:
-                monthly = monthly
+                monthly = monthly*escalation
             #monthly = monthly*escalation
             year_string.append(f" Year {x}")
             
