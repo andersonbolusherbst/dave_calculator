@@ -7,7 +7,7 @@ def continue_calculation(amounts,accumulated_capital,accumulated_interest,x,tota
         new_ann_fv = max_contribution*(((1+rate/m)**(y*m)-1)/(rate/m))
         new_total_fv = new_ann_fv + new_dep_fv
         capital = capital + (max_contribution*m)
-        interest = total_fv - capital
+        interest = new_total_fv - capital
         new_total_fv = round(new_total_fv,2)
         amounts.append(new_total_fv)
         accumulated_capital.append(capital)
