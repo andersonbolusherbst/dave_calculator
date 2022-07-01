@@ -1,6 +1,6 @@
 def continue_calculation(amounts,accumulated_capital,accumulated_interest,x,total_fv,years,rate,escalation,escalate,monthly,m, capital,monthlyesc,max_contribution):
     remaining_years = years - x
-    new_deposit = total_fv 
+    new_deposit = amounts[-1]
     for y in range(remaining_years):
         y+=1 
         new_dep_fv = new_deposit*(1+(rate/m))**(y*m)
