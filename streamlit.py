@@ -111,6 +111,7 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital,monthlye
         if monthlyesc > max_contribution:
             monthlyesc = max_contribution
             continue_calculation(amounts,accumulated_capital,accumulated_interest,x,total_fv,years,rate,escalation,escalate,monthly,m, capital,monthlyesc,max_contribution)
+            st.write(max_contribution)
             break
         else:
             monthlyesc = monthlyesc
