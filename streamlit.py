@@ -103,7 +103,7 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital):
                 if monthly >= max_contribution:
                     monthly = max_contribution
                 else:
-                    monthly = monthly
+                    monthly = monthly*escalation
                 capital = (monthly*m)+capital
                 dep_fv = deposit*(1+(rate/m))**(x*m)
                 ann_fv = monthly*(((1+rate/m)**(x*m)-1)/(rate/m))
