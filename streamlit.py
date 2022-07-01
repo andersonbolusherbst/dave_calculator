@@ -26,7 +26,7 @@ currency_list=currency_list = ['ZAR','USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF'
 conv_currency_list = ['USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD','ZAR']
 
 rates = {'1%':0.01,'2%':0.02,'3%':0.03,'4%':0.04,'5%':0.05,'6%':0.06,'7%':0.07,'8%':0.08,'9%':0.09,'10%':0.1}
-escalates ={'2.5%':0.025, '5%':0.05, '7.5%':0.075, '10%':0.1, '15%':0.15, '20%':0.2}
+escalates ={'0%':0.0,'2.5%':0.025, '5%':0.05, '7.5%':0.075, '10%':0.1, '15%':0.15, '20%':0.2}
 
 
 
@@ -70,7 +70,7 @@ with col3:
     
 with col4:
     monthly = st.number_input('Your Contribution')
-    escalatep = st.selectbox("Select annual % increase of contribution",['2.5%','5%','7.5%','10%','15%','20%'])
+    escalatep = st.selectbox("Select annual % increase of contribution",['0%','2.5%','5%','7.5%','10%','15%','20%'])
 escalate = float(escalates[escalatep])
 
 m = st.selectbox("How many times would you like to contribute per year?",[12, 4, 1])
