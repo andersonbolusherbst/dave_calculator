@@ -49,8 +49,8 @@ def send_email(monthly,m,escalation,amounts,years,max_contribution=None,currency
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
         server.login(sender_email, password)
+        print(f"Logged in monthly = {monthly}" )
         server.sendmail(sender_email, receiver_email, message.as_string())
-        #decimal_data = final_data.iloc[:, 0]
-        #decimal_data = np.round(decimal_data, decimals = 2)
+        print(f"mail sentmonthly = {monthly}")
 #send_email(1,2,3,[4],5,"max contrinution","USD")
 
