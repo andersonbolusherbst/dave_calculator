@@ -23,28 +23,9 @@ def send_email(template,monthly,m,escalation,amounts,years,escalatep,deposit,acc
     **{escalation}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years
     visit bayswatercapital.co.za for more info, or phone your main man Danger Dave: 09898731948
     """
-    html = template
-    
-    # Turn these into plain/html MIMEText objects
-    part1 = MIMEText(text, "plain")
-    part2 = MIMEText(html, "html")
-
-    # Add HTML/plain-text parts to MIMEMultipart message
-    #  The email client will try to render the last part first
-    message.attach(part1)
-    message.attach(part2)
-    context = ssl.create_default_context()
-    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-        server.login(sender_email, password)
-        print(f"Logged in monthly = {monthly}" )
-        server.sendmail(sender_email, receiver_email, message.as_string())
-        print(f"mail sentmonthly = {monthly}")
-#send_email(1,2,3,[4],5,"max contrinution","USD")
-
-template = f"""
+    html = f"""
 <!DOCTYPE html>
 <html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
-
 <head>
 	<title></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -54,26 +35,21 @@ template = f"""
 		* {{
 			box-sizing: border-box;
 		}}
-
 		body {{
 			margin: 0;
 			padding: 0;
 		}}
-
 		a[x-apple-data-detectors] {{
 			color: inherit !important;
 			text-decoration: inherit !important;
 		}}
-
 		#MessageViewBody a {{
 			color: inherit;
 			text-decoration: none;
 		}}
-
 		p {{
 			line-height: inherit
 		}}
-
 		.desktop_hide,
 		.desktop_hide table {{
 			mso-hide: all;
@@ -81,34 +57,27 @@ template = f"""
 			max-height: 0px;
 			overflow: hidden;
 		}}
-
 		@media (max-width:620px) {{
 			.desktop_hide table.icons-inner {{
 				display: inline-block !important;
 			}}
-
 			.icons-inner {{
 				text-align: center;
 			}}
-
 			.icons-inner td {{
 				margin: 0 auto;
 			}}
-
 			.image_block img.big,
 			.row-content {{
 				width: 100% !important;
 			}}
-
 			.mobile_hide {{
 				display: none;
 			}}
-
 			.stack .column {{
 				width: 100%;
 				display: block;
 			}}
-
 			.mobile_hide {{
 				min-height: 0;
 				max-height: 0;
@@ -116,7 +85,6 @@ template = f"""
 				overflow: hidden;
 				font-size: 0px;
 			}}
-
 			.desktop_hide,
 			.desktop_hide table {{
 				display: table !important;
@@ -125,7 +93,6 @@ template = f"""
 		}}
 	</style>
 </head>
-
 <body style="background-color: #ffffff; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;">
 	<table class="nl-container" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff;">
 		<tbody>
@@ -233,5 +200,22 @@ template = f"""
 		</tbody>
 	</table><!-- End -->
 </body>
-
 </html>"""
+    
+    # Turn these into plain/html MIMEText objects
+    part1 = MIMEText(text, "plain")
+    part2 = MIMEText(html, "html")
+
+    # Add HTML/plain-text parts to MIMEMultipart message
+    #  The email client will try to render the last part first
+    message.attach(part1)
+    message.attach(part2)
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+        server.login(sender_email, password)
+        print(f"Logged in monthly = {monthly}" )
+        server.sendmail(sender_email, receiver_email, message.as_string())
+        print(f"mail sentmonthly = {monthly}")
+#send_email(1,2,3,[4],5,"max contrinution","USD")
+
+
