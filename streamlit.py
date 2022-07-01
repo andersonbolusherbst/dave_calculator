@@ -93,34 +93,56 @@ capital = 0
 
 def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital):
     for x in range(years):
-        
-            x += 1
+        x += 1
+        if rate == escalate:
+            ann_fv = monthly*(m*x)*(1+(rate/m))**(x*m)-1)
+            dep_fv = deposit*(1+(rate/m))**(x*m)
+        else:
+            ann_fv = monthly *(((1+(rate/m))**(x*m)-(1+(escalate/m))**(x*m))/((rate/m)-(escalate/m)))
+            dep_fv = deposit*(1+(rate/m))**(x*m)
             
-            if x == 1:
-                capital = deposit + (monthly*m)
-                dep_fv = deposit*(1+(rate/m))**(x*m)
-                ann_fv = monthly*(((1+rate/m)**(x*m)-1)/(rate/m))
-            else:
-                if monthly >= max_contribution:
-                    monthly = max_contribution
-                else:
-                    monthly = monthly*escalation
-                capital = (monthly*m)+capital
-                dep_fv = deposit*(1+(rate/m))**(x*m)
-                ann_fv = monthly*(((1+rate/m)**(x*m)-1)/(rate/m))
-                
-            total_fv = dep_fv + ann_fv
-            interest = total_fv - capital
-            total_fv = round(total_fv,2)
-            amounts.append(total_fv)
-            accumulated_capital.append(capital)
-            accumulated_interest.append(interest)
-            escalation = escalate+1
+        total_fv = dep_fv + ann_fv
+        if x == 1:
+            capital = deposit + (monthly*m)
+        else:
+            capital = capital + (monthly*m)
             
-            #monthly = monthly*escalation
-            year_string.append(f" Year {x}")
+        interest = total_fv - capital
+        total_fv = round(total_fv,2)
+        amounts.append(total_fv)
+        accumulated_capital.append(capital)
+        accumulated_interest.append(interest)
+        year_string.append(f" Year {x}")
             
     return amounts,accumulated_capital,accumulated_interest
+        
+        
+        #previous formula
+#             x += 1
+            
+#             if x == 1:
+#                 capital = deposit + (monthly*m)
+#                 dep_fv = deposit*(1+(rate/m))**(x*m)
+#                 ann_fv = monthly*(((1+rate/m)**(x*m)-1)/(rate/m))
+#             else:
+#                 if monthly >= max_contribution:
+#                     monthly = max_contribution
+#                 else:
+#                     monthly = monthly*escalation
+#                 capital = (monthly*m)+capital
+#                 dep_fv = deposit*(1+(rate/m))**(x*m)
+#                 ann_fv = monthly*(((1+rate/m)**(x*m)-1)/(rate/m))
+                
+#             total_fv = dep_fv + ann_fv
+#             interest = total_fv - capital
+#             total_fv = round(total_fv,2)
+#             amounts.append(total_fv)
+#             accumulated_capital.append(capital)
+#             accumulated_interest.append(interest)
+#             escalation = escalate+1
+            
+            #monthly = monthly*escalation
+            
 
 
 if pressed:
