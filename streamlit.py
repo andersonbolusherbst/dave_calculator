@@ -113,7 +113,7 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital,monthlye
             monthlyesc = monthlyesc
             
         if x == 1:
-            capital = deposit + (monthlyesc*m)
+            capital = deposit + (monthly*m)
         else:
             capital = capital + (monthlyesc*m)
             
