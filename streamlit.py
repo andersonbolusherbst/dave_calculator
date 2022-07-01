@@ -173,7 +173,7 @@ if pressed:
         stacked_bar = final_data[['Capital','Interest',]]
         st.bar_chart(stacked_bar)
         
-        send_email(monthly,m,escalation,amounts,years,escalatep,deposit,acc_int,acc_cap,ireturn,converted,df,conv_currency_selector,growth_rate,max_contribution,currency_selector)
+        #send_email(monthly,m,escalation,amounts,years,escalatep,deposit,acc_int,acc_cap,ireturn,converted,df,conv_currency_selector,growth_rate,max_contribution,currency_selector)
             
 #         html = template.render(
 #             monthly=monthly,
