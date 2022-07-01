@@ -82,6 +82,7 @@ if max_contribution == 0:
     max_contribution = monthly
 pressed = st.button("Calculate")
 amounts=[]
+growth_rate = rate
 rate =rates[rate]
 accumulated_capital=[]
 accumulated_interest=[]
@@ -155,7 +156,7 @@ if pressed:
         ireturn = f"{ireturn:.0%}"
 
         st.header('Your Investment Value')
-        st.write(f" If you invest **{monthly}** **{currency_selector}** at an annual return of **{rate}**, **{m}** times a year with an annual escalation of **{escalatep}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years.")
+        st.write(f" If you invest **{monthly}** **{currency_selector}** at an annual return of **{growth_rate}**, **{m}** times a year with an annual escalation of **{escalatep}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years.")
         st.write(f"The converted value of your investment is: **{converted}** **{conv_currency_selector}** at a rate of **{df['info']['rate']}** in **{years}** years.")
         st.write(f" You will earn earn **{acc_int[-1]}** on your capital contribution of **{acc_cap[-1]}** which is a return of **{ireturn}**")
 
