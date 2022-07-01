@@ -11,6 +11,7 @@ from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoad
 from streamlit.components.v1 import iframe
 import requests
 import json
+from email_tester import send_email
 
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -171,7 +172,7 @@ if pressed:
 
         stacked_bar = final_data[['Capital','Interest',]]
         st.bar_chart(stacked_bar)
-        from email_tester import send_email,template
+        
         send_email(monthly,m,escalation,amounts,years,escalatep,deposit,acc_int,acc_cap,ireturn,converted,df,conv_currency_selector,max_contribution,currency_selector)
             
 #         html = template.render(
