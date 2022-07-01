@@ -1,4 +1,4 @@
-def continue_calculation(x,total_fv,years,rate,escalation,escalate,monthly,m, capital,monthlyesc,max_contribution):
+def continue_calculation(amounts,accumulated_capital,accumulated_interest,x,total_fv,years,rate,escalation,escalate,monthly,m, capital,monthlyesc,max_contribution):
     remaining_years = years - x
     new_deposit = total_fv 
     for y in range(remaining_years):
