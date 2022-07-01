@@ -159,7 +159,7 @@ if pressed:
     if monthly == 0:
         st.error("please input in your contribution amount")
     else:
-        calculate(years,rate,escalation,escalate,deposit,monthly,m,capital)
+        calculate(years,rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
         st.balloons()
         
         st.header("Annuity Table")
