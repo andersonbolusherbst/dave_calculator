@@ -151,8 +151,8 @@ if pressed:
         df = load_data()
         converted = df['result']
         converted= round(converted,2)
-        ireturn = (acc_int[-1]/acc_cap[-1])*100
-        #ireturn = f"{ireturn:%}"
+        ireturn = (acc_int[-1]/acc_cap[-1])
+        ireturn = f"{ireturn:.0%}"
 
         st.header('Your Investment Value')
         st.write(f" If you invest **{monthly}** **{currency_selector}** at an annual return of **{rate}**, **{m}** times a year with an annual escalation of **{escalatep}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years.")
