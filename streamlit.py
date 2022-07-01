@@ -95,7 +95,7 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital):
     for x in range(years):
         x += 1
         if rate == escalate:
-            ann_fv = monthly*(m*x)*(1+(rate/m))**(x*m)-1)
+            ann_fv = monthly*(m*x)*(1+(rate/m))**((x*m)-1)
             dep_fv = deposit*(1+(rate/m))**(x*m)
         else:
             ann_fv = monthly *(((1+(rate/m))**(x*m)-(1+(escalate/m))**(x*m))/((rate/m)-(escalate/m)))
