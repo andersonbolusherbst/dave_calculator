@@ -74,7 +74,7 @@ with col4:
     monthly = st.number_input('Your Contribution')
     escalatep = st.selectbox("Select annual % increase of contribution",['0%','2.5%','5%','7.5%','10%','15%','20%'])
 escalate = float(escalate_dict[escalatep])
-st.write(escalate)
+
 
 m = st.selectbox("How many times would you like to contribute per year?",[12, 4, 1])
                                                                           
