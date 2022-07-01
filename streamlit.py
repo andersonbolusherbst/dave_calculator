@@ -107,10 +107,11 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital,monthlye
         escalation = escalate+1
         monthlyesc = monthlyesc * escalation
         
-        if monthlyesc >= max_contribution:
+        if monthlyesc > max_contribution:
             monthlyesc = max_contribution
         else:
             monthlyesc = monthlyesc
+            
         if x == 1:
             capital = deposit + (monthlyesc*m)
         else:
