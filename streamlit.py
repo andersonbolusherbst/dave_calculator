@@ -81,7 +81,7 @@ m = st.selectbox("How many times would you like to contribute per year?",[12, 4,
 escalation=0
 
 if max_contribution == 0:
-    max_contribution = monthly
+    max_contribution = 1000000000000
 else:
     max_contribution = max_contribution
 pressed = st.button("Calculate")
