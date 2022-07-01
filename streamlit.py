@@ -92,7 +92,7 @@ accumulated_interest=[]
 capital = 0
 monthlyesc = monthly
 
-def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital):
+def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital,monthlyesc):
     for x in range(years):
         x += 1
         if rate == escalate:
