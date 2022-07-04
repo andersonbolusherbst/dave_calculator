@@ -178,8 +178,8 @@ if pressed:
     year_string = []
     if monthly == 0:
         st.error("please input in your contribution amount")
-    elif retirement_age == 0:
-        st.error("please input in retirement age")
+    elif retirement_age == 0 or years < 1:
+        st.error("please input correct retirement and starting age")
     else:
         calculate(years,rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
         st.balloons()
