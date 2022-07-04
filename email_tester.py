@@ -19,8 +19,8 @@ def send_email(monthly,m,escalation,amounts,years,escalatep,deposit,acc_int,acc_
     Thanks for using Bayswater Calculator:
     Your calculation came up with the following:
     
-     If you invest **{monthly}** {currency_selector}, **{m}** times a year with an annual escalation of 
-    **{escalation}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years
+     If you invest **{{monthly}}** {{currency_selector}}, **{{m}}** times a year with an annual escalation of 
+    **{{escalation}}**, your investment will generate **{{amounts[-1]}}** **{{currency_selector}}** in **{{years}}** years
     visit bayswatercapital.co.za for more info, or phone your main man Danger Dave: 09898731948
     """
     html = f"""
@@ -40,78 +40,78 @@ def send_email(monthly,m,escalation,amounts,years,escalatep,deposit,acc_int,acc_
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
 	<!--<![endif]-->
 	<style>
-		* {
+		* {{
 			box-sizing: border-box;
-		}
+		}}
 
-		body {
+		body {{
 			margin: 0;
 			padding: 0;
-		}
+		}}
 
-		a[x-apple-data-detectors] {
+		a[x-apple-data-detectors] {{
 			color: inherit !important;
 			text-decoration: inherit !important;
-		}
+		}}
 
-		#MessageViewBody a {
+		#MessageViewBody a {{
 			color: inherit;
 			text-decoration: none;
-		}
+		}}
 
-		p {
+		p {{
 			line-height: inherit
-		}
+		}}
 
 		.desktop_hide,
-		.desktop_hide table {
+		.desktop_hide table {{
 			mso-hide: all;
 			display: none;
 			max-height: 0px;
 			overflow: hidden;
-		}
+		}}
 
-		@media (max-width:620px) {
-			.desktop_hide table.icons-inner {
+		@media (max-width:620px) {{
+			.desktop_hide table.icons-inner {{
 				display: inline-block !important;
-			}
+			}}
 
-			.icons-inner {
+			.icons-inner {{
 				text-align: center;
-			}
+			}}
 
-			.icons-inner td {
+			.icons-inner td {{
 				margin: 0 auto;
-			}
+			}}
 
 			.image_block img.big,
-			.row-content {
+			.row-content {{
 				width: 100% !important;
-			}
+			}}
 
-			.mobile_hide {
+			.mobile_hide {{
 				display: none;
-			}
+			}}
 
-			.stack .column {
+			.stack .column {{
 				width: 100%;
 				display: block;
-			}
+			}}
 
-			.mobile_hide {
+			.mobile_hide {{
 				min-height: 0;
 				max-height: 0;
 				max-width: 0;
 				overflow: hidden;
 				font-size: 0px;
-			}
+			}}
 
 			.desktop_hide,
-			.desktop_hide table {
+			.desktop_hide table {{
 				display: table !important;
 				max-height: none !important;
-			}
-		}
+			}}
+		}}
 	</style>
 </head>
 
@@ -139,9 +139,9 @@ def send_email(monthly,m,escalation,amounts,years,escalatep,deposit,acc_int,acc_
 														<tr>
 															<td>
 																<div style="color:#0d1a34;direction:ltr;font-family:'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:120%;text-align:left;mso-line-height-alt:19.2px;">
-																	<p style="margin: 0; margin-bottom: 16px;"><br><br>If you invest **{monthly}** **{currency_selector}**, &nbsp;**{m}** times a year with an annual escalation of **{escalatep}**, with a desposit of **{deposit}** **{currency_selector}** at a growth rate of **{growth_rate}**, your investment will generate **{amounts[-1]}** **{currency_selector}** in **{years}** years</p>
-																	<p style="margin: 0; margin-bottom: 16px;">The converted value of your investment is: **{converted}** **{conv_currency_selector}** at a rate of **{df['info']['rate']}** in **{years}** years.</p>
-																	<p style="margin: 0; margin-bottom: 16px;"><br>&nbsp;You will earn earn **{acc_int[-1]}** **{currency_selector}** on your capital contribution of **{acc_cap[-1]}** **{currency_selector}** which is a return of **{ireturn}**</p>
+																	<p style="margin: 0; margin-bottom: 16px;"><br><br>If you invest {monthly} {currency_selector}, &nbsp;{m} times a year with an annual escalation of {escalatep}, with a desposit of {deposit} {currency_selector} at a growth rate of {growth_rate}, your investment will generate {amounts[-1]} {currency_selector} in {years} years</p>
+																	<p style="margin: 0; margin-bottom: 16px;">The converted value of your investment is: {converted} {conv_currency_selector} at a rate of {df['info']['rate']} in {years} years.</p>
+																	<p style="margin: 0; margin-bottom: 16px;"><br>&nbsp;You will earn earn {acc_int[-1]} {currency_selector} on your capital contribution of {acc_cap[-1]} {currency_selector} which is a return of {ireturn}</p>
 																	<p style="margin: 0; margin-bottom: 16px;">&nbsp;</p>
 																	<p style="margin: 0;">&nbsp;</p>
 																</div>
@@ -252,9 +252,9 @@ def send_email(monthly,m,escalation,amounts,years,escalatep,deposit,acc_int,acc_
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
         server.login(sender_email, password)
-        print(f"Logged in monthly = {monthly}" )
+        print(f"Logged in monthly = {{monthly}}" )
         server.sendmail(sender_email, receiver_email, message.as_string())
-        print(f"mail sentmonthly = {monthly}")
+        print(f"mail sentmonthly = {{monthly}}")
 #send_email(1,2,3,[4],5,"max contrinution","USD")
 
 
