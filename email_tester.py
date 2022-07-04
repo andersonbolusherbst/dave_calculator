@@ -1,13 +1,13 @@
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import smtplib, ssl  ### need to add these imports tio the main streamlit file and to the requirements
-def send_email(monthly,m,escalation,amounts,years,escalatep,deposit,acc_int,acc_cap,ireturn,converted,df,conv_currency_selector,growth_rate,email_address,max_contribution=None,currency_selector=None):
+def send_email(password,monthly,m,escalation,amounts,years,escalatep,deposit,acc_int,acc_cap,ireturn,converted,df,conv_currency_selector,growth_rate,email_address,max_contribution=None,currency_selector=None):
     
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
     sender_email = "bayswatercalculator@gmail.com"  # Enter your address
     receiver_email = email_address  # Enter receiver address
-    password = "wciivablmetkkfdu"
+    password = password
     
     message = MIMEMultipart("alternative")
     message["Subject"] = "Bayswater Capital Calculator"

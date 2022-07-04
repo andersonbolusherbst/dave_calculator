@@ -226,7 +226,7 @@ if pressed:
         st.bar_chart(stacked_bar)
         
         if email_choice =="Yes":
-            send_email(monthly,m,escalation,amounts,years,escalatep,deposit,acc_int,acc_cap,ireturn,converted,df,conv_currency_selector,growth_rate,email_address,max_contribution,currency_selector)
+            send_email(st.secrets["email_secret"]["password"],monthly,m,escalation,amounts,years,escalatep,deposit,acc_int,acc_cap,ireturn,converted,df,conv_currency_selector,growth_rate,email_address,max_contribution,currency_selector)
             
 #         html = template.render(
 #             monthly=monthly,
