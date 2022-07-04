@@ -27,8 +27,8 @@ currency_list=currency_list = ['ZAR','USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF'
 
 conv_currency_list = ['USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD','ZAR']
 frequency ={'Monthly':12,'Quarterly':4,'Annually':1}
-retirement_age =0
-start_age=0
+retirement_age =''
+start_age=''
 if retirement_age == 0:
     years = "Please select your starting age and retirement age"
     
