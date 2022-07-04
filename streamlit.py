@@ -60,7 +60,7 @@ with col4:
     
 with col5:
     retirement_age = st.number_input('Enter your retirement age: ', value = 0)
-    years = retirement_age-starting_age
+    years = retirement_age-start_age
     st.markdown('##')
     st.write("Your investment time horizon: ", years)
    
