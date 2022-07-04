@@ -26,7 +26,7 @@ st.image("thin.png")
 currency_list=currency_list = ['ZAR','USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD']
 
 conv_currency_list = ['USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD','ZAR']
-frequency ={'Monthly':12,'Quarterly': 4,'Annually': 1}
+frequency ={'Monthly':12,'Quarterly':4,'Annually':1}
 retirement_age =0
 start_age=0
 if retirement_age == 0:
@@ -66,7 +66,7 @@ with col4:
 with col5:
     retirement_age = st.number_input('Enter your retirement age: ', value = 0)
     f = st.selectbox("How many times would you like to contribute per year?",[12, 4, 1])
-    m= frequency[f]
+    m= frequency['f']
     
    
 
