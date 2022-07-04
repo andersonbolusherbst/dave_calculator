@@ -78,7 +78,7 @@ col3, col4 = st.columns(2)
 with col3:
     deposit = st.number_input('Starting Deposit')
     max_contribution = st.number_input('Maximum Monthly Contribution:')
-    email_choice = st.radio("would you like to send info to your email address?",["Yes","No"])
+    email_choice = st.radio("Would you like to send info to your email address?",["No","Yes"])
     
 with col4:
     monthly = st.number_input(f'Your {f}  Contribution')
