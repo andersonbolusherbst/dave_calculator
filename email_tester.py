@@ -10,7 +10,7 @@ def send_email(monthly,m,escalation,amounts,years,escalatep,deposit,acc_int,acc_
     password = "wciivablmetkkfdu"
     
     message = MIMEMultipart("alternative")
-    message["Subject"] = "multipart test"
+    message["Subject"] = "Bayswater Capital Calculator"
     message["From"] = sender_email
     message["To"] = receiver_email
     
