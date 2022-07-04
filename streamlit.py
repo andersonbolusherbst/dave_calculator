@@ -27,6 +27,7 @@ currency_list=currency_list = ['ZAR','USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF'
 
 conv_currency_list = ['USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD','ZAR']
 frequency ={'Monthly':12,'Quarterly': 4,'Annually': 1}
+years = retirement_age - start_age
 
 rates = {'1%':0.01,'2%':0.02,'3%':0.03,'4%':0.04,'5%':0.05,'6%':0.06,'7%':0.07,'8%':0.08,'9%':0.09,'10%':0.1}
 escalate_dict ={'0%':0.0,'2.5%':0.025, '5%':0.05, '7.5%':0.075, '10%':0.1, '15%':0.15, '20%':0.2}
@@ -51,7 +52,6 @@ rate = st.selectbox('Select annual growth rate', ['1%','2%','3%','4%','5%','6%',
 col4,col5 = st.columns(2)   
 with col4:
     start_age = st.number_input('Enter your starting age: ',value = 0)
-    years = retirement_age - start_age
     st.markdown('##')
     st.write("Your investment time horizon: ", years)
     
