@@ -184,13 +184,13 @@ if pressed:
         calculate(years,rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
         st.balloons()
         
-        st.header("Annuity Table")
+        #st.header("Annuity Table")
 
         amounts_rounded = [round(num, 2) for num in amounts]
         acc_cap = [round(num, 2) for num in accumulated_capital]
         acc_int = [round(num, 2) for num in accumulated_interest]
 
-        #final_data = pd.DataFrame(list(zip(acc_cap, acc_int,amounts_rounded)),columns=['Capital','Interest','Total'])
+        final_data = pd.DataFrame(list(zip(acc_cap, acc_int,amounts_rounded)),columns=['Capital','Interest','Total'])
         #final_data = final_data.T
         #st.dataframe(final_data)
         # Retrieving currency data from ratesapi.io
