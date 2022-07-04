@@ -190,9 +190,9 @@ if pressed:
         acc_cap = [round(num, 2) for num in accumulated_capital]
         acc_int = [round(num, 2) for num in accumulated_interest]
 
-        final_data = pd.DataFrame(list(zip(acc_cap, acc_int,amounts_rounded)),columns=['Capital','Interest','Total'])
+        #final_data = pd.DataFrame(list(zip(acc_cap, acc_int,amounts_rounded)),columns=['Capital','Interest','Total'])
         #final_data = final_data.T
-        st.dataframe(final_data)
+        #st.dataframe(final_data)
         # Retrieving currency data from ratesapi.io
         # https://api.ratesapi.io/api/latest?base=AUD&symbols=AUD
         base_price_unit = currency_selector   
