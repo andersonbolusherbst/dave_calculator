@@ -26,7 +26,7 @@ st.image("thin.png")
 currency_list=currency_list = ['ZAR','USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD']
 
 conv_currency_list = ['USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD','ZAR']
-frequency ={'Monthly':12,'Quarterly':4,'Annually':1}
+frequency ={'Monthly':12,'Quarterly':4,'Annual':1}
 
 
 
