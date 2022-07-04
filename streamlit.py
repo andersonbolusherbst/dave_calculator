@@ -78,13 +78,16 @@ col3, col4 = st.columns(2)
 with col3:
     deposit = st.number_input('Starting Deposit')
     max_contribution = st.number_input('Maximum Monthly Contribution:')
-    
+    email_choice = st.radio("would you like to send info to your email address?",["Yes","No"])
     
 with col4:
     monthly = st.number_input(f'Your {f}  Contribution')
     escalatep = st.selectbox("Select annual % increase of contribution",['0%','2.5%','5%','7.5%','10%','15%','20%'])
+    if email_choice == "Yes":
+        email_address = st.text_input("Send to: ")
+        
 escalate = float(escalate_dict[escalatep])
-
+    
 
 
                                                                           
