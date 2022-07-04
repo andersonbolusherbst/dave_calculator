@@ -27,7 +27,14 @@ currency_list=currency_list = ['ZAR','USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF'
 
 conv_currency_list = ['USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD','ZAR']
 frequency ={'Monthly':12,'Quarterly': 4,'Annually': 1}
-years = retirement_age - start_age
+retirement_age =0
+start_age=0
+if retirement_age == 0:
+    years = "Please select your starting age and retirement age"
+else:
+    years = retirement_age - start_age
+
+
 
 rates = {'1%':0.01,'2%':0.02,'3%':0.03,'4%':0.04,'5%':0.05,'6%':0.06,'7%':0.07,'8%':0.08,'9%':0.09,'10%':0.1}
 escalate_dict ={'0%':0.0,'2.5%':0.025, '5%':0.05, '7.5%':0.075, '10%':0.1, '15%':0.15, '20%':0.2}
