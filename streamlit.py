@@ -83,7 +83,7 @@ with col3:
     
     
 with col4:
-    monthly = st.number_input('Your ',f, ' Contribution')
+    monthly = st.number_input(f'Your {f}  Contribution')
     escalatep = st.selectbox("Select annual % increase of contribution",['0%','2.5%','5%','7.5%','10%','15%','20%'])
 escalate = float(escalate_dict[escalatep])
 
