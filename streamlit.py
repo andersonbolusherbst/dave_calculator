@@ -84,7 +84,6 @@ with col4:
     monthly = st.number_input(f'Your {f}  Contribution')
     escalatep = st.selectbox("Select annual % increase of contribution",['0%','2.5%','5%','7.5%','10%','15%','20%'])
     if email_choice == "Yes":
-        st.write(st.secrets["email_secret"]["password"][0])
         email_address = st.text_input("Send to: ")
         
 escalate = float(escalate_dict[escalatep])
@@ -227,7 +226,7 @@ if pressed:
         st.bar_chart(stacked_bar)
         
         if email_choice =="Yes":
-            send_email(st.secrets["email_secret"]["password"],monthly,m,escalation,amounts,years,escalatep,deposit,acc_int,acc_cap,ireturn,converted,df,conv_currency_selector,growth_rate,email_address,max_contribution,currency_selector)
+            send_email(st.secrets["email_secret"]["password"][0],monthly,m,escalation,amounts,years,escalatep,deposit,acc_int,acc_cap,ireturn,converted,df,conv_currency_selector,growth_rate,email_address,max_contribution,currency_selector)
             
 #         html = template.render(
 #             monthly=monthly,
