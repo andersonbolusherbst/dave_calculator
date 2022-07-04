@@ -65,8 +65,8 @@ with col4:
     
 with col5:
     retirement_age = st.number_input('Enter your retirement age: ', value = 0)
-    f = st.selectbox("How many times would you like to contribute per year?",[12, 4, 1])
-    m= frequency['f']
+    f = st.selectbox("How many times would you like to contribute per year?",['Monthly', 'Quarterly', 'Annually'])
+    m= frequency[f]
     
    
 
