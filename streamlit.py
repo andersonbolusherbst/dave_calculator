@@ -31,8 +31,8 @@ retirement_age =0
 start_age=0
 if retirement_age == 0:
     years = "Please select your starting age and retirement age"
-else:
-    years = retirement_age - start_age
+    
+years = retirement_age - start_age
 
 
 
