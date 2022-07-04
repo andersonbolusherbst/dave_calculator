@@ -54,7 +54,7 @@ rate = st.selectbox('Select annual growth rate', ['1%','2%','3%','4%','5%','6%',
 col4,col5 = st.columns(2)   
 with col4:
     start_age = st.number_input('Enter your starting age: ',value = 0)
-     f = st.selectbox("How many times would you like to contribute per year?",['Monthly', 'Quarterly', 'Annual'])
+    f = st.selectbox("How many times would you like to contribute per year?",['Monthly', 'Quarterly', 'Annual'])
     
     
     
