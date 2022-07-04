@@ -27,12 +27,7 @@ currency_list=currency_list = ['ZAR','USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF'
 
 conv_currency_list = ['USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD','ZAR']
 frequency ={'Monthly':12,'Quarterly':4,'Annually':1}
-retirement_age =''
-start_age=''
-if retirement_age == 0:
-    years = "Please select your starting age and retirement age"
-    
-years = retirement_age - start_age
+
 
 
 
@@ -59,13 +54,16 @@ rate = st.selectbox('Select annual growth rate', ['1%','2%','3%','4%','5%','6%',
 col4,col5 = st.columns(2)   
 with col4:
     start_age = st.number_input('Enter your starting age: ',value = 0)
-    st.markdown('##')
-    st.write("Your investment time horizon: ", years)
+     f = st.selectbox("How many times would you like to contribute per year?",['Monthly', 'Quarterly', 'Annual'])
+    
     
     
 with col5:
     retirement_age = st.number_input('Enter your retirement age: ', value = 0)
-    f = st.selectbox("How many times would you like to contribute per year?",['Monthly', 'Quarterly', 'Annual'])
+    years = retirement_age-starting_age
+    st.markdown('##')
+    st.write("Your investment time horizon: ", years)
+   
     m= frequency[f]
     
    
