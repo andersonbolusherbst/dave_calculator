@@ -84,6 +84,7 @@ with col4:
     monthly = st.number_input(f'Your {f}  Contribution')
     escalatep = st.selectbox("Select annual % increase of contribution",['0%','2.5%','5%','7.5%','10%','15%','20%'])
     if email_choice == "Yes":
+        st.write(st.secrets["email_secret"]["password"])
         email_address = st.text_input("Send to: ")
         
 escalate = float(escalate_dict[escalatep])
