@@ -1,7 +1,7 @@
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import smtplib, ssl  ### need to add these imports tio the main streamlit file and to the requirements
-def send_email(password,monthly,m,escalation,amounts,years,escalatep,deposit,acc_int,acc_cap,ireturn,converted,df,conv_currency_selector,growth_rate,email_address,max_contribution=None,currency_selector=None):
+def send_email(password,monthly,m,escalation,final_amount,years,escalatep,deposit,final_interest,final_cap,ireturn,converted,df,conv_currency_selector,display_rate,email_address,max_contribution=None):
     
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
@@ -139,9 +139,9 @@ def send_email(password,monthly,m,escalation,amounts,years,escalatep,deposit,acc
 														<tr>
 															<td>
 																<div style="color:#0d1a34;direction:ltr;font-family:'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:120%;text-align:left;mso-line-height-alt:19.2px;">
-																	<p style="margin: 0; margin-bottom: 16px;"><br><br>If you invest {monthly} {currency_selector}, &nbsp;{m} times a year with an annual escalation of {escalatep}, with a desposit of {deposit} {currency_selector} at a growth rate of {growth_rate}, your investment will generate {amounts[-1]} {currency_selector} in {years} years</p>
+																	<p style="margin: 0; margin-bottom: 16px;"><br><br>If you invest R{monthly} , &nbsp;{m} times a year with an annual escalation of {escalatep}, with a desposit of R{deposit}  at a growth rate of {display_rate}, your investment will generate R{final_amount}  in {years} years</p>
 																	<p style="margin: 0; margin-bottom: 16px;">The converted value of your investment is: {converted} {conv_currency_selector} at a rate of {df['info']['rate']} in {years} years.</p>
-																	<p style="margin: 0; margin-bottom: 16px;"><br>&nbsp;You will earn earn {acc_int[-1]} {currency_selector} on your capital contribution of {acc_cap[-1]} {currency_selector} which is a return of {ireturn}</p>
+																	<p style="margin: 0; margin-bottom: 16px;"><br>&nbsp;You will earn earn R{final_interest}  on your capital contribution of R{final_cap}  which is a return of {ireturn}</p>
 																	<p style="margin: 0; margin-bottom: 16px;">&nbsp;</p>
 																	<p style="margin: 0;">&nbsp;</p>
 																</div>

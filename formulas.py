@@ -12,3 +12,6 @@ def continue_calculation(amounts,accumulated_capital,accumulated_interest,x,tota
         amounts.append(new_total_fv)
         accumulated_capital.append(capital)
         accumulated_interest.append(interest)
+
+def formatter(raw_number):
+            return "{:,}".format(raw_number)
