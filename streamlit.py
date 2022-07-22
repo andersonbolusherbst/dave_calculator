@@ -27,7 +27,7 @@ currency_list=currency_list = ['ZAR','USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF'
 
 conv_currency_list = ['USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD','ZAR']
 frequency ={'Monthly':12,'Quarterly':4,'Annual':1}
-
+max_annual_contribution =0
 
 
 
