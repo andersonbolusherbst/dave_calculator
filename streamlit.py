@@ -78,9 +78,9 @@ col3, col4 = st.columns(2)
 with col3:
     deposit = st.number_input('Starting Deposit')
     cap_contribution = st.radio("Would you like to cap your contribution?",['No','Yes - set a monthly cap', 'Yes - set an annual cap'])
-    if cap_contribution = "Yes - set a monthly cap":
+    if cap_contribution == "Yes - set a monthly cap":
         max_contribution = st.number_input('Maximum Monthly Contribution: ')
-    elif cap_contribution = "Yes - set an annual cap":
+    elif cap_contribution == "Yes - set an annual cap":
         max_annual_contribution = st.number_input('Maximum Annual Contribution: ')
     email_choice = st.radio("Would you like to send info to your email address?",["No","Yes"])
     
