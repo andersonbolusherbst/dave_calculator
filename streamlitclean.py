@@ -16,10 +16,12 @@ import altair as alt
 
 #top image
 st.image("thin.png")
-
+#link back to website
+st.write("Return to the bayswatercapital [website](https://bayswatercapital.co.za/)")
+    
 #lists and dictionaries we need
 conv_currency_list = ['USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD','ZAR']
-escalate_dict ={'0%':0.0,'2.5%':0.025, '5%':0.05, '7.5%':0.075, '10%':0.1, '15%':0.15, '20%':0.2}
+escalate_dict ={'No Increase':0.0,'2.5%':0.025, '5%':0.05, '7.5%':0.075, '10%':0.1, '15%':0.15, '20%':0.2}
 frequency ={'Monthly':12,'Quarterly':4,'Annual':1}
 # layout of the actual app, all in one form 
 # with lots of columns on top of each other
@@ -53,38 +55,57 @@ with col1row3:
 with col2row3: 
     inflation = st.slider('Select expected inflation over the period',min_value=0.0, max_value=15.0, value=0.0, step=0.1,format="%f %%") 
 #writing under row 3
-st.write(f"you expect your investment to grow at a rate of **{round(rate,2)}%** but taking inflation into account the real return will be **{round(rate-inflation,2)}%**")
+st.write(f"You expect your investment to grow at a rate of **{round(rate,2)}%** but taking inflation into account the real return will be **{round(rate-inflation,2)}%**")
 
 #4th row of two columns
 col1row4,col2row4 =st.columns(2)
 with col1row4:
-    deposit = st.number_input('Starting Deposit',value=0)
+    deposit = st.number_input('Starting Deposit (R): ',value=0,step=100)
 with col2row4:
-    monthly = st.number_input(f'Your {per_year}  Contribution',value=0)
+    monthly = st.number_input(f'Your {per_year}  Contribution (R): ',value=0,step=100)
 
 
 #5th row of two columns
 col1row5,col2row5 =st.columns(2)
 with col1row5:
-    escalatep = st.selectbox("Select annual % increase of contribution",['0%','2.5%','5%','7.5%','10%','15%','20%'])
+    escalatep = st.selectbox("Select annual % increase of contribution",['No Increase','2.5%','5%','7.5%','10%','15%','20%'])
 with col2row5:
-    max_contribution = st.number_input('Maximum Monthly Contribution:',value =0)
-    # Daanie just remembered he said we needed to change this to annual, note for tomorrow
+    st.empty()
+
 #6th row of two columns
-col1row6,col2row6 =st.columns(2)
+col1row6,col2row6 = st.columns(2)
 with col1row6:
-    email_choice = st.radio("Would you like to send info to your email address?",["No","Yes"])
-    currency_yes_no = st.radio("Would you like to convert this calculation to another currency?",["No","Yes"])
+    cap_contribution = st.radio("Would you like to cap your contribution?",['No',f'Yes - set a {per_year} cap', 'Yes - set an Annual cap'])
+    max_contribution= None
 with col2row6:
+    if cap_contribution == f"Yes - set a {per_year} cap":
+        max_contribution = st.number_input(f'Maximum {per_year} Contribution: ',value =0)
+    elif cap_contribution == "Yes - set an annual cap":
+        max_annual_contribution = st.number_input('Maximum Annual Contribution: ',value=0)
+        max_contribution = max_annual_contribution/m  
+
+
+#7th row of two columns
+col1row7,col2row7 =st.columns(2)
+with col1row7:
+    email_choice = st.radio("Would you like to send info to your email address?",["No","Yes"])
+    
+with col2row7:
     if email_choice == "Yes":
         email_address = st.text_input("Send to: ")
+    
+        
+#8th row of two columns
+col1row8,col2row8 =st.columns(2)
+with col1row8:
+    currency_yes_no = st.radio("Would you like to convert this calculation to another currency?",["No","Yes"])
+with col2row8:
     if currency_yes_no =="Yes":
         conv_currency_selector = st.selectbox('Select target currency to convert to', conv_currency_list)
-        #possible issue with where the pop up is 
-
 escalate = float(escalate_dict[escalatep]) # fetch the correct format from the dictionary
 escalation=0 # set to zero for the for loop
 
+  
 if max_contribution == 0:
     max_contribution = 1000000000000
 else:
@@ -208,7 +229,7 @@ if pressed:
 
         domain = ['Capital Contribution','Return']
         range_ = ["#DDC385","#0D1A34"]
-        st.write(new_stacked)
+        
         c = alt.Chart(new_stacked).mark_bar().encode(
             x='year_index:O',
             y='Amount',
