@@ -235,7 +235,7 @@ if pressed:
             order=alt.Order(
                     # Sort the segments of the bars by this field
                     'Amount',
-                 sort='ascending'
+                 sort='descending'
                     ),
             color=alt.Color('Key',scale=alt.Scale(domain=domain,range=range_))
             )
