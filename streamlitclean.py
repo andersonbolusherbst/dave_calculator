@@ -232,7 +232,7 @@ if pressed:
             x='year_index:O',
             y='Amount',
             tooltip= ["Key","Amount"],
-            color=alt.Color('Key',scale=alt.Scale(domain=domain,range=range_),sort = 'descending')
+            color=alt.Color('Key',scale=alt.Scale(domain=domain,range=range_),sort = 'ascending')
             )
         st.altair_chart(c,use_container_width=True)
         
