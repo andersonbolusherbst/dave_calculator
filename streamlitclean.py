@@ -1,4 +1,5 @@
 #all the imports
+from tempfile import TemporaryFile
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -70,13 +71,13 @@ col1row5,col2row5 =st.columns(2)
 with col1row5:
     escalatep = st.selectbox("Select annual % increase of contribution",['No Increase','2.5%','5%','7.5%','10%','15%','20%'])
 with col2row5:
-    st.empty()
+    conv_currency_selector = st.selectbox('Select target currency to convert to', conv_currency_list)
 
 #6th row of two columns
 col1row6,col2row6 = st.columns(2)
 with col1row6:
     cap_contribution = st.radio("Would you like to cap your contribution?",['No',f'Yes - set a {per_year} cap', 'Yes - set an Annual cap'])
-    max_contribution= None
+    max_contribution= 0
 with col2row6:
     if cap_contribution == f"Yes - set a {per_year} cap":
         max_contribution = st.number_input(f'Maximum {per_year} Contribution: ',value =0)
@@ -92,16 +93,13 @@ with col1row7:
     
 with col2row7:
     if email_choice == "Yes":
-        email_address = st.text_input("Send to: ")
+        client_name = st.text_input("Name: ")
+        email_address = st.text_input("email address to send to: ")
     
         
-#8th row of two columns
-col1row8,col2row8 =st.columns(2)
-with col1row8:
-    currency_yes_no = st.radio("Would you like to convert this calculation to another currency?",["No","Yes"])
-with col2row8:
-    if currency_yes_no =="Yes":
-        conv_currency_selector = st.selectbox('Select target currency to convert to', conv_currency_list)
+
+    
+
 escalate = float(escalate_dict[escalatep]) # fetch the correct format from the dictionary
 escalation=0 # set to zero for the for loop
 
@@ -174,7 +172,7 @@ if pressed:
         acc_cap = [round(num, 2) for num in accumulated_capital]
         acc_int = [round(num, 2) for num in accumulated_interest]
 
-        final_data = pd.DataFrame(list(zip(acc_cap, acc_int,amounts_rounded,range(1,len(amounts_rounded)))),columns=['Capital Contribution','Return','Total','year_index'])
+        final_data = pd.DataFrame(list(zip(acc_cap, acc_int,amounts_rounded,range(1,len(amounts_rounded)))),columns=['Capital Contribution','Investment Growth','Total','year_index'])
         
         base_price_unit = "ZAR"   
         
@@ -190,7 +188,7 @@ if pressed:
            # status_code = response.status_code
             data = response.json()
             return data
-
+        
         df = load_data()
         converted = df['result']
         converted= round(converted,2)
@@ -209,25 +207,25 @@ if pressed:
         display_rate = round(growth_rate*100,1)
 
         st.header('Your Investment Value')
-        st.write(f" If you invest **R{monthly}**,  **{m}** times a year with an annual escalation of **{escalatep}**, with a desposit of **R{deposit}**  at a growth rate of **{display_rate}%**, your investment will generate **R{final_amount}**  in **{years}** years.")
-        st.write(f"The converted value of your investment is:  **{conv_currency_selector}** **{converted}** at a rate of **{df['info']['rate']}** in **{years}** years.")
+        st.write(f" If you desposit **R{deposit}** and contribute **R{monthly}**,  **{m}** times a year with an annual escalation of **{escalatep}**,  at a growth rate of **{display_rate}%**, your investment will generate **R{final_amount}**  in **{years}** years.")
+        st.write(f"The converted value of your investment is:  **{conv_currency_selector}** **{converted}** at a rate of **{df['info']['rate']}** ")
         st.write(f" You will earn earn **R{final_interest}**  on your capital contribution of **R{final_cap}**  which is a return of **{ireturn}**")
 
 
-        stacked_bar = final_data[['Capital Contribution','Return','year_index']]
+        stacked_bar = final_data[['Capital Contribution','Investment Growth','year_index']]
         new_stacked = stacked_bar.melt('year_index', var_name='Key', value_name='Amount')
         
         # write the new bar chart here
         
         Key_dict = {
                 'Capital Contribution': "#DDC385", 
-                'Return': "#0D1A34", 
+                'Investment Growth': "#0D1A34", 
     
                             }
 
         new_stacked['Color'] = new_stacked['Key'].map(Key_dict)
 
-        domain = ['Capital Contribution','Return']
+        domain = ['Capital Contribution','Investment Growth']
         range_ = ["#DDC385","#0D1A34"]
         
         c = alt.Chart(new_stacked).mark_bar().encode(
@@ -237,11 +235,11 @@ if pressed:
             color=alt.Color('Key',scale=alt.Scale(domain=domain,range=range_))
             )
         st.altair_chart(c,use_container_width=True)
-
-    
+        # json_chart= c.save("chart.json")
+        # st.write(json_chart)
         
         if email_choice =="Yes":
-            send_email("wciivablmetkkfdu",monthly,m,escalation,final_amount,years,escalatep,deposit,final_interest,final_cap,ireturn,converted,df,conv_currency_selector,display_rate,email_address,max_contribution)
+            send_email("wciivablmetkkfdu",monthly,m,escalation,final_amount,years,escalatep,deposit,final_interest,final_cap,ireturn,converted,df,conv_currency_selector,display_rate,email_address,client_name,max_contribution)
             # replace password with st.secrets["email_secret"]["password"][0]
 
 
