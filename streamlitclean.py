@@ -232,6 +232,11 @@ if pressed:
             x='year_index:O',
             y='Amount',
             tooltip= ["Key","Amount"],
+            order=alt.Order(
+                    # Sort the segments of the bars by this field
+                    'Amount',
+                 sort='ascending'
+                    ),
             color=alt.Color('Key',scale=alt.Scale(domain=domain,range=range_))
             )
         st.altair_chart(c,use_container_width=True)
