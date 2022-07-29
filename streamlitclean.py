@@ -1,5 +1,4 @@
 #all the imports
-from tempfile import TemporaryFile
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -213,7 +212,7 @@ if pressed:
         st.write(f" You will earn earn **R{final_interest}**  on your capital contribution of **R{final_cap}**  which is a return of **{ireturn}**")
 
 
-        stacked_bar = final_data[['Capital Contribution','Investment Growth','year_index']]
+        stacked_bar = final_data[['Investment Growth','Capital Contribution','year_index']]
         new_stacked = stacked_bar.melt('year_index', var_name='Key', value_name='Amount')
         
         # write the new bar chart here
@@ -239,11 +238,11 @@ if pressed:
         
         
         ##Test
-        c.save("chart.json")
+        #c.save("chart.json")
         
         
         if email_choice =="Yes":
             send_email(st.secrets["email_secret"]["password"][0],monthly,m,escalation,final_amount,years,escalatep,deposit,final_interest,final_cap,ireturn,converted,df,conv_currency_selector,display_rate,email_address,client_name,max_contribution)
-            # replace password with st.secrets["email_secret"]["password"][0]
+            # 
 
 
