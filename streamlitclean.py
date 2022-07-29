@@ -227,12 +227,13 @@ if pressed:
 
         domain = ['Capital Contribution','Investment Growth']
         range_ = ["#DDC385","#0D1A34"]
-        
+        order_bars = ['Investment Growth','Capital Contribution']
         c = alt.Chart(new_stacked).mark_bar().encode(
             x='year_index:O',
             y='Amount',
             tooltip= ["Key","Amount"],
-            color=alt.Color('Key',scale=alt.Scale(domain=domain,range=range_),sort = 'ascending')
+            color=alt.Color('Key',scale=alt.Scale(domain=domain,range=range_),sort = order_bars)
+            
             )
         st.altair_chart(c,use_container_width=True)
         
