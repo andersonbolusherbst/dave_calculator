@@ -15,6 +15,7 @@ import smtplib, ssl
 from formulas import continue_calculation,formatter
 import altair as alt
 
+
 #top image
 st.image("thin.png")
 #link back to website
@@ -235,11 +236,14 @@ if pressed:
             color=alt.Color('Key',scale=alt.Scale(domain=domain,range=range_))
             )
         st.altair_chart(c,use_container_width=True)
-        # json_chart= c.save("chart.json")
-        # st.write(json_chart)
+        
+        
+        ##Test
+        c.save("chart.json")
+        
         
         if email_choice =="Yes":
-            send_email("wciivablmetkkfdu",monthly,m,escalation,final_amount,years,escalatep,deposit,final_interest,final_cap,ireturn,converted,df,conv_currency_selector,display_rate,email_address,client_name,max_contribution)
+            send_email(st.secrets["email_secret"]["password"][0],monthly,m,escalation,final_amount,years,escalatep,deposit,final_interest,final_cap,ireturn,converted,df,conv_currency_selector,display_rate,email_address,client_name,max_contribution)
             # replace password with st.secrets["email_secret"]["password"][0]
 
 

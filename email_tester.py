@@ -38,6 +38,7 @@ def send_email(password,monthly,m,escalation,final_amount,years,escalatep,deposi
 	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+	
 	<!--<![endif]-->
 	<style>
 		* {{
@@ -116,6 +117,27 @@ def send_email(password,monthly,m,escalation,final_amount,years,escalatep,deposi
 </head>
 
 <body style="background-color: #ffffff; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;">
+
+<div id="view"></div>
+  <script type="text/javascript">
+    var view;
+
+    fetch('/chart.json')
+      .then(res => res.json())
+      .then(spec => render(spec))
+      .catch(err => console.error(err));
+
+    function render(spec) {{
+      view = new vega.View(vega.parse(spec), {{
+        renderer:  'canvas',  // renderer (canvas or svg)
+        container: '#view',   // parent DOM container
+        hover:     true       // enable hover processing
+	  }});
+      return view.runAsync();
+	}}
+  </script>
+
+
 	<table class="nl-container" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff;">
 		<tbody>
 			<tr>
