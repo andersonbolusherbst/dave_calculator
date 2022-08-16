@@ -172,7 +172,7 @@ if pressed:
         acc_cap = [round(num, 2) for num in accumulated_capital]
         acc_int = [round(num, 2) for num in accumulated_interest]
 
-        final_data = pd.DataFrame(list(zip(acc_cap, acc_int,amounts_rounded,range(1,len(amounts_rounded)))),columns=['Capital Contribution','Investment Growth','Total','year_index'])
+        final_data = pd.DataFrame(list(zip(acc_cap, acc_int,amounts_rounded,range(1,len(amounts_rounded)))),columns=['Capital Contribution','Investment Growth','Total','Year'])
         
         base_price_unit = "ZAR"   
         
@@ -212,8 +212,8 @@ if pressed:
         st.write(f" You will earn earn **R{final_interest}**  on your capital contribution of **R{final_cap}**  which is a return of **{ireturn}**")
 
 
-        stacked_bar = final_data[['Investment Growth','Capital Contribution','year_index']]
-        new_stacked = stacked_bar.melt('year_index', var_name='Key', value_name='Amount')
+        stacked_bar = final_data[['Investment Growth','Capital Contribution','Year']]
+        new_stacked = stacked_bar.melt('Year', var_name='Key', value_name='Amount')
         
         # write the new bar chart here
         
@@ -229,7 +229,7 @@ if pressed:
         range_ = ["#DDC385","#0D1A34"]
         order_bars = ['Investment Growth','Capital Contribution']
         c = alt.Chart(new_stacked).mark_bar().encode(
-            x='year_index:O',
+            x='Year:O',
             y='Amount',
             tooltip= ["Key","Amount"],
             color=alt.Color('Key',scale=alt.Scale(domain=domain,range=range_)),
