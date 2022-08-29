@@ -164,7 +164,7 @@ if pressed:
         st.error("please input correct retirement and starting age")
     else:
         calculate(years,rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
-        st.balloons()
+        #st.balloons()
         
         
 
