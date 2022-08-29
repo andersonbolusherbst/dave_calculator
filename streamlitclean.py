@@ -162,7 +162,7 @@ if pressed:
         st.error("please input in your contribution amount")
     elif retirement_age == 0 or years < 1:
         st.error("please input correct retirement and starting age")
-    elif max_contribution > monthly:
+    elif max_contribution < monthly:
         st.error("your maximum contirubition is lower than your periodic contribution")
     else:
         calculate(years,rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
