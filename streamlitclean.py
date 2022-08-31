@@ -81,7 +81,7 @@ with col1row6:
 with col2row6:
     if cap_contribution == f"Yes - set a {per_year} cap":
         max_contribution = st.number_input(f'Maximum {per_year} Contribution: ',value =0,step=100)
-    elif cap_contribution == "Yes - set an annual cap":
+    elif cap_contribution == "Yes - set an Annual cap":
         max_annual_contribution = st.number_input('Maximum Annual Contribution: ',value=0,step=100)
         max_contribution = max_annual_contribution/m  
 
