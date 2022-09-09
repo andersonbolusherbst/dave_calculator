@@ -76,7 +76,10 @@ with col2row5:
 #6th row of two columns
 col1row6,col2row6 = st.columns(2)
 with col1row6:
-    cap_contribution = st.radio("Would you like to cap your contribution?",['No',f'Yes - set a {per_year} cap', 'Yes - set an Annual cap'])
+    if m!=1:
+        cap_contribution = st.radio("Would you like to cap your contribution?",['No',f'Yes - set a {per_year} cap', 'Yes - set an Annual cap'])
+    else: 
+        cap_contribution =st.radio(""Would you like to cap your contribution?",['No', 'Yes - set an Annual cap'])
     max_contribution= 0
 with col2row6:
     if cap_contribution == f"Yes - set a {per_year} cap":
