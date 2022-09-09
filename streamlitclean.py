@@ -23,7 +23,7 @@ st.write("Return to the bayswatercapital [website](https://bayswatercapital.co.z
 #lists and dictionaries we need
 conv_currency_list = ['USD','EUR','GBP', 'HKD', 'JPY','CAD','CHF','NZD','ZAR']
 escalate_dict ={'No Increase':0.0,'2.5%':0.025, '5%':0.05, '7.5%':0.075, '10%':0.1, '15%':0.15, '20%':0.2}
-frequency ={'Monthly':12,'Quarterly':4,'Annual':1}
+frequency ={'Monthly':12,'Quarterly':4,'Annually':1}
 # layout of the actual app, all in one form 
 # with lots of columns on top of each other
 
