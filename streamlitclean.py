@@ -115,7 +115,7 @@ else:
 pressed = st.button("Calculate")
 amounts=[]
 growth_rate = rate_converted
-rate =growth_rate # HEY ? 
+#rate =growth_rate # HEY ? 
 accumulated_capital=[]
 accumulated_interest=[]
 capital = 0
@@ -168,9 +168,9 @@ if pressed:
     elif max_contribution < monthly:
         st.error("your maximum contribution is lower than your periodic contribution")
     else:
-        calculate(years,rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
+        calculate(years,growth_rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
         #st.balloons()
-        inf_adjust_return,Inf_adj_cap,Inf_adj_int = calculate(years,inflation_adjusted_rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
+        inf_adjust_return,Inf_adj_cap,Inf_adj_int = calculate(years,inflation_adjusted_rate/100,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
         
 
         amounts_rounded = [round(num, 2) for num in amounts]
