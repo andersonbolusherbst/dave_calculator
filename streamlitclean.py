@@ -57,7 +57,8 @@ with col2row3:
     inflation = st.slider('Select expected inflation over the period',min_value=0.0, max_value=15.0, value=0.0, step=0.1,format="%f %%") 
 #writing under row 3
 st.write(f"You expect your investment to grow at a rate of **{round(rate,2)}%** but taking inflation into account the real return will be **{round(rate-inflation,2)}%**")
-inflation_adjusted_rate = rate-inflation # use this amount for the extra sentence
+inflation_adjusted_rate = rate - inflation # use this amount for the extra sentence
+inf_adj_rate = inflation_adjusted_rate
 #4th row of two columns
 col1row4,col2row4 =st.columns(2)
 with col1row4:
