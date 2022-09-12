@@ -170,7 +170,7 @@ if pressed:
     else:
         calculate(years,rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
         #st.balloons()
-        inf_adjust_return,Inf_adj_cap,Inf_adj_int = calculate(years,inflation_adjusted_rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc
+        inf_adjust_return,Inf_adj_cap,Inf_adj_int = calculate(years,inflation_adjusted_rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
         
 
         amounts_rounded = [round(num, 2) for num in amounts]
