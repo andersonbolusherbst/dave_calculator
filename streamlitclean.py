@@ -207,7 +207,7 @@ if pressed:
         final_amount = formatter(amounts[-1])
         final_interest = formatter(acc_int[-1])
         final_cap = formatter(acc_cap[-1])
-        final_inf_adjusted_return = formatter(inf_adjust_return[-1])
+        #final_inf_adjusted_return = formatter(inf_adjust_return[-1])
         
         # make growth rate nicer to read
         display_rate = round(growth_rate*100,1)
