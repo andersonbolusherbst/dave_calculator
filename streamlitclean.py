@@ -160,6 +160,7 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital,monthlye
     return amounts,accumulated_capital,accumulated_interest
 
 # Define the adjusted inflation rate 
+inf_adj_rate = rate - inflation
 amounts_new=[]
 #growth_rate = rate_converted
 #rate =growth_rate # HEY ? 
@@ -216,7 +217,7 @@ if pressed:
     else:
         calculate(years,growth_rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
         #st.balloons()
-        calculate_adjusted(years,inflation_adjusted_rate/100,escalation,escalate,deposit,monthly,m,capital_new,monthlyesc) 
+        calculate_adjusted(years,inf_adj_rate,escalation,escalate,deposit,monthly,m,capital_new,monthlyesc) 
         
 
         amounts_rounded = [round(num, 2) for num in amounts]
