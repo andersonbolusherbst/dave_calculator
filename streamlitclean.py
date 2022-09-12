@@ -169,8 +169,9 @@ accumulated_capital_new=[]
 accumulated_interest_new=[]
 capital_new = 0
 #monthlyesc = monthly
+escalation_new = 0
 
-def calculate_adjusted(years,inf_adj_rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc):
+def calculate_adjusted(years,inf_adj_rate,escalation_new,escalate,deposit,monthly,m,capital,monthlyesc):
     for x in range(years):
         x += 1
         if inf_adj_rate == escalate:
@@ -181,22 +182,22 @@ def calculate_adjusted(years,inf_adj_rate,escalation,escalate,deposit,monthly,m,
             dep_fv = deposit*(1+(inf_adj_rate/m))**(x*m)
             
         total_fv_new = dep_fv + ann_fv
-        escalation = escalate+1
+        escalation_new = escalate+1
         
         
         if monthlyesc > max_contribution:
             monthlyesc = max_contribution
-            continue_calculation(amounts_new,accumulated_capital_new,accumulated_interest_new,x,total_fv_new,years,inf_adj_rate,escalation,escalate,monthly,m, capital_new,monthlyesc,max_contribution)
+            continue_calculation(amounts_new,accumulated_capital_new,accumulated_interest_new,x,total_fv_new,years,inf_adj_rate,escalation_new,escalate,monthly,m, capital_new,monthlyesc,max_contribution)
             break
         else:
             monthlyesc = monthlyesc
             
         if x == 1:
             capital_new= deposit + (monthly*m)
-            monthlyesc = monthlyesc * escalation
+            monthlyesc = monthlyesc * escalation_new
         else:
             capital_new = capital_new + (monthlyesc*m)
-            monthlyesc = monthlyesc * escalation
+            monthlyesc = monthlyesc * escalation_new
             
         interest_new = total_fv_new - capital_new
         total_fv_new = round(total_fv_new,2)
@@ -218,7 +219,7 @@ if pressed:
     else:
         calculate(years,growth_rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
         #st.balloons()
-        calculate_adjusted(years,inf_adj_rate,escalation,escalate,deposit,monthly,m,capital_new,monthlyesc) 
+        calculate_adjusted(years,inf_adj_rate,escalation_new,escalate,deposit,monthly,m,capital_new,monthlyesc) 
         
 
         amounts_rounded = [round(num, 2) for num in amounts]
