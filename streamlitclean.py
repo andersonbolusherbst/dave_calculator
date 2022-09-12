@@ -177,7 +177,7 @@ if pressed:
         acc_cap = [round(num, 2) for num in accumulated_capital]
         acc_int = [round(num, 2) for num in accumulated_interest]
 
-        final_data = pd.DataFrame(list(zip(acc_cap, acc_int,amounts_rounded,range(1,len(amounts_rounded +1)))),columns=['Capital Contribution','Investment Growth','Total','Year'])
+        final_data = pd.DataFrame(list(zip(acc_cap, acc_int,amounts_rounded,range(1,len(amounts_rounded)+1))),columns=['Capital Contribution','Investment Growth','Total','Year'])
         
         base_price_unit = "ZAR"   
         
