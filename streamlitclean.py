@@ -195,7 +195,7 @@ def calculate_adjusted(years,inf_adj_rate,escalation,escalate,deposit,monthly,m,
             capital_new = capital_new + (monthlyesc*m)
             monthlyesc = monthlyesc * escalation
             
-        interest_new = total_fv_new - capital
+        interest_new = total_fv_new - capital_new
         total_fv_new = round(total_fv_new,2)
         amounts_new.append(total_fv_new)
         accumulated_capital_new.append(capital_new)
