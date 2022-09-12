@@ -183,23 +183,23 @@ def calculate_adjusted(years,inf_adj_rate,escalation,escalate,deposit,monthly,m,
         
         if monthlyesc > max_contribution:
             monthlyesc = max_contribution
-            continue_calculation(amounts,accumulated_capital,accumulated_interest,x,total_fv,years,inf_adj_rate,escalation,escalate,monthly,m, capital,monthlyesc,max_contribution)
+            continue_calculation(amounts_new,accumulated_capital_new,accumulated_interest_new,x,total_fv_new,years,inf_adj_rate,escalation,escalate,monthly,m, capital_new,monthlyesc,max_contribution)
             break
         else:
             monthlyesc = monthlyesc
             
         if x == 1:
-            capital= deposit + (monthly*m)
+            capital_new= deposit + (monthly*m)
             monthlyesc = monthlyesc * escalation
         else:
-            capital = capital + (monthlyesc*m)
+            capital_new = capital_new + (monthlyesc*m)
             monthlyesc = monthlyesc * escalation
             
-        interest_new = total_fv - capital
-        total_fv_new = round(total_fv,2)
-        amounts_new.append(total_fv)
-        accumulated_capital_new.append(capital)
-        accumulated_interest_new.append(interest)
+        interest_new = total_fv_new - capital
+        total_fv_new = round(total_fv_new,2)
+        amounts_new.append(total_fv_new)
+        accumulated_capital_new.append(capital_new)
+        accumulated_interest_new.append(interest_new)
         
             
     
