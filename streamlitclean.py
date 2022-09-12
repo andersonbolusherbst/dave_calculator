@@ -207,13 +207,14 @@ if pressed:
         final_amount = formatter(amounts[-1])
         final_interest = formatter(acc_int[-1])
         final_cap = formatter(acc_cap[-1])
+        final_inf_adjusted_return = formatter(inf_adjust_return[-1])
         
         # make growth rate nicer to read
         display_rate = round(growth_rate*100,1)
 
         st.header('Your Investment Value')
         st.write(f" If you desposit **R{deposit}** and contribute **R{monthly}**,  **{m}** times a year with an annual escalation of **{escalatep}**,  at a growth rate of **{display_rate}%**, your investment will generate **R{final_amount}**  in **{years}** years.")
-        st.write(f"Taking an expected inflation rate of {inflation} into account, your real investment value will be {Inf_adj_cap[-1]}")
+        st.write(f"Taking an expected inflation rate of **{inflation}** into account, your real investment value will be **{final_inf_adjusted_return}**")
         st.write(f"The converted value of your investment is:  **{conv_currency_selector}** **{converted}** at a rate of **{df['info']['rate']}** ")
         st.write(f" You will earn earn **R{final_interest}**  on your capital contribution of **R{final_cap}**  which is a return of **{ireturn}**")
 
