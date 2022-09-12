@@ -289,6 +289,9 @@ if pressed:
             )
         st.altair_chart(c,use_container_width=True)
         
+        st.write(amounts)
+        st.write(amounts_new)
+        
         
         ##Test
         #c.save("chart.json")
