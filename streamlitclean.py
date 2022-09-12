@@ -158,8 +158,51 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital,monthlye
             
     return amounts,accumulated_capital,accumulated_interest
 
-# Define the adjusted inflation rate: 
+# Define the adjusted inflation rate 
+amounts_new=[]
+#growth_rate = rate_converted
+#rate =growth_rate # HEY ? 
+accumulated_capital_new=[]
+accumulated_interest_new=[]
+capital_new = 0
+#monthlyesc = monthly
 
+def calculate_adjusted(years,inf_adj_rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc):
+    for x in range(years):
+        x += 1
+        if inf_adj_rate == escalate:
+            ann_fv = monthly*(m*x)*(1+(inf_adj_rate/m))**((x*m)-1)
+            dep_fv = deposit*(1+(inf_adj_rate/m))**(x*m)
+        else:
+            ann_fv = monthly *(((1+(inf_adj_rate/m))**(x*m)-(1+(escalate/m))**(x*m))/((inf_adj_rate/m)-(escalate/m)))
+            dep_fv = deposit*(1+(inf_adj_rate/m))**(x*m)
+            
+        total_fv_new = dep_fv + ann_fv
+        escalation = escalate+1
+        
+        
+        if monthlyesc > max_contribution:
+            monthlyesc = max_contribution
+            continue_calculation(amounts,accumulated_capital,accumulated_interest,x,total_fv,years,inf_adj_rate,escalation,escalate,monthly,m, capital,monthlyesc,max_contribution)
+            break
+        else:
+            monthlyesc = monthlyesc
+            
+        if x == 1:
+            capital= deposit + (monthly*m)
+            monthlyesc = monthlyesc * escalation
+        else:
+            capital = capital + (monthlyesc*m)
+            monthlyesc = monthlyesc * escalation
+            
+        interest_new = total_fv - capital
+        total_fv_new = round(total_fv,2)
+        amounts_new.append(total_fv)
+        accumulated_capital_new.append(capital)
+        accumulated_interest_new.append(interest)
+        
+            
+    
 
 if pressed:
     
@@ -172,7 +215,7 @@ if pressed:
     else:
         calculate(years,growth_rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
         #st.balloons()
-        #inf_adjust_return,Inf_adj_cap,Inf_adj_int = calculate(years,inflation_adjusted_rate/100,escalation,escalate,deposit,monthly,m,capital,monthlyesc) # leave this for now
+        calculate_adjusted(years,inflation_adjusted_rate/100,escalation,escalate,deposit,monthly,m,capital_new,monthlyesc) 
         
 
         amounts_rounded = [round(num, 2) for num in amounts]
@@ -209,14 +252,14 @@ if pressed:
         final_amount = formatter(amounts[-1])
         final_interest = formatter(acc_int[-1])
         final_cap = formatter(acc_cap[-1])
-        #final_inf_adjusted_return = formatter(inf_adjust_return[-1])
+        final_inf_adjusted_return = formatter(amounts_new[-1])
         
         # make growth rate nicer to read
         display_rate = round(growth_rate*100,1)
 
         st.header('Your Investment Value')
         st.write(f" If you desposit **R{deposit}** and contribute **R{monthly}**,  **{m}** times a year with an annual escalation of **{escalatep}**,  at a growth rate of **{display_rate}%**, your investment will generate **R{final_amount}**  in **{years}** years.")
-        #st.write(f"Taking an expected inflation rate of **{inflation}** into account, your real investment value will be **{final_inf_adjusted_return}**")
+        st.write(f"Taking an expected inflation rate of **{inflation}** into account, your real investment value will be **{final_inf_adjusted_return}**")
         st.write(f"The converted value of your investment is:  **{conv_currency_selector}** **{converted}** at a rate of **{df['info']['rate']}** ")
         st.write(f" You will earn earn **R{final_interest}**  on your capital contribution of **R{final_cap}**  which is a return of **{ireturn}**")
 
