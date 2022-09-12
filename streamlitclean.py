@@ -168,7 +168,7 @@ if pressed:
     elif max_contribution < monthly:
         st.error("your maximum contribution is lower than your periodic contribution")
     else:
-        calculate(years,growth_rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
+        amounts,accumulated_capital,accumulated_interest = calculate(years,growth_rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
         #st.balloons()
         inf_adjust_return,Inf_adj_cap,Inf_adj_int = calculate(years,inflation_adjusted_rate/100,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
         
