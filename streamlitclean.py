@@ -57,7 +57,7 @@ with col2row3:
     inflation = st.slider('Select expected inflation over the period',min_value=0.0, max_value=15.0, value=0.0, step=0.1,format="%f %%") 
 #writing under row 3
 st.write(f"You expect your investment to grow at a rate of **{round(rate,2)}%** but taking inflation into account the real return will be **{round(rate-inflation,2)}%**")
-
+inflation_adjusted_rate = rate-inflation # use this amount for the extra sentence
 #4th row of two columns
 col1row4,col2row4 =st.columns(2)
 with col1row4:
@@ -170,7 +170,7 @@ if pressed:
     else:
         calculate(years,rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
         #st.balloons()
-        
+        inf_adjust_return,Inf_adj_cap,Inf_adj_int = calculate(years,inflation_adjusted_rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc
         
 
         amounts_rounded = [round(num, 2) for num in amounts]
@@ -213,6 +213,7 @@ if pressed:
 
         st.header('Your Investment Value')
         st.write(f" If you desposit **R{deposit}** and contribute **R{monthly}**,  **{m}** times a year with an annual escalation of **{escalatep}**,  at a growth rate of **{display_rate}%**, your investment will generate **R{final_amount}**  in **{years}** years.")
+        st.write(f"Taking an expected inflation rate of {inflation} into account, your real investment value will be {Inf_adj_cap[-1]}"
         st.write(f"The converted value of your investment is:  **{conv_currency_selector}** **{converted}** at a rate of **{df['info']['rate']}** ")
         st.write(f" You will earn earn **R{final_interest}**  on your capital contribution of **R{final_cap}**  which is a return of **{ireturn}**")
 
