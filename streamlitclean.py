@@ -170,7 +170,7 @@ if pressed:
     else:
         amounts,accumulated_capital,accumulated_interest = calculate(years,growth_rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
         #st.balloons()
-        inf_adjust_return,Inf_adj_cap,Inf_adj_int = calculate(years,inflation_adjusted_rate/100,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
+        #inf_adjust_return,Inf_adj_cap,Inf_adj_int = calculate(years,inflation_adjusted_rate/100,escalation,escalate,deposit,monthly,m,capital,monthlyesc) # leave this for now
         
 
         amounts_rounded = [round(num, 2) for num in amounts]
@@ -214,7 +214,7 @@ if pressed:
 
         st.header('Your Investment Value')
         st.write(f" If you desposit **R{deposit}** and contribute **R{monthly}**,  **{m}** times a year with an annual escalation of **{escalatep}**,  at a growth rate of **{display_rate}%**, your investment will generate **R{final_amount}**  in **{years}** years.")
-        st.write(f"Taking an expected inflation rate of **{inflation}** into account, your real investment value will be **{final_inf_adjusted_return}**")
+        #st.write(f"Taking an expected inflation rate of **{inflation}** into account, your real investment value will be **{final_inf_adjusted_return}**")
         st.write(f"The converted value of your investment is:  **{conv_currency_selector}** **{converted}** at a rate of **{df['info']['rate']}** ")
         st.write(f" You will earn earn **R{final_interest}**  on your capital contribution of **R{final_cap}**  which is a return of **{ireturn}**")
 
