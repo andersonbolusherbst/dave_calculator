@@ -158,6 +158,8 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital,monthlye
             
     return amounts,accumulated_capital,accumulated_interest
 
+# Define the adjusted inflation rate: 
+
 
 if pressed:
     
@@ -168,7 +170,7 @@ if pressed:
     elif max_contribution < monthly:
         st.error("your maximum contribution is lower than your periodic contribution")
     else:
-        amounts,accumulated_capital,accumulated_interest = calculate(years,growth_rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
+        calculate(years,growth_rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
         #st.balloons()
         #inf_adjust_return,Inf_adj_cap,Inf_adj_int = calculate(years,inflation_adjusted_rate/100,escalation,escalate,deposit,monthly,m,capital,monthlyesc) # leave this for now
         
