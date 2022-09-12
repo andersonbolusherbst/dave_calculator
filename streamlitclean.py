@@ -161,6 +161,7 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital,monthlye
 
 # Define the adjusted inflation rate 
 inf_adj_rate = rate - inflation
+inf_adj_rate = inf_adj_rate /100
 amounts_new=[]
 #growth_rate = rate_converted
 #rate =growth_rate # HEY ? 
