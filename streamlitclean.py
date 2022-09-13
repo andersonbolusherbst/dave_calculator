@@ -57,7 +57,7 @@ with col2row3:
     inflation = st.slider('Select expected inflation over the period',min_value=0.0, max_value=15.0, value=0.0, step=0.1,format="%f %%") 
 #writing under row 3
 st.write(f"You expect your investment to grow at a rate of **{round(rate,2)}%** but taking inflation into account the real return will be **{round(rate-inflation,2)}%**")
-inflation_adjusted_rate = rate - inflation # use this amount for the extra sentence
+inflation_adjusted_rate = (rate - inflation)/100 # use this amount for the extra sentence
 
 #4th row of two columns
 col1row4,col2row4 =st.columns(2)
@@ -100,12 +100,7 @@ with col2row7:
         client_name = st.text_input("Name: ")
         email_address = st.text_input("email address to send to: ")
     
-        
 
-    
-
-escalate = float(escalate_dict[escalatep]) # fetch the correct format from the dictionary
-escalation=0 # set to zero for the for loop
 
   
 if max_contribution == 0:
@@ -114,15 +109,23 @@ else:
     max_contribution = max_contribution
 
 pressed = st.button("Calculate")
-amounts=[]
+
 growth_rate = rate_converted
 #rate =growth_rate # HEY ? 
-accumulated_capital=[]
-accumulated_interest=[]
-capital = 0
-monthlyesc = monthly
 
-def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital,monthlyesc):
+
+
+escalate = float(escalate_dict[escalatep]) # fetch the correct format from the dictionary
+ # set to zero for the for loop
+
+def calculate(years,rate,escalate,deposit,monthly,m):
+    # set all the variables that need to be local to the function
+    accumulated_capital=[]
+    accumulated_interest=[]
+    amounts=[]
+    monthlyesc = monthly
+    escalation=0
+    capital = 0
     for x in range(years):
         x += 1
         if rate == escalate:
@@ -159,54 +162,6 @@ def calculate(years,rate,escalation,escalate,deposit,monthly,m, capital,monthlye
             
     return amounts,accumulated_capital,accumulated_interest
 
-# Define the adjusted inflation rate 
-inf_adj_rate = rate - inflation
-inf_adj_rate = inf_adj_rate /100
-amounts_new=[]
-#growth_rate = rate_converted
-#rate =growth_rate # HEY ? 
-accumulated_capital_new=[]
-accumulated_interest_new=[]
-capital_new = 0
-#monthlyesc = monthly
-escalation_new = 0
-
-def calculate_adjusted(years,inf_adj_rate,escalation_new,escalate,deposit,monthly,m,capital,monthlyesc):
-    for x in range(years):
-        x += 1
-        if inf_adj_rate == escalate:
-            ann_fv = monthly*(m*x)*(1+(inf_adj_rate/m))**((x*m)-1)
-            dep_fv = deposit*(1+(inf_adj_rate/m))**(x*m)
-        else:
-            ann_fv = monthly *(((1+(inf_adj_rate/m))**(x*m)-(1+(escalate/m))**(x*m))/((inf_adj_rate/m)-(escalate/m)))
-            dep_fv = deposit*(1+(inf_adj_rate/m))**(x*m)
-            
-        total_fv_new = dep_fv + ann_fv
-        escalation_new = escalate+1
-        
-        
-        if monthlyesc > max_contribution:
-            monthlyesc = max_contribution
-            continue_calculation(amounts_new,accumulated_capital_new,accumulated_interest_new,x,total_fv_new,years,inf_adj_rate,escalation_new,escalate,monthly,m, capital_new,monthlyesc,max_contribution)
-            break
-        else:
-            monthlyesc = monthlyesc
-            
-        if x == 1:
-            capital_new= deposit + (monthly*m)
-            monthlyesc = monthlyesc * escalation_new
-        else:
-            capital_new = capital_new + (monthlyesc*m)
-            monthlyesc = monthlyesc * escalation_new
-            
-        interest_new = total_fv_new - capital_new
-        total_fv_new = round(total_fv_new,2)
-        amounts_new.append(total_fv_new)
-        accumulated_capital_new.append(capital_new)
-        accumulated_interest_new.append(interest_new)
-        
-            
-    
 
 if pressed:
     
@@ -217,9 +172,9 @@ if pressed:
     elif max_contribution < monthly:
         st.error("your maximum contribution is lower than your periodic contribution")
     else:
-        calculate(years,growth_rate,escalation,escalate,deposit,monthly,m,capital,monthlyesc)
-        #st.balloons()
-        calculate_adjusted(years,inf_adj_rate,escalation_new,escalate,deposit,monthly,m,capital_new,monthlyesc) 
+        amounts,accumulated_capital,accumulated_interest = calculate(years,growth_rate,escalate,deposit,monthly,m)
+        amount_after_inf, accumulated_capital_after_inf,accumulated_interest_after_if = calculate(years,inflation_adjusted_rate,escalate,deposit,monthly,m)
+        #st.balloons() 
         
 
         amounts_rounded = [round(num, 2) for num in amounts]
@@ -256,14 +211,14 @@ if pressed:
         final_amount = formatter(amounts[-1])
         final_interest = formatter(acc_int[-1])
         final_cap = formatter(acc_cap[-1])
-        final_inf_adjusted_return = formatter(amounts_new[-1])
+        final_inf_adjusted_return = formatter(amount_after_inf[-1])
         
         # make growth rate nicer to read
         display_rate = round(growth_rate*100,1)
 
         st.header('Your Investment Value')
         st.write(f" If you desposit **R{deposit}** and contribute **R{monthly}**,  **{m}** times a year with an annual escalation of **{escalatep}**,  at a growth rate of **{display_rate}%**, your investment will generate **R{final_amount}**  in **{years}** years.")
-        #st.write(f"Taking an expected inflation rate of **{inflation}%** into account, your real investment value will be **R{final_inf_adjusted_return}**")
+        st.write(f"Taking an expected inflation rate of **{inflation}%** into account, your real investment value will be **R{final_inf_adjusted_return}**")
         st.write(f"The converted value of your investment is:  **{conv_currency_selector}** **{converted}** at a rate of **{df['info']['rate']}** ")
         st.write(f" You will earn earn **R{final_interest}**  on your capital contribution of **R{final_cap}**  which is a return of **{ireturn}**")
 
@@ -301,7 +256,7 @@ if pressed:
         
         
         if email_choice =="Yes":
-            send_email(st.secrets["email_secret"]["password"][0],monthly,m,escalation,final_amount,years,escalatep,deposit,final_interest,final_cap,ireturn,converted,df,conv_currency_selector,display_rate,email_address,client_name,max_contribution)
+            send_email(st.secrets["email_secret"]["password"][0],monthly,m,final_amount,years,escalatep,deposit,final_interest,final_cap,ireturn,converted,df,conv_currency_selector,display_rate,email_address,client_name,max_contribution)
             # 
 
 
