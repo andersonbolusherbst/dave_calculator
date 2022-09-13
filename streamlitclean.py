@@ -132,7 +132,7 @@ def calculate(years,rate,escalate,deposit,monthly,m):
             ann_fv = monthly*(m*x)*(1+(rate/m))**((x*m)-1)
             dep_fv = deposit*(1+(rate/m))**(x*m)
         else:
-            ann_fv = monthly *(((1+(rate/m))**(x*m)-(1+(escalate/m))**(x*m))/((rate/m)-(escalate/m)))
+            ann_fv = monthly *(((1+(rate/m))**(x*m)-(1+(escalate))**(x))/((rate/m)-(escalate/m)))
             dep_fv = deposit*(1+(rate/m))**(x*m)
             
         total_fv = dep_fv + ann_fv
