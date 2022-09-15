@@ -81,13 +81,15 @@ with col1row6:
         cap_contribution = st.radio("Would you like to cap your contribution?",['No',f'Yes - set a {per_year} cap', 'Yes - set an Annual cap'])
     else: 
         cap_contribution =st.radio("Would you like to cap your contribution?",['No', 'Yes - set an Annual cap'])
-    max_contribution= 0
+    
 with col2row6:
+    max_annual_contribution = 0
     if cap_contribution == f"Yes - set a {per_year} cap":
         max_contribution = st.number_input(f'Maximum {per_year} Contribution: ',value =0,step=100)
+        max_annual_contribution = max_contribution*m
     elif cap_contribution == "Yes - set an Annual cap":
         max_annual_contribution = st.number_input('Maximum Annual Contribution: ',value=0,step=100)
-        max_contribution = max_annual_contribution/m  
+      
 
 
 #7th row of two columns
@@ -101,66 +103,60 @@ with col2row7:
         email_address = st.text_input("email address to send to: ")
     
 
+if max_annual_contribution == 0:
+    max_annual_contribution = 1000000000000
 
-  
-if max_contribution == 0:
-    max_contribution = 1000000000000
-else:
-    max_contribution = max_contribution
+    
 
 pressed = st.button("Calculate")
 
 growth_rate = rate_converted
 #rate =growth_rate # HEY ? 
-
-
-
 escalate = float(escalate_dict[escalatep]) # fetch the correct format from the dictionary
- # set to zero for the for loop
 
-def calculate(years,rate,escalate,deposit,monthly,m):
-    # set all the variables that need to be local to the function
+
+# NEWEST FORMULA
+def calculate_attempt_88(years,rate,escalate,deposit,monthly,m):
     accumulated_capital=[]
     accumulated_interest=[]
     amounts=[]
+    #contributions=[]
+    #base = []
     monthlyesc = monthly
-    escalation=0
+    #escalation=0
     capital = 0
+    ann_fv = 0
+    escalation = escalate + 1 # change it from 0.1 to 1.1 for example
+    extra_deposit = 0
+
     for x in range(years):
-        x += 1
-        if rate == escalate:
-            ann_fv = monthly*(m*x)*(1+(rate/m))**((x*m)-1)
-            dep_fv = deposit*(1+(rate/m))**(x*m)
-        else:
-            ann_fv = monthly *(((1+(rate/m))**(x*m)-(1+(escalate/m))**(x*m))/((rate/m)-(escalate/m)))
-            dep_fv = deposit*(1+(rate/m))**(x*m)
-            
-        total_fv = dep_fv + ann_fv
-        escalation = escalate+1
+        x+=1
+        dep_fv = (deposit + extra_deposit)*((1+(rate/m))**(m)) # calculate the flat interest
+        ann_fv = (monthlyesc/(rate/m))*(((1+(rate/m))**(m))-1) # calculate annuity
         
+        extra_deposit = ann_fv + dep_fv# add to deposit in year 2 
         
-        if monthlyesc > max_contribution:
-            monthlyesc = max_contribution
-            continue_calculation(amounts,accumulated_capital,accumulated_interest,x,total_fv,years,rate,escalation,escalate,monthly,m, capital,monthlyesc,max_contribution)
-            break
-        else:
-            monthlyesc = monthlyesc
-            
         if x == 1:
-            capital = deposit + (monthly*m)
-            monthlyesc = monthlyesc * escalation
+            capital = deposit + (monthlyesc*m)    # increase capital after year 1
         else:
-            capital = capital + (monthlyesc*m)
-            monthlyesc = monthlyesc * escalation
-            
-        interest = total_fv - capital
-        total_fv = round(total_fv,2)
-        amounts.append(total_fv)
+            capital = capital + (monthlyesc*m)    # increase capital for the other years
+        
+        monthlyesc = monthlyesc*escalation #escalate The monthly contribution  
+        if max_annual_contribution:
+                if monthlyesc*m >= max_annual_contribution:   # if it's greater than the max then it get's changed back to the max
+                    monthlyesc = max_annual_contribution/m
+
+       
+        total_fv = dep_fv + ann_fv # get the total future value for our list
+        interest = total_fv - capital # get interest portion
+        total_fv = round(total_fv,2) 
+        amounts.append(total_fv)     # append to all the lists
         accumulated_capital.append(capital)
         accumulated_interest.append(interest)
         
-            
     return amounts,accumulated_capital,accumulated_interest
+
+
 
 
 if pressed:
@@ -169,13 +165,13 @@ if pressed:
         st.error("please input in your contribution amount")
     elif retirement_age == 0 or years < 1:
         st.error("please input correct retirement and starting age")
-    elif max_contribution < monthly:
+    elif max_annual_contribution/m < monthly:
         st.error("your maximum contribution is lower than your periodic contribution")
     else:
-        amounts,accumulated_capital,accumulated_interest = calculate(years,growth_rate,escalate,deposit,monthly,m)
-        amount_after_inf, accumulated_capital_after_inf,accumulated_interest_after_if = calculate(years,inflation_adjusted_rate,escalate,deposit,monthly,m)
+        amounts,accumulated_capital,accumulated_interest = calculate_attempt_88(years,growth_rate,escalate,deposit,monthly,m)
+        amount_after_inf, accumulated_capital_after_inf,accumulated_interest_after_inf = calculate_attempt_88(years,inflation_adjusted_rate,escalate,deposit,monthly,m)
         #st.balloons() 
-        
+        # st.write("ann fv",ann_fv, "dep_fv",dep_fv,"total",amounts,"capital",accumulated_capital,"interest",accumulated_interest)
 
         amounts_rounded = [round(num, 2) for num in amounts]
         acc_cap = [round(num, 2) for num in accumulated_capital]
