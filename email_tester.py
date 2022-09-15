@@ -2,7 +2,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import smtplib, ssl  ### need to add these imports tio the main streamlit file and to the requirements
 
-def send_email(password,monthly,m,final_amount,years,escalatep,deposit,final_interest,final_cap,ireturn,converted,df,conv_currency_selector,display_rate,email_address,client_name,max_contribution=None):
+def send_email(password,monthly,m,final_amount,years,escalatep,deposit,final_interest,final_cap,ireturn,converted,df,conv_currency_selector,display_rate,email_address,client_name):
     
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
