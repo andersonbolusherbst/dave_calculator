@@ -252,7 +252,7 @@ if pressed:
         
         
         if email_choice =="Yes":
-            send_email(st.secrets["email_secret"]["password"][0],monthly,m,final_amount,years,escalatep,deposit,final_interest,final_cap,ireturn,converted,df,conv_currency_selector,display_rate,email_address,client_name,max_contribution)
+            send_email(st.secrets["email_secret"]["password"][0],monthly,m,final_amount,years,escalatep,deposit,final_interest,final_cap,ireturn,converted,df,conv_currency_selector,display_rate,email_address,client_name)
             # 
 
 
