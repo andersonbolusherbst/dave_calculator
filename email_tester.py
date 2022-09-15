@@ -21,7 +21,7 @@ def send_email(password,monthly,m,final_amount,years,escalatep,deposit,final_int
     Your calculation came up with the following:
     
      If you invest **{monthly}** {conv_currency_selector}, **{m}** times a year with an annual escalation of 
-    **{escalation}**, your investment will generate **{final_amount}** **{conv_currency_selector}** in **{years}** years
+    **{escalatep}**, your investment will generate **{final_amount}** **{conv_currency_selector}** in **{years}** years
     visit bayswatercapital.co.za for more info, or phone your main man Danger Dave: 09898731948
     """
     html = f"""<!DOCTYPE html>
